@@ -1,0 +1,180 @@
+*
+{
+ margin:0;
+ padding:0;
+ border:0;
+}
+
+body
+{
+ margin:28px 14px;
+ background:#0c0c0c;
+ color:white;
+ font-family:"Gill Sans MT", verdana, helvetica, sans-serif;
+ min-width:1014px;
+}
+
+h1 span.sectwarn {font-size:0.5em;color:#D10000;}
+h1 span.sectdetail {font-size:0.5em;}
+
+h1 img,h2 img,h3 img,h4 img
+{
+ margin:0px 10px;
+ vertical-align:middle;
+}
+
+input, select, textarea {padding:2px;background:rgba(255,255,255,0.5);}
+input.autoClear {color:rgba(40,40,40,0.75);}
+input.failed {border:1px solid #D10000;}
+
+.center {text-align:center;}
+.alignright {text-align:right;}
+.alignleft {text-align:left;} 
+.vimg img {vertical-align:middle;}
+
+a {color:#D10000;text-decoration:none;}
+a:hover {text-decoration:underline;}
+
+.floatleft {float:left;}
+.floatright {float:right;}
+.floatbreaker {clear:both;}
+
+.logo
+{
+ background:url(logo.png) no-repeat scroll center center;
+ width:100%;
+ height:51px;
+ margin-bottom:30px;
+ display:block;
+}
+.copyright
+{
+ font-size:0.8em;
+ text-align:center;
+ clear:both;
+}
+
+.tintedbox, .redbox
+{
+ /*width:907px;*/
+ width:90%;
+ background:rgba(85, 85, 85, 0.4);
+ padding:10px;
+ border-radius:5px;
+ margin:20px auto;
+ color:white;
+}
+.redbox {background:rgba(85, 0, 0, 0.4);}
+
+.tintedbox .tintedbox /*tintedbox in a tintedbox*/
+{
+ box-sizing:border-box;
+ margin:0px auto;
+ width:100%;
+ background:rgba(0,0,0,0.4);
+}
+
+.divlist .item
+{
+ padding-left:20px;
+ background:transparent url(Content/icons/bullet_blue.png) no-repeat scroll left center;
+ margin:3px 0px;
+ overflow:hidden;
+ min-height:16px;
+ white-space:nowrap;
+}
+
+.divlist .item img {vertical-align:middle;}
+
+.divlist .modebox
+{
+ font-size:1.5em;
+ float:right;
+ text-align:right;
+}
+.divlist .modebox img
+{
+ vertical-align:middle;
+ margin:0px 5px 0px 10px;
+}
+
+.navbar a
+{
+ float:left;
+ text-align:left;
+ margin:0px 10px;
+}
+
+.navbar span a
+{
+ float:right;
+ text-align:right;
+ margin:0px 10px;
+}
+
+.explain
+{
+ margin:5px;
+ font-size:0.75em;
+}
+
+.disclaimer
+{
+ font-size:0.7em;
+ padding-left:16px;
+ background:transparent url(icons/warning_triangle_small.png) no-repeat scroll left center;
+}
+
+.linkbox
+{
+ background:black;
+ background:rgba(255,255,255,0.1);
+ border-radius:5px;
+ font-size:20px;
+ width:90%;
+ margin:0px auto;
+ height:30px;
+ padding:10px;
+ text-align:center;
+ overflow:hidden;
+}
+
+.formNote
+{
+ color:lightgrey;
+ position: relative;
+ top: -0.2em;
+ font-size: 1em;
+ margin-left:5px;
+}
+
+/*Table stuff*/
+table
+{
+ border-collapse:collapse;
+ margin-bottom:10px;
+}
+table td, table th
+{
+ border-bottom:1px solid gray;
+ padding:0px 10px;
+ text-align:left;
+}
+*.center table {margin-left:auto;margin-right:auto;}
+
+.notxt
+{
+ color:#D10000;
+ text-decoration:line-through;
+ font-size:0.5em;
+ position:relative;
+ top:-0.75em;
+}
+
+.progressbar
+{
+ width:800px;
+ border:1px solid white;
+ margin:0px auto;
+ background:transparent url('progressbar.png') repeat-y right top;
+}
