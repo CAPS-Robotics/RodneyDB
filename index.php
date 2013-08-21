@@ -1,15 +1,7 @@
 <?php
 //Pathogen Collab (2410 Edition)
-//Copyright © 2010 by Pathogen Studios
+//Copyright ï¿½ 2010 by Pathogen Studios
 //http://www.pathogenstudios.com/
-//
-//===About Pathgogen Collab===
-//Pathogen Collab is a minimalistic content management system indtended for team collaboration
-//developed by "Pathogen" David Maas in 2010 for collaboration of projects by Pathogen Studios
-//he also developed it with the intention that it would be used by the FIRST Robotics Team 2334
-//(now merged with team 2410.) It has an emphasis of simplicity and flatness rather than general-
-//ized customization. The theme is fixed and the plugin system is very basic. It also only works
-//with one SQL engine (MySQL) as it uses it directly rather than abstracting it.
 //
 //===About this edition===
 //This version was prepared for FRC Team 2410 prior to the 2011 FIRST season (December 2010)
