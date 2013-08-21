@@ -1,6 +1,6 @@
 <?php
 //Pathogen Collab
-//Copyright © 2010 by Pathogen Studios
+//Copyright ï¿½ 2010 by Pathogen Studios
 //http://www.pathogenstudios.com/
 
 define('_SQL_SERVER','db430924922.db.1and1.com:3306');
@@ -17,7 +17,7 @@ define('_REQUIRE_LOGIN',true);
 define('_ALLOW_REGISTRATION',true);
 define('_DEBUG',substr_count($_SERVER['HTTP_HOST'],"d-happy")>=1?true:false);//The condition makes it so _DEBUG is on when I am in my home network. //Change "d-happy" to the internal hostname of your server.
 define('_SUPERDEBUG',_DEBUG);
-define('_ADMIN_EMAIL','pathogendavid@gmail.com');//I would appreciate if you set up a forward email in the 2410 1&1 admin panel so I still get admin messages so I can track RODNEY's usage and success rates.
+define('_ADMIN_EMAIL','rodney@mmr2410.com');//I would appreciate if you set up a forward email in the 2410 1&1 admin panel so I still get admin messages so I can track RODNEY's usage and success rates.
 define('_SYSTEM_EMAIL','rodney2410@pathogenstudios.com');
 
 include_once("Config/repo.php");
