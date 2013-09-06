@@ -65,7 +65,7 @@ function outputHeader($pageTitle="")
 <html>
 <head>
  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
- <title><?php echo("Rodney" . (empty($pageTitle)?"":" - ".$pageTitle)); ?></title>
+ <title><?php echo("RodneyDB" . (empty($pageTitle)?"":" - ".$pageTitle)); ?></title>
  <link href="Content/style.css" rel="stylesheet" type="text/css">
  <script type="text/javascript" src="content/script.js"></script>
  <!--[if IE]>
