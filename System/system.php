@@ -150,35 +150,4 @@ define('TASK_TABLE',_SQL_PREFIX.'tasks');
 
 require_once("System/user.php");
 enforceLoginLogic();
-
-//Special mail function
-require_once("class.xhttp.php");
-function sendMail($to,$subject,$message,$additional_headers="",$additional_parameters="")
-{
- if (_USE_MAIL_PROXY)//PROXY EMAIL IS MUCH SLOWER AS IT TIES UP THE PROGRAM!
- {
-  set_time_limit(0);
-  $data=array();
-  $data['post'] = array(
-   'authid' => _MAIL_PROXY_AUTH,
-   'to' => $to,
-   'subject' => $subject,
-   'message' => $message,
-   'additional_headers' => $additional_headers,
-   'additional_parameters' => $additional_parameters,
-  );
-  $response = xhttp::fetch(_MAIL_PROXY,$data);
-  set_time_limit(ini_get("max_execution_time"));//Restore the max execution time.
-  //echo("<pre>");print_r($response['body']);echo("</pre>");
-  if ($response['successful'])
-  {
-   if (substr($response['body'],0,1)=="1")
-   {return true;}
-   else
-   {return false;}
-  }else {return false;}
- }
- else
- {return mail($to,$subject,$message,$additional_headers,$additional_parameters);}
-}
 ?>
