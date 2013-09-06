@@ -17,7 +17,7 @@ $eventTypes = array(
 'assign'=>'contact_grey_add.png',
 );
 
-require_once("Modules/meetings.php");
+//require_once("Modules/meetings.php");
 require_once("Modules/homePage.php");
 require_once("Modules/directory.php");
 require_once("Modules/checkin.php");

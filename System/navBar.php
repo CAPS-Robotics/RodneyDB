@@ -10,8 +10,8 @@ $enableLinks = (_REQUIRE_LOGIN && isLoggedIn()) || !_REQUIRE_LOGIN;
  <?php
  if($enableLinks)
  {
-  if (canViewTeamDirectory($currentUser['rank'])) {echo('<a href="?p=directory">Team Directory</a>');}
-  if (canMakeAnnouncements($currentUser['rank'])) {echo('<a href="/?p=announce">Broadcast Announcement</a>');}
+  if (canViewTeamDirectory($currentUser['rank'])) {echo('<a href="/?p=directory">Team Directory</a>');}
+  /*if (canMakeAnnouncements($currentUser['rank'])) {echo('<a href="/?p=announce">Broadcast Announcement</a>');}*/
   if (canStartCheckin($currentUser['rank'])) {echo('<a href="/?p=checkin">Checkin</a>');}
  }
  ?>
