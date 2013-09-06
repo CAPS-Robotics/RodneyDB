@@ -1,7 +1,7 @@
 <?php
-//Pathogen Collab
-//Copyright � 2010 by Pathogen Studios
-//http://www.pathogenstudios.com/
+//Rodney
+//Copyright © 2013 by FIRST TEAM 2410
+//http://www.mmr2410.com/
 
 define('_SQL_SERVER','db430924922.db.1and1.com:3306');
 define('_SQL_USERNAME','dbo430924922');
