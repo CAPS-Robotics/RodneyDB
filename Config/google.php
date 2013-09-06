@@ -1,7 +1,7 @@
 <?php
-//Pathogen Collab
-//Copyright © 2010 by Pathogen Studios
-//http://www.pathogenstudios.com/
+//Rodney
+//Copyright © 2013 by FIRST TEAM 2410
+//http://www.mmr2410.com/
 
 define('_GOOGLE_USER','rodney2410@pathogenstudios.com');
 define('_GOOGLE_PASS','s2unedre');
