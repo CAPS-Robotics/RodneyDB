@@ -1,0 +1,13 @@
+.tintedbox
+{
+ background:transparent;
+ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#66555555,endColorstr=#66555555);
+ zoom: 1;
+}
+
+.redbox
+{
+ background:transparent;
+ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#6655000000,endColorstr=#66550000);
+ zoom: 1;
+}
