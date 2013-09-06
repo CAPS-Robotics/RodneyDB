@@ -1,12 +1,13 @@
 <?php
-//Pathogen Collab (2410 Edition)
-//Copyright � 2010 by Pathogen Studios
-//http://www.pathogenstudios.com/
+//Rodney
+//Copyright © 2013 by FIRST TEAM 2410
+//http://www.mmr2410.com/
 //
 //===About this edition===
 //This version was prepared for FRC Team 2410 prior to the 2011 FIRST season (December 2010)
-//It was developed and maintained by David Maas, if you are having any issues with the system
-//please do not hesitate to contact me. I can be reached at contact@pathogenstudios.com
+//It was developed by David Maas, contact@pathogenstudios.com
+//If you are having any issues with the system you should contact the current maintenance crew
+//Eric Osburn, bjonesen@gmail.com, Thomas Gorham, tgiv014@gmail.com, and Tony Ma, tuogex@yahoo.com. 
 
 require_once("System/system.php");
 

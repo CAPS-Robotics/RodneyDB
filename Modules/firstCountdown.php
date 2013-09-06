@@ -1,7 +1,7 @@
 <?php
-//Pathogen Collab
-//Copyright © 2010 by Pathogen Studios
-//http://www.pathogenstudios.com/
+//Rodney
+//Copyright © 2013 by FIRST TEAM 2410
+//http://www.mmr2410.com/
 
 function getDeltaTimeAsString($delta,$name,$id,&$js)//Uses $name, $id, and $js to make and append a JS line to make the countdown registered.
 {

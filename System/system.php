@@ -1,7 +1,7 @@
 <?php
-//Pathogen Collab
-//Copyright © 2010 by Pathogen Studios
-//http://www.pathogenstudios.com/
+//Rodney
+//Copyright © 2013 by FIRST TEAM 2410
+//http://www.mmr2410.com/
 
 //Output buffering begin!
 ob_start();
@@ -65,7 +65,7 @@ function outputHeader($pageTitle="")
 <html>
 <head>
  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
- <title><?php echo("Pathogen Collab" . (empty($pageTitle)?"":" - ".$pageTitle)); ?></title>
+ <title><?php echo("Rodney" . (empty($pageTitle)?"":" - ".$pageTitle)); ?></title>
  <link href="Content/style.css" rel="stylesheet" type="text/css">
  <script type="text/javascript" src="content/script.js"></script>
  <!--[if IE]>
@@ -84,8 +84,8 @@ function outputFooter()
 {
 ?>
  <div class="copyright">
-  Pathogen Collab is copyright &copy; 2010 by <a href="http://www.pathogenstudios.com/">Pathogen Studios</a><br>
-  This version was developed for <a href="http://www.mmr2410.com/">FRC Team 2410</a>
+  RodneyDB &copy; 2013 developed by <a href="http://www.pathogenstudios.com/">Pathogen Studios</a><br>
+  Currently maintained by <a href="http://www.mmr2410.com/">FRC Team 2410</a>
   <?php
   $network = "";
   switch($_SERVER['REMOTE_ADDR'])

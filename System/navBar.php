@@ -1,7 +1,7 @@
 <?php
-//Pathogen Collab (2410 Edition)
-//Copyright © 2010 by Pathogen Studios
-//http://www.pathogenstudios.com/
+//Rodney
+//Copyright © 2013 by FIRST TEAM 2410
+//http://www.mmr2410.com/
 global $currentUser;
 $enableLinks = (_REQUIRE_LOGIN && isLoggedIn()) || !_REQUIRE_LOGIN;
 ?>
