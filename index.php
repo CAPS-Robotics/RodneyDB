@@ -18,7 +18,6 @@ $eventTypes = array(
 'assign'=>'contact_grey_add.png',
 );
 
-//require_once("Modules/meetings.php");
 require_once("Modules/homePage.php");
 require_once("Modules/directory.php");
 require_once("Modules/checkin.php");
@@ -38,17 +37,8 @@ if (getPage()=="account")
 {accountPage();}
 else if (getPage()=="directory")
 {directoryPage();}
-/*else if (getPage()=="rss")
-{
- define('DISABLE_PAGE_THEME',1);
- header("Content-Type: application/rss+xml");
- echo(gadget_recentActivity(true));
- die;
-}*/
 else if (getPage()=="checkin")
 {checkinPage();}
-/*else if (getPage()=="announce")
-{makeAnnouncementPage();}*/
 else
 {homePage();}
 ?>

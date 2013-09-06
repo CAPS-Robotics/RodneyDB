@@ -6,13 +6,12 @@ global $currentUser;
 $enableLinks = (_REQUIRE_LOGIN && isLoggedIn()) || !_REQUIRE_LOGIN;
 ?>
 <div class="tintedbox navbar">
- <a href="/">Home</a>
+ <a href="index.php">Home</a>
  <?php
  if($enableLinks)
  {
-  if (canViewTeamDirectory($currentUser['rank'])) {echo('<a href="/?p=directory">Team Directory</a>');}
-  /*if (canMakeAnnouncements($currentUser['rank'])) {echo('<a href="/?p=announce">Broadcast Announcement</a>');}*/
-  if (canStartCheckin($currentUser['rank'])) {echo('<a href="/?p=checkin">Checkin</a>');}
+  if (canViewTeamDirectory($currentUser['rank'])) {echo('<a href="?p=directory">Team Directory</a>');}
+  if (canStartCheckin($currentUser['rank'])) {echo('<a href="?p=checkin">Checkin</a>');}
  }
  ?>
  <span>
@@ -21,12 +20,12 @@ $enableLinks = (_REQUIRE_LOGIN && isLoggedIn()) || !_REQUIRE_LOGIN;
   if (isLoggedIn())
   {
    ?>
-   <a href="/?p=logout">Logout</a>
-   <a href="/?p=account">Your Account</a>
+   <a href="?p=logout">Logout</a>
+   <a href="?p=account">Your Account</a>
    <?php
   }
   else
-  {echo('<a href="/?p=register">Register</a>');}
+  {echo('<a href="?p=register">Register</a>');}
   ?>
  </span>
  <div class="floatbreaker"></div>
