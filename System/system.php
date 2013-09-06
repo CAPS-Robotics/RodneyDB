@@ -85,7 +85,8 @@ function outputFooter()
 ?>
  <div class="copyright">
   RodneyDB &copy; 2013 developed by <a href="http://www.pathogenstudios.com/">Pathogen Studios</a><br>
-  Currently maintained by <a href="http://www.mmr2410.com/">FRC Team 2410</a>
+  Currently maintained by <a href="http://www.mmr2410.com/">FRC Team 2410</a><br>
+  <a href="https://github.com/CAPS-Robotics/RodneyDB/">Github</a>
   <?php
   $network = "";
   switch($_SERVER['REMOTE_ADDR'])
