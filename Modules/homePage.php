@@ -7,7 +7,7 @@
 function homePage()
 {
  global $currentUser;
- if (isLoggedIn()) {message('<h1 class="center">Welcome, '.$currentUser['name'].'</h1>'.gadget_countdown(false),0,1);}
+ if (isLoggedIn()) {message('<h1 class="center">Welcome, '.$currentUser['name'].'</h1>'./*gadget_countdown(false)*/,0,1);}
  //echo(gadget_tasks());
  if ($currentUser['rank']<50)
  {

@@ -37,17 +37,17 @@ if (getPage()=="account")
 {accountPage();}
 else if (getPage()=="directory")
 {directoryPage();}
-else if (getPage()=="rss")
+/*else if (getPage()=="rss")
 {
  define('DISABLE_PAGE_THEME',1);
  header("Content-Type: application/rss+xml");
  echo(gadget_recentActivity(true));
  die;
-}
+}*/
 else if (getPage()=="checkin")
 {checkinPage();}
-else if (getPage()=="announce")
-{makeAnnouncementPage();}
+/*else if (getPage()=="announce")
+{makeAnnouncementPage();}*/
 else
 {homePage();}
 ?>
