@@ -1,7 +1,7 @@
 <?php
-//Pathogen Collab
-//Copyright � 2010 by Pathogen Studios
-//http://www.pathogenstudios.com/
+//Rodney
+//Copyright © 2013 by FIRST TEAM 2410
+//http://www.mmr2410.com/
 
 define('_SQL_SERVER','db430924922.db.1and1.com:3306');
 define('_SQL_USERNAME','dbo430924922');
@@ -22,8 +22,6 @@ define('_SYSTEM_EMAIL','rodney2410@pathogenstudios.com');
 
 include_once("Config/repo.php");
 
-include_once("Config/google.php");
-
 define('_LONG_DATE','F j, Y');
 define('_LONG_DATE_TIME','F j, Y \a\t g:i');
 define('_SHORT_DATE','M j, Y');
@@ -32,11 +30,6 @@ define('NL',"\n");
 
 //Checkin Rules
 define('CHECKIN_MAX',10);//Maximum hours before they are denied.
-
-//Mail Settings //If you can get sendmail working on your network, then all power to you. If not, you can keep the mail proxy there but don't abuse it.
-define('_USE_MAIL_PROXY',1);//Slower but less of a hassle -- using this until a better method is available.
-define('_MAIL_PROXY','http://www.pathogenstudios.com/mp/mailProxy.php');
-define('_MAIL_PROXY_AUTH','drat@a?7nA4afed!a_a+ubrut8udrax_z#che?3ud&uWus*@freQu_!echa!Hafu');
 
 //Permission logic
 require_once("Config/permissions.php");

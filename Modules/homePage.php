@@ -1,13 +1,13 @@
 <?php
-//Pathogen Collab
-//Copyright © 2010 by Pathogen Studios
-//http://www.pathogenstudios.com/
+//Rodney
+//Copyright © 2013 by FIRST TEAM 2410
+//http://www.mmr2410.com/
 
 //! The home page
 function homePage()
 {
  global $currentUser;
- if (isLoggedIn()) {message('<h1 class="center">Welcome, '.$currentUser['name'].'</h1>'.gadget_countdown(false),0,1);}
+ if (isLoggedIn()) {message('<h1 class="center">Welcome, '.$currentUser['name'].'</h1>'/*.gadget_countdown(false)*/,0,1);}
  //echo(gadget_tasks());
  if ($currentUser['rank']<50)
  {

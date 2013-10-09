@@ -1,7 +1,7 @@
 <?php
-//Pathogen Collab
-//Copyright © 2010 by Pathogen Studios
-//http://www.pathogenstudios.com/
+//Rodney
+//Copyright © 2013 by FIRST TEAM 2410
+//http://www.mmr2410.com/
 
 define('_REPO_USER','dbo430924922');
 define('_REPO_PASS','1nn0c3nts_Twa1n');

@@ -1,7 +1,7 @@
 <?php
-//Pathogen Collab
-//Copyright © 2010 by Pathogen Studios
-//http://www.pathogenstudios.com/
+//Rodney
+//Copyright © 2013 by FIRST TEAM 2410
+//http://www.mmr2410.com/
 
 //Output buffering begin!
 ob_start();
@@ -65,7 +65,7 @@ function outputHeader($pageTitle="")
 <html>
 <head>
  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
- <title><?php echo("Pathogen Collab" . (empty($pageTitle)?"":" - ".$pageTitle)); ?></title>
+ <title><?php echo("RodneyDB" . (empty($pageTitle)?"":" - ".$pageTitle)); ?></title>
  <link href="Content/style.css" rel="stylesheet" type="text/css">
  <script type="text/javascript" src="content/script.js"></script>
  <!--[if IE]>
@@ -84,8 +84,9 @@ function outputFooter()
 {
 ?>
  <div class="copyright">
-  Pathogen Collab is copyright &copy; 2010 by <a href="http://www.pathogenstudios.com/">Pathogen Studios</a><br>
-  This version was developed for <a href="http://www.mmr2410.com/">FRC Team 2410</a>
+  RodneyDB &copy; 2013 developed by <a href="http://www.pathogenstudios.com/">Pathogen Studios</a><br>
+  Currently maintained by <a href="http://www.mmr2410.com/">FRC Team 2410</a><br>
+  <a href="https://github.com/CAPS-Robotics/RodneyDB/">Github</a>
   <?php
   $network = "";
   switch($_SERVER['REMOTE_ADDR'])
@@ -149,35 +150,4 @@ define('TASK_TABLE',_SQL_PREFIX.'tasks');
 
 require_once("System/user.php");
 enforceLoginLogic();
-
-//Special mail function
-require_once("class.xhttp.php");
-function sendMail($to,$subject,$message,$additional_headers="",$additional_parameters="")
-{
- if (_USE_MAIL_PROXY)//PROXY EMAIL IS MUCH SLOWER AS IT TIES UP THE PROGRAM!
- {
-  set_time_limit(0);
-  $data=array();
-  $data['post'] = array(
-   'authid' => _MAIL_PROXY_AUTH,
-   'to' => $to,
-   'subject' => $subject,
-   'message' => $message,
-   'additional_headers' => $additional_headers,
-   'additional_parameters' => $additional_parameters,
-  );
-  $response = xhttp::fetch(_MAIL_PROXY,$data);
-  set_time_limit(ini_get("max_execution_time"));//Restore the max execution time.
-  //echo("<pre>");print_r($response['body']);echo("</pre>");
-  if ($response['successful'])
-  {
-   if (substr($response['body'],0,1)=="1")
-   {return true;}
-   else
-   {return false;}
-  }else {return false;}
- }
- else
- {return mail($to,$subject,$message,$additional_headers,$additional_parameters);}
-}
 ?>
