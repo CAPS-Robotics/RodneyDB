@@ -1,5 +1,5 @@
 Options -MultiViews
 RewriteEngine On
-
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule (.+)$ ?p=$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)$ ?p=$1 [L,QSA]
