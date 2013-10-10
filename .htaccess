@@ -1,4 +1,5 @@
+Options -MultiViews
 RewriteEngine On
 
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule (.+)$ index.php?p=$1 [L]
+RewriteRule (.+)$ ?p=$1 [L]
