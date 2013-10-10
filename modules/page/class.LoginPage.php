@@ -47,6 +47,7 @@ Receive Texts
 			self::alert('success', 'Yay!', "Login successful.");
 			$_SESSION['loggedIn'] = true;
 			$_SESSION['email'] = $email;
+			header($_SERVER["SERVER_PROTOCOL"] . "100 Continue");
 			header("Location: home");
 		}
 		else {
