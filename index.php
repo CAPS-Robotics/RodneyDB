@@ -38,7 +38,7 @@ switch ($_GET['p']) {
 					$page->alert('danger', 'Error!', 'One or more required fields are missing!');
 				}
 				else if ((strlen($_POST['email']) !== 0 && strlen($_POST['password']) !== 0) && (strlen($_POST['checkPassword']) === 0 && strlen($_POST['studentId']) === 0 && strlen($_POST['phoneNum']) === 0)) {
-					$page->authUser($_POST['email'], hash('sha256', $_POST['password']));
+					$page->authUser($_POST['email'], hash(DB_USER_HASH_ALGO, $_POST['password']));
 				}
 				else if ((strlen($_POST['email']) !== 0 && strlen($_POST['password']) !== 0) && (strlen($_POST['checkPassword']) === 0 || strlen($_POST['studentId']) === 0 || strlen($_POST['phoneNum']) === 0)) {
 					$page->alert('danger', 'Error!', 'One or more required fields are missing!');

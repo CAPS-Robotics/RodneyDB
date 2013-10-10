@@ -29,7 +29,7 @@ class Core {
 
 	public function registerUser($email, $password, $name, $studentId, $texting, $phoneNum) {
 		global $db;
-		$db->query("INSERT INTO `" . DB_USER_TABLE . "`(`studentId`, `name`, `email`, `phone`, `password`, `text`) VALUES ('" . $studentId . "','" . $name . "','" . $email . "','" . $phoneNum . "','" . hash('sha256', $password) . "'," . ($texting === "on" ? '1' : '0') . ")");
+		$db->query("INSERT INTO `" . DB_USER_TABLE . "`(`studentId`, `name`, `email`, `phone`, `password`, `text`) VALUES ('" . $studentId . "','" . $name . "','" . $email . "','" . $phoneNum . "','" . hash(DB_USER_HASH_ALGO, $password) . "'," . ($texting === "on" ? '1' : '0') . ")");
 		if ($db->getMySQLi()->errno) {
 			//echo $db->getMySQLi()->error;
 			return false;
