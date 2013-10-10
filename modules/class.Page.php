@@ -67,14 +67,14 @@ text-align: center;
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
 </button>
-<a class="navbar-brand" href="home">Rodney</a>
+<a class="navbar-brand" href="?p=home">Rodney</a>
 </div>
 <div class="collapse navbar-collapse">
 <ul class="nav navbar-nav">
-<li' . ($navTrigger === "home" ? ' class="active"' : '') . '><a href="home">Home</a></li>
-' . ($_SESSION['loggedIn'] ? '<li' . ($navTrigger === "directory" ? ' class="active"' : '') . '><a href="directory">Team Directory</a></li>' : '') . '
+<li' . ($navTrigger === "home" ? ' class="active"' : '') . '><a href="?p=home">Home</a></li>
+' . ($_SESSION['loggedIn'] ? '<li' . ($navTrigger === "directory" ? ' class="active"' : '') . '><a href="?p=directory">Team Directory</a></li>' : '') . '
 </ul>
-' . ($_SESSION['loggedIn'] ? '<p class="navbar-text pull-right">Signed in as <a href="me" class="navbar-link">' . $core->getUser($_SESSION['email'])['name'] . '</a> | <a href="login" class="navbar-link">Sign out</a></p>' : '<p class="navbar-text pull-right"><a href="login" class="navbar-link">Sign in</a></p>') . '
+' . ($_SESSION['loggedIn'] ? '<p class="navbar-text pull-right">Signed in as <a href="?p=me" class="navbar-link">' . $core->getUser($_SESSION['email'])['name'] . '</a> | <a href="?p=login" class="navbar-link">Sign out</a></p>' : '<p class="navbar-text pull-right"><a href="?p=login" class="navbar-link">Sign in</a></p>') . '
 </div>
 </div>
 </div>

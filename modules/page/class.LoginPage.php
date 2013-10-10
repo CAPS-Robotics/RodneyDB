@@ -47,7 +47,7 @@ Receive Texts
 			self::alert('success', 'Yay!', "Login successful.");
 			$_SESSION['loggedIn'] = true;
 			$_SESSION['email'] = $email;
-			header("Location: home");
+			header("Location: ?p=home");
 		}
 		else {
 			self::alert('danger', 'Error!', "Invalid password or email.");

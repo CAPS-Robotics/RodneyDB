@@ -29,7 +29,7 @@ switch ($_GET['p']) {
 	case "login":
 		if ($_SESSION['loggedIn']) {
 			$_SESSION['loggedIn'] = false;
-			header("Location: home");
+			header("Location: ?p=home");
 		}
 		else {
 			$page = new LoginPage("login", $core);
