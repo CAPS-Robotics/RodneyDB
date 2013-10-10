@@ -1,6 +1,7 @@
 <?php
 //TODO: Lots of commenting
 //Load config and modules
+ob_start();
 require("config.php");
 require("modules/class.Core.php");
 require("modules/class.MySQL.php");
@@ -77,4 +78,5 @@ switch ($_GET['p']) {
 		$page->writePage();
 		break;
 }
+ob_end_flush();
 ?>
