@@ -1,4 +1,4 @@
- <?php
+<?php
 class MySQL {
 
     private $conn;
@@ -36,4 +36,4 @@ class MySQL {
         return $conn;
     }
 }
-?> 
+?>
