@@ -4,7 +4,7 @@ define("MYSQL_PORT", 3306);
 define("MYSQL_DB", "db430924922");
 define("MYSQL_USER", "dbo430924922");
 define("MYSQL_PASSWORD", "1nn0c3nts_Twa1n");
-define("DB_USER_TABLE", "new_users")
+define("DB_USER_TABLE", "new_users");
 
 define("CHECKIN_MAX", 10);
 ?>
