@@ -4,7 +4,6 @@ class MySQL {
     private $conn;
 
     public function __construct($HOST, $USER, $PASS, $DB) {
-        session_start();
         global $conn;
         $conn = new mysqli($HOST, $USER, $PASS, $DB);
         $conn->ping();
