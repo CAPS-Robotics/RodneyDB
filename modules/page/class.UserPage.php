@@ -67,6 +67,10 @@ Email address
 <span class="badge">' . Utils::formatPhoneNum($core->getUser($_SESSION['email'])['phone']) . '</span>
 Phone number
 </li>
+<li class="list-group-item">
+<span class="badge">' . $core->getUser($_SESSION['email'])['studentId'] . '</span>
+Student ID
+</li>
 </ul>
 </div>';
 		}
