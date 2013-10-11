@@ -12,6 +12,8 @@ require("modules/page/class.LoginPage.php");
 require("modules/page/class.UserPage.php");
 require("modules/page/class.DirectoryPage.php");
 require("modules/page/class.CheckinPage.php");
+require("modules/page/class.DeletePage.php");
+require("modules/page/class.BroadcastPage.php");
 require("modules/page/class.ErrorPage.php");
 error_reporting(E_ALL ^ E_NOTICE); //Get rid of annoying notices
 //Initialize the core with MySQL information
@@ -69,8 +71,8 @@ switch ($_GET['p']) {
 			$page->writePage();
 			break;
 		}
-		$core->getDB()->query("DELETE FROM `" . DB_USER_TABLE . "` WHERE `id`='" . $core->getDB()->getMySQLi()->real_escape_string($_GET['id']) . "'");
-		header("Location: ?p=directory");
+		$page = new DeletePage("del", $core);
+		$page->writePage();
 		break;
 	case "checkin":
 		if (!$_SESSION['loggedIn'] || $core->getUser($_SESSION['email'])['rank'] < 9) {
@@ -79,6 +81,10 @@ switch ($_GET['p']) {
 			break;
 		}
 		$page = new CheckinPage("checkin", $core);
+		$page->writePage();
+		break;
+	case "broadcast":
+		$page = new BroadcastPage("broadcast", $core);
 		$page->writePage();
 		break;
 	default:
