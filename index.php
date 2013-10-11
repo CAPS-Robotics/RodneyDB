@@ -64,7 +64,16 @@ switch ($_GET['p']) {
 		}
 		$page = new UserPage("me", $core);
 		$page->writePageStart();
-		//TODO: Dynamic stuff
+		if (array_key_exists("email", $_POST) && array_key_exists("phoneNum", $_POST) && array_key_exists("studentId", $_POST)) {
+			if ($page->updateContactDetails($_POST['email'],  $_POST['phoneNum'], $_POST['studentId'])) {
+				$page->alert("success", "Yay!", "Contanct details updated successfully.");
+			}
+		}
+		if (array_key_exists("oldPassword", $_POST) && array_key_exists("newPassword", $_POST) && array_key_exists("checkNewPassword", $_POST)) {
+			if ($page->updatePassword($_POST['oldPassword'],  $_POST['newPassword'], $_POST['checkNewPassword'])) {
+				$page->alert("success", "Yay!", "Password updated successfully.");
+			}
+		}
 		$page->writePageContent();
 		$page->writePageEnd();
 		break;
@@ -81,6 +90,11 @@ switch ($_GET['p']) {
 	case "del":
 		if (!$_SESSION['loggedIn'] || $core->getUser($_SESSION['email'])['rank'] < 10) {
 			$page = new ErrorPage("autherror", $core, "Authentication", "You don't have enough permissions to access this page!");
+			$page->writePage();
+			break;
+		}
+		if ($core->getUser($_SESSION['email'])['id'] == $_GET['id']) {
+			$page = new ErrorPage("autherror", $core, "Action", "You can't delete your own account!");
 			$page->writePage();
 			break;
 		}
