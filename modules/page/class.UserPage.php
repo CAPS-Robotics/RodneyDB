@@ -82,6 +82,14 @@ Phone number
 			self::alert("danger", "Error!", "Phone number is invalid!");
 			return false;
 		}
+		if (!is_null($core->getUser($email))) {
+			self::alert('danger', 'Error!', "Email is already registered to another user!");
+			return false;
+		}
+		if (!is_null($core->getDB()->getArray("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `studentId`=" . $studentId))) {
+			self::alert('danger', 'Error!', "Student ID is already registered to another user!");
+			return false;
+		}
 		$core->getDB()->query("UPDATE `" . DB_USER_TABLE . "` SET `email`='" . $core->getDB()->getMySQLi()->real_escape_string($email) . "', `phone`='" . $core->getDB()->getMySQLi()->real_escape_string($phoneNum) . "', `studentId`='" . $core->getDB()->getMySQLi()->real_escape_string($studentId) . "' WHERE `id`='" . $core->getUser($_SESSION['email'])['id'] . "'");
 		$_SESSION['email'] = $core->getDB()->getMySQLi()->real_escape_string($email);
 		return true;
