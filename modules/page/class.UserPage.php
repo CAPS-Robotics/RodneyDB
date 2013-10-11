@@ -42,7 +42,7 @@ Rank
 <div class="panel-heading">Contact Details</div>
 <form method="POST" style="padding: 10px 10px 10px 10px;">
 <input class="form-control input-lg" type="text" name="email" placeholder="Email" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;" value="' . $core->getUser($_SESSION['email'])['email'] . '">
-<input class="form-control input-lg" type="text" name="phoneNum" placeholder="Phone number" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-top-right-radius: 0;" value="' . self::formatPhoneNum($core->getUser($_SESSION['email'])['phone']) . '">
+<input class="form-control input-lg" type="text" name="phoneNum" placeholder="Phone number" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-top-right-radius: 0;" value="' . Utils::formatPhoneNum($core->getUser($_SESSION['email'])['phone']) . '">
 <input class="form-control input-lg" type="text" name="studentId" placeholder="Student ID" style="border-top-left-radius: 0; border-top-right-radius: 0;" value="' . $core->getUser($_SESSION['email'])['studentId'] . '">
 <button type="submit" class="btn btn-primary btn-xs">Update details</button>
 </form>
@@ -58,7 +58,7 @@ Rank
 Email address
 </li>
 <li class="list-group-item">
-<span class="badge">' . self::formatPhoneNum($core->getUser($_SESSION['email'])['phone']) . '</span>
+<span class="badge">' . Utils::formatPhoneNum($core->getUser($_SESSION['email'])['phone']) . '</span>
 Phone number
 </li>
 </ul>
@@ -125,8 +125,5 @@ Phone number
 		self::writePageEnd();
 	}
 
-	public function formatPhoneNum($num) {
-		return substr($num, 0, 3) . "-" . substr($num, 3, 3) . "-" . substr($num, 6, 4);
-	}
 }
 ?>

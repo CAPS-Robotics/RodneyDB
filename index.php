@@ -6,10 +6,12 @@ require("config.php");
 require("modules/class.Core.php");
 require("modules/class.MySQL.php");
 require("modules/class.Page.php");
+require("modules/class.Utils.php");
 require("modules/page/class.HomePage.php");
 require("modules/page/class.LoginPage.php");
 require("modules/page/class.UserPage.php");
 require("modules/page/class.DirectoryPage.php");
+require("modules/page/class.CheckinPage.php");
 require("modules/page/class.ErrorPage.php");
 error_reporting(E_ALL ^ E_NOTICE); //Get rid of annoying notices
 //Initialize the core with MySQL information
@@ -69,6 +71,15 @@ switch ($_GET['p']) {
 		}
 		$core->getDB()->query("DELETE FROM `" . DB_USER_TABLE . "` WHERE `id`='" . $core->getDB()->getMySQLi()->real_escape_string($_GET['id']) . "'");
 		header("Location: ?p=directory");
+		break;
+	case "checkin":
+		if (!$_SESSION['loggedIn'] || $core->getUser($_SESSION['email'])['rank'] < 9) {
+			$page = new ErrorPage("autherror", $core, "Authentication", "You don't have enough permissions to access this page!");
+			$page->writePage();
+			break;
+		}
+		$page = new CheckinPage("checkin", $core);
+		$page->writePage();
 		break;
 	default:
 		$page = new ErrorPage("404", $core, "404", "Page not found.");
