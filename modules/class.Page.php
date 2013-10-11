@@ -67,7 +67,7 @@ text-align: center;
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
 </button>
-<a class="navbar-brand" href="?p=home">Rodney</a>
+<a class="navbar-brand" href="?p=home">Rodney <span class="label label-primary">&#x3B2</span></a>
 </div>
 <div class="collapse navbar-collapse">
 <ul class="nav navbar-nav">
