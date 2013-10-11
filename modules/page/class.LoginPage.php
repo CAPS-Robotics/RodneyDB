@@ -37,6 +37,20 @@ Receive Texts
 
 	public function writePage() {
 		self::writePageStart();
+		if (array_key_exists("email", $_POST) && array_key_exists("password", $_POST)) {
+			if (strlen($_POST['email']) === 0 || strlen($_POST['password']) === 0) {
+				self::alert('danger', 'Error!', 'One or more required fields are missing!');
+			}
+			else if ((strlen($_POST['email']) !== 0 && strlen($_POST['password']) !== 0) && (strlen($_POST['checkPassword']) === 0 && strlen($_POST['studentId']) === 0 && strlen($_POST['phoneNum']) === 0)) {
+				self::authUser($_POST['email'], hash(DB_USER_HASH_ALGO, $_POST['password']));
+			}
+			else if ((strlen($_POST['email']) !== 0 && strlen($_POST['password']) !== 0) && (strlen($_POST['checkPassword']) === 0 || strlen($_POST['studentId']) === 0 || strlen($_POST['phoneNum']) === 0)) {
+				self::alert('danger', 'Error!', 'One or more required fields are missing!');
+			}
+			else {
+				self::createUser($_POST['email'], $_POST['password'], $_POST['checkPassword'], $_POST['name'], $_POST['studentId'], $_POST['texting'], $_POST['phoneNum']);
+			}
+		}
 		self::writePageContent();
 		self::writePageEnd();
 	}

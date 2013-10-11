@@ -33,23 +33,7 @@ switch ($_GET['p']) {
 		}
 		else {
 			$page = new LoginPage("login", $core);
-			$page->writePageStart();
-			if (array_key_exists("email", $_POST) && array_key_exists("password", $_POST)) {
-				if (strlen($_POST['email']) === 0 || strlen($_POST['password']) === 0) {
-					$page->alert('danger', 'Error!', 'One or more required fields are missing!');
-				}
-				else if ((strlen($_POST['email']) !== 0 && strlen($_POST['password']) !== 0) && (strlen($_POST['checkPassword']) === 0 && strlen($_POST['studentId']) === 0 && strlen($_POST['phoneNum']) === 0)) {
-					$page->authUser($_POST['email'], hash(DB_USER_HASH_ALGO, $_POST['password']));
-				}
-				else if ((strlen($_POST['email']) !== 0 && strlen($_POST['password']) !== 0) && (strlen($_POST['checkPassword']) === 0 || strlen($_POST['studentId']) === 0 || strlen($_POST['phoneNum']) === 0)) {
-					$page->alert('danger', 'Error!', 'One or more required fields are missing!');
-				}
-				else {
-					$page->createUser($_POST['email'], $_POST['password'], $_POST['checkPassword'], $_POST['name'], $_POST['studentId'], $_POST['texting'], $_POST['phoneNum']);
-				}
-			}
-			$page->writePageContent();
-			$page->writePageEnd();
+			$page->writePage();
 		}
 		break;
 	case "me":
@@ -59,23 +43,8 @@ switch ($_GET['p']) {
 			$page->writePage();
 			break;
 		}
-		if (array_key_exists("edit", $_GET)) {
-			//TODO: Edit user
-		}
 		$page = new UserPage("me", $core);
-		$page->writePageStart();
-		if (array_key_exists("email", $_POST) && array_key_exists("phoneNum", $_POST) && array_key_exists("studentId", $_POST)) {
-			if ($page->updateContactDetails($_POST['email'],  $_POST['phoneNum'], $_POST['studentId'])) {
-				$page->alert("success", "Yay!", "Contanct details updated successfully.");
-			}
-		}
-		if (array_key_exists("oldPassword", $_POST) && array_key_exists("newPassword", $_POST) && array_key_exists("checkNewPassword", $_POST)) {
-			if ($page->updatePassword($_POST['oldPassword'],  $_POST['newPassword'], $_POST['checkNewPassword'])) {
-				$page->alert("success", "Yay!", "Password updated successfully.");
-			}
-		}
-		$page->writePageContent();
-		$page->writePageEnd();
+		$page->writePage();
 		break;
 	case "directory":
 		//Make sure user is signed in before showing directory

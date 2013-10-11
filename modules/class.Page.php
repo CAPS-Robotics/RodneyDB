@@ -73,6 +73,8 @@ text-align: center;
 <ul class="nav navbar-nav">
 <li' . ($navTrigger === "home" ? ' class="active"' : '') . '><a href="?p=home">Home</a></li>
 ' . ($_SESSION['loggedIn'] ? '<li' . ($navTrigger === "directory" ? ' class="active"' : '') . '><a href="?p=directory">Team Directory</a></li>' : '') . '
+' . ($_SESSION['loggedIn'] && $core->getUser($_SESSION['email'])['rank'] >= 9 ? '<li' . ($navTrigger === "checkin" ? ' class="active"' : '') . '><a href="?p=checkin">Check-In</a></li>' : '') . '
+' . ($_SESSION['loggedIn'] && $core->getUser($_SESSION['email'])['rank'] >= 9 ? '<li' . ($navTrigger === "broadcast" ? ' class="active"' : '') . '><a href="?p=broadcast">Send Broadcast</a></li>' : '') . '
 </ul>
 ' . ($_SESSION['loggedIn'] ? '<p class="navbar-text pull-right">Signed in as <a href="?p=me" class="navbar-link">' . $core->getUser($_SESSION['email'])['name'] . '</a> | <a href="?p=login" class="navbar-link">Sign out</a></p>' : '<p class="navbar-text pull-right"><a href="?p=login" class="navbar-link">Sign in</a></p>') . '
 </div>

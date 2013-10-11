@@ -111,6 +111,16 @@ Phone number
 
 	public function writePage() {
 		self::writePageStart();
+		if (array_key_exists("email", $_POST) && array_key_exists("phoneNum", $_POST) && array_key_exists("studentId", $_POST)) {
+			if (self::updateContactDetails($_POST['email'],  $_POST['phoneNum'], $_POST['studentId'])) {
+				self::alert("success", "Yay!", "Contanct details updated successfully.");
+			}
+		}
+		if (array_key_exists("oldPassword", $_POST) && array_key_exists("newPassword", $_POST) && array_key_exists("checkNewPassword", $_POST)) {
+			if (self::updatePassword($_POST['oldPassword'],  $_POST['newPassword'], $_POST['checkNewPassword'])) {
+				self::alert("success", "Yay!", "Password updated successfully.");
+			}
+		}
 		self::writePageContent();
 		self::writePageEnd();
 	}
