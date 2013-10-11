@@ -25,7 +25,7 @@ class DirectoryPage extends Page {
 		$tableStr = "";
 		$teamArr = $core->getDB()->getArray("SELECT * FROM `" . DB_USER_TABLE . "`");
 		foreach ($teamArr as $member) {
-			$tableStr .= "<tr><td style='" . ($member['rank'] == 7 ? "color: #00FF00" : ($member['rank'] == 8 ? "color: #FF0000" : ($member['rank'] == 9 ? "color: #FFFF00" : ($member['rank'] >= 10 ? "color: #0000FF" : "" ) ) ) ) . "''>" . $member['name'] . "</td><td>" . $member['email'] . "</td><td>" . Utils::formatPhoneNum($member['phone']) . "</td>" . ($rank >= 7 ? "<td>" . $member['studentId'] . "</td>" . "<td>" . $member['hours'] . "</td>" . ($rank >= 10 ? "<td><a href='?p=del&id=" . $member['id'] . "'>Delete</a></td>" : "") : "") . "</tr>";
+			$tableStr .= "<tr><td><span class='label label-" . ($member['rank'] == 7 ? "success" : ($member['rank'] == 8 ? "danger" : ($member['rank'] == 9 ? "warning" : ($member['rank'] >= 10 ? "primary" : "default" ) ) ) ) . "'>" . $member['name'] . "</span></td><td>" . $member['email'] . "</td><td>" . Utils::formatPhoneNum($member['phone']) . "</td>" . ($rank >= 7 ? "<td>" . $member['studentId'] . "</td>" . "<td>" . $member['hours'] . "</td>" . ($rank >= 10 ? "<td><a href='?p=del&id=" . $member['id'] . "'>Delete</a></td>" : "") : "") . "</tr>";
 		}
 		return $tableStr;
 	}
