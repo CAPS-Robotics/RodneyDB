@@ -82,11 +82,11 @@ Phone number
 			self::alert("danger", "Error!", "Phone number is invalid!");
 			return false;
 		}
-		if (!is_null($core->getUser($email))) {
+		if (!is_null($core->getUser($email)) && $email !== $_SESSION['email']) {
 			self::alert('danger', 'Error!', "Email is already registered to another user!");
 			return false;
 		}
-		if (!is_null($core->getDB()->getArray("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `studentId`=" . $studentId))) {
+		if ($core->getDB()->getArray("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `studentId`=" . $studentId)[0]['id'] !== $core->getUser($_SESSION['email'])['id']) {
 			self::alert('danger', 'Error!', "Student ID is already registered to another user!");
 			return false;
 		}
