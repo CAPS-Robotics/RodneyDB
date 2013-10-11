@@ -59,6 +59,9 @@ switch ($_GET['p']) {
 			$page->writePage();
 			break;
 		}
+		if (array_key_exists("edit", $_GET)) {
+			//TODO: Edit user
+		}
 		$page = new UserPage("me", $core);
 		$page->writePageStart();
 		//TODO: Dynamic stuff
