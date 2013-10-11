@@ -9,7 +9,7 @@ class UserPage extends Page {
 		global $core;
 		$content = 
 '
-<div class="jumbotron">
+<div class="jumbotron" style="text-align: left; font-size: medium;">
 <h1>' . $core->getUser($_SESSION['email'])['name'] . '</h1>
 <ul class="list-group">
 <li class="list-group-item">

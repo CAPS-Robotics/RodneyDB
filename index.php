@@ -53,6 +53,12 @@ switch ($_GET['p']) {
 		}
 		break;
 	case "me":
+		//Make sure user is signed in before showing me
+		if (!$_SESSION['loggedIn']) {
+			$page = new ErrorPage("autherror", $core, "Authentication", "You need to be signed in to access this page!");
+			$page->writePage();
+			break;
+		}
 		$page = new UserPage("me", $core);
 		$page->writePageStart();
 		//TODO: Dynamic stuff
@@ -70,7 +76,13 @@ switch ($_GET['p']) {
 		$page->writePage();
 		break;
 	case "del":
-		//TODO: delete user with id
+		if (!$_SESSION['loggedIn'] || $core->getUser($_SESSION['email'])['rank'] < 10) {
+			$page = new ErrorPage("autherror", $core, "Authentication", "You don't have enough permissions to access this page!");
+			$page->writePage();
+			break;
+		}
+		$core->getDB()->query("DELETE FROM `" . DB_USER_TABLE . "` WHERE `id`='" . $core->getDB()->getMySQLi()->real_escape_string($_GET['id']) . "'");
+		header("Location: ?p=directory");
 		break;
 	default:
 		$page = new ErrorPage("404", $core, "404", "Page not found.");
