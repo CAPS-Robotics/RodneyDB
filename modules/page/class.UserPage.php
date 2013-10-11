@@ -9,7 +9,7 @@ class UserPage extends Page {
 		global $core;
 		$content = 
 '<div class="jumbotron" style="text-align: left; font-size: medium;">
-<h1>' . $core->getUser($_SESSION['email'])['name'] . '<a href="?p=me&edit" class="btn btn-primary btn-xs" style="float: right;">Edit account</a></h1>
+<h1>' . $core->getUser($_SESSION['email'])['name'] . '<a href="?p=me' . (array_key_exists("edit", $_GET) ? "" : "&edit") . '" class="btn btn-primary btn-xs" style="float: right;">' . (array_key_exists("edit", $_GET) ? "Done" : "Edit account") . '</a></h1>
 <div class="row">
 <div class="col-md-4">
 <div class="panel panel-info">
