@@ -42,7 +42,13 @@ Rank
 <div class="panel-heading">Contact Details</div>
 <form method="POST" style="padding: 10px 10px 10px 10px;">
 <input class="form-control input-lg" type="text" name="email" placeholder="Email" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;" value="' . $core->getUser($_SESSION['email'])['email'] . '">
+<div class="input-group">
+<span class="input-group-addon" style="border-top-left-radius: 0;">
+Receive Texts
+<input type="checkbox" name="texting"' . ($core->getUser($_SESSION['email'])['text'] == 1 ? " checked" : "") . '>
+</span>
 <input class="form-control input-lg" type="text" name="phoneNum" placeholder="Phone number" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-top-right-radius: 0;" value="' . Utils::formatPhoneNum($core->getUser($_SESSION['email'])['phone']) . '">
+</div>
 <input class="form-control input-lg" type="text" name="studentId" placeholder="Student ID" style="border-top-left-radius: 0; border-top-right-radius: 0;" value="' . $core->getUser($_SESSION['email'])['studentId'] . '">
 <button type="submit" class="btn btn-primary btn-xs">Update details</button>
 </form>
@@ -71,7 +77,7 @@ Phone number
 		echo $content;
 	}
 
-	public function updateContactDetails($email, $formattedPhoneNum, $studentId) {
+	public function updateContactDetails($email, $formattedPhoneNum, $studentId, $texting) {
 		global $core;
 		$phoneNum = str_replace("-", "", $formattedPhoneNum);
 		if (!is_numeric($studentId)) {
@@ -90,7 +96,7 @@ Phone number
 			self::alert('danger', 'Error!', "Student ID is already registered to another user!");
 			return false;
 		}
-		$core->getDB()->query("UPDATE `" . DB_USER_TABLE . "` SET `email`='" . $core->getDB()->getMySQLi()->real_escape_string($email) . "', `phone`='" . $core->getDB()->getMySQLi()->real_escape_string($phoneNum) . "', `studentId`='" . $core->getDB()->getMySQLi()->real_escape_string($studentId) . "' WHERE `id`='" . $core->getUser($_SESSION['email'])['id'] . "'");
+		$core->getDB()->query("UPDATE `" . DB_USER_TABLE . "` SET `email`='" . $core->getDB()->getMySQLi()->real_escape_string($email) . "', `phone`='" . $core->getDB()->getMySQLi()->real_escape_string($phoneNum) . "', `text`='" . ($texting === "on" ? '1' : '0') . "', `studentId`='" . $core->getDB()->getMySQLi()->real_escape_string($studentId) . "' WHERE `id`='" . $core->getUser($_SESSION['email'])['id'] . "'");
 		$_SESSION['email'] = $core->getDB()->getMySQLi()->real_escape_string($email);
 		return true;
 	}
@@ -112,7 +118,7 @@ Phone number
 	public function writePage() {
 		self::writePageStart();
 		if (array_key_exists("email", $_POST) && array_key_exists("phoneNum", $_POST) && array_key_exists("studentId", $_POST)) {
-			if (self::updateContactDetails($_POST['email'],  $_POST['phoneNum'], $_POST['studentId'])) {
+			if (self::updateContactDetails($_POST['email'],  $_POST['phoneNum'], $_POST['studentId'], $_POST['texting'])) {
 				self::alert("success", "Yay!", "Contanct details updated successfully.");
 			}
 		}
