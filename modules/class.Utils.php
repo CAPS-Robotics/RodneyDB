@@ -12,5 +12,27 @@ class Utils {
 		}
 		return ($end - $start) / 60 / 60;
 	}
+
+	public static function getRankName($rankNum) {
+		$rankStr;
+		switch ($rankNum) {
+			case 6:
+				$rankStr = "Member";
+				break;
+			case 7:
+				$rankStr = "Member+";
+				break;
+			case 8:
+				$rankStr = "Mentor";
+				break;
+			case 9:
+				$rankStr = "Leader";
+				break;
+			case 10:
+				$rankStr = "Administrator";
+				break;
+		}
+		return $rankStr;
+	}
 }
 ?>

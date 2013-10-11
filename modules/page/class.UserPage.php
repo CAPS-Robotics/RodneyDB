@@ -20,7 +20,7 @@ class UserPage extends Page {
 Hours
 </li>
 <li class="list-group-item">
-<span class="badge">' . $core->getUser($_SESSION['email'])['rank'] . '</span>
+<span class="badge">' . Utils::getRankName($core->getUser($_SESSION['email'])['rank']) . '</span>
 Rank
 </li>
 </ul>
