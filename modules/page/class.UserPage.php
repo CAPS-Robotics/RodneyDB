@@ -92,7 +92,7 @@ Student ID
 			self::alert("danger", "Error!", "Phone number is invalid!");
 			return false;
 		}
-		if (!is_null($core->getUser($email)) && $email !== $_SESSION['email']) {
+		if (sizeof($core->getUser($email)) != 0 && $email !== $_SESSION['email']) {
 			self::alert('danger', 'Error!', "Email is already registered to another user!");
 			return false;
 		}
@@ -100,8 +100,8 @@ Student ID
 			self::alert('danger', 'Error!', "Student ID is already registered to another user!");
 			return false;
 		}
-		$core->getDB()->query("UPDATE `" . DB_USER_TABLE . "` SET `email`='" . $core->getDB()->getMySQLi()->real_escape_string($email) . "', `phone`='" . $core->getDB()->getMySQLi()->real_escape_string($phoneNum) . "', `text`='" . ($texting === "on" ? '1' : '0') . "', `studentId`='" . $core->getDB()->getMySQLi()->real_escape_string($studentId) . "' WHERE `id`='" . $core->getUser($_SESSION['email'])['id'] . "'");
-		$_SESSION['email'] = $core->getDB()->getMySQLi()->real_escape_string($email);
+		$core->updateContactDetails($email, $phoneNum, ($texting === "on" ? 1 : 0), $studentId, $core->getUser($_SESSION['email'])['id']);
+		$_SESSION['email'] = $email;
 		return true;
 	}
 
@@ -115,7 +115,7 @@ Student ID
 			self::alert("danger", "Error!", "New passwords don't match!");
 			return false;
 		}
-		$core->getDB()->query("UPDATE `" . DB_USER_TABLE . "` SET `password`='" . hash(DB_USER_HASH_ALGO, $newPassword) . "' WHERE `id`='" . $core->getUser($_SESSION['email'])['id'] . "'");
+		$core->updatePassword(hash(DB_USER_HASH_ALGO, $newPassword), $core->getUser($_SESSION['email'])['id']);
 		return true;
 	}
 

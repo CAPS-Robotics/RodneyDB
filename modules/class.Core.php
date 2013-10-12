@@ -2,52 +2,89 @@
 class Core {
 	
 	public $db;
+	private $selectUserFromEmailStmt;
+	private $selectUserFromIdStmt;
+	private $registerUserStmt;
+	private $fetchAllStmt;
+	private $updatePasswordStmt;
+	private $updateContactStmt;
 
 	public function __construct($mysql) {
 		session_start();
-		global $db;
-		$db = $mysql;
+		$this->db = $mysql;
+		$this->selectUserFromEmailStmt = $this->db->prepare("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `email`=:email");
+		$this->selectUserFromIdStmt = $this->db->prepare("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `id`=:id");
+		$this->registerUserStmt = $this->db->prepare("INSERT INTO `" . DB_USER_TABLE . "`(`studentId`, `name`, `email`, `phone`, `password`, `text`) VALUES (:studentId,:name,:email,:phone,:password,:text)");
+		$this->fetchAllStmt = $this->db->prepare("SELECT * FROM `" . DB_USER_TABLE . "`");
+		$this->updatePasswordStmt = $this->db->prepare("UPDATE `" . DB_USER_TABLE . "` SET `password`=:newPass WHERE `id`=:id");
+		$this->updateContactStmt = $this->db->prepare("UPDATE `" . DB_USER_TABLE . "` SET `email`=:email, `phone`=:phone, `text`=:text, `studentId`=:studentId WHERE `id`=:id");
 	}
 
 	public function login($email, $password) {
-		global $db;
-		$arr = $db->getArray("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `email`='" . $email . "'");
-		if (sizeof($arr) == 1) {
-			if ($arr[0]['password'] === $password) {
+		$stmt = $this->selectUserFromEmailStmt;
+		$stmt->bindParam(":email", $email);
+		$stmt->execute();
+		if ($res = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			if ($res['password'] === $password) {
 				return true;
 			}
 		}
 	}
 
 	public function getUser($email) {
-		global $db;
-		$arr = $db->getArray("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `email`='" . $email . "'");
-		if (sizeof($arr) == 1) {
-			return $arr[0];
+		$stmt = $this->selectUserFromEmailStmt;
+		$stmt->bindParam(":email", $email);
+		$stmt->execute();
+		if ($res = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			return $res;
 		}
 	}
 
 	public function getUserFromId($id) {
-		global $db;
-		$arr = $db->getArray("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `id`='" . $id . "'");
-		if (sizeof($arr) == 1) {
-			return $arr[0];
+		$stmt = $this->selectUserFromIdStmt;
+		$stmt->bindParam(":id", $id);
+		$stmt->execute();
+		if ($res = $stmt->fetch(PDO::FETCH_ASSOC)) {
+			return $res;
 		}
 	}
 
 	public function registerUser($email, $password, $name, $studentId, $texting, $phoneNum) {
-		global $db;
-		$db->query("INSERT INTO `" . DB_USER_TABLE . "`(`studentId`, `name`, `email`, `phone`, `password`, `text`) VALUES ('" . $studentId . "','" . $name . "','" . $email . "','" . $phoneNum . "','" . hash(DB_USER_HASH_ALGO, $password) . "'," . ($texting === "on" ? '1' : '0') . ")");
-		if ($db->getMySQLi()->errno) {
-			//echo $db->getMySQLi()->error;
-			return false;
-		}
+		$stmt = $this->registerUserStmt;
+		$text = ($texting === "on" ? 1 : 0);
+		$stmt->bindParam(":studentId", $studentId);
+		$stmt->bindParam(":name", $name);
+		$stmt->bindParam(":email", $email);
+		$stmt->bindParam(":phone", $phoneNUm);
+		$stmt->bindParam(":password", $password);
+		$stmt->bindParam(":text", $text);
+		$stmt->execute();
 		return true;
 	}
 
+	public function fetchAllUsers() {
+		$stmt = $this->fetchAllStmt;
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+
+	public function updatePassword($newPass, $id) {
+		$stmt = $this->updatePasswordStmt;
+		$stmt->bindParam(":newPass", $newPass);
+		$stmt->bindParam(":id", $id);
+		$stmt->execute();
+	}
+
+	public function updateContactDetails($email, $phone, $text, $studentId, $id) {
+		$stmt = $this->updateContactStmt;
+		$stmt->bindParam(":email", $email);
+		$stmt->bindParam(":phone", $phone);
+		$stmt->bindParam(":studentId", $studentId);
+		$stmt->bindParam(":id", $id);
+	}
+
 	public function getDB() {
-		global $db;
-		return $db;
+		return $this->db;
 	}
 
 }

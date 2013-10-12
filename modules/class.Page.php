@@ -19,14 +19,11 @@ abstract class Page {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="assets/ico/favicon.png">
-
 <title>Rodney</title>
 <link href="assets/css/bootstrap.css" rel="stylesheet">
 <link href="assets/css/theme.css" rel="stylesheet">
 </head>
-
 <body>
-
 <div class="navbar navbar-inverse navbar-fixed-top">
 <div class="container">
 <div class="navbar-header">

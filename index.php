@@ -17,7 +17,7 @@ require("modules/page/class.BroadcastPage.php");
 require("modules/page/class.ErrorPage.php");
 error_reporting(E_ALL ^ E_NOTICE); //Get rid of annoying notices
 //Initialize the core with MySQL information
-$core = new Core(new MySQL(MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DB));
+$core = new Core(new MySQL(MYSQL_HOST, MYSQL_PORT, MYSQL_DB, MYSQL_USER, MYSQL_PASSWORD));
 //Check if ?p= was not entered
 if (!array_key_exists("p", $_GET)) {
 	$home = new HomePage("home", $core);

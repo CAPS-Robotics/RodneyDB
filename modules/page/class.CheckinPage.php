@@ -26,7 +26,7 @@ class CheckinPage extends Page {
 			if (!is_numeric($_POST['studentId'])) {
 				self::alert("danger", "Error!", "Student ID is invalid!");
 			}
-			else if (is_null($core->getDB()->getArray("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `studentId`='" . $_POST['studentId'] . "'"))) {
+			else if (sizeof($core->getDB()->getArray("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `studentId`='" . $_POST['studentId'] . "'")) == 0) {
 				self::alert("danger", "Error!", "Student ID not found!");
 			}
 			else {
@@ -52,14 +52,14 @@ class CheckinPage extends Page {
 				}
 				$hours = round(Utils::hoursSince($user['lastHourLog']) + $user['hours'], 3);
 				$core->getDB()->query("UPDATE `" . DB_USER_TABLE . "` SET `lastHourLog`='0', `hours`='" . $hours . "' WHERE `studentId`='" . $studentId . "'");
-				self::alert("success", $core->getUser($_SESSION['email'])['name'] . ",", "you have checked out. You now have " . $hours . " hours.");
+				self::alert("success", $user['name'] . ",", "you have checked out. You now have " . $hours . " hours.");
 				if ($user['rank'] == 6 && $hours >= 50) {
 					$core->getDB()->query("UPDATE `" . DB_USER_TABLE . "` SET `rank`='7' WHERE `id`='" . $user['id'] . "'");
 				}
 			}
 			else {
 				$core->getDB()->query("UPDATE `" . DB_USER_TABLE . "` SET `lastHourLog`='" . time() . "' WHERE `studentId`='" . $studentId . "'");
-				self::alert("success", $core->getUser($_SESSION['email'])['name'] . ",", "you are now checked in. Don't forget to check out when the meeting is over!");
+				self::alert("success", $user['name'] . ",", "you are now checked in. Don't forget to check out when the meeting is over!");
 			}
 		}
 	}

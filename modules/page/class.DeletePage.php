@@ -28,6 +28,13 @@ Are you sure you want to delete ' . $core->getUserFromId($_GET['id'])['name'] . 
 	}
 
 	public function writePage() {
+		global $core;
+		if (is_null($core->getUserFromId($_GET['id']))) {
+			ob_clean();
+			$page = new ErrorPage("error", $core, "Action", "This user does not exist!");
+			$page->writePage();
+			return;
+		}
 		self::writePageStart();
 		if (array_key_exists("conf", $_GET)) {
 			self::deleteAccount($_GET['id']);

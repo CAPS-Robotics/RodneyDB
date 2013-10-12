@@ -78,7 +78,11 @@ Receive Texts
 			self::alert('danger', 'Error!', "Email is already registered to another user!");
 			return;
 		}
-		if (!is_null($core->getDB()->getArray("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `studentId`=" . $studentId))) {
+		if (!is_numeric($studentId)) {
+			self::alert('danger', 'Error!', "Student ID is invalid!");
+			return;
+		}
+		if (sizeof($core->getDB()->getArray("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `studentId`=" . $studentId)) != 0) {
 			self::alert('danger', 'Error!', "Student ID is already registered to another user!");
 			return;
 		}
@@ -87,11 +91,7 @@ Receive Texts
 			self::alert('danger', 'Error!', "Phone number is invalid!");
 			return;
 		}
-		if (!is_numeric($studentId)) {
-			self::alert('danger', 'Error!', "Student ID is invalid!");
-			return;
-		}
-		if ($core->registerUser($email, $password, $name, $studentId, $texting, $phoneNum)) {
+		if ($core->registerUser($email, hash(DB_USER_HASH_ALGO, $password), $name, $studentId, $texting, $phoneNum)) {
 			self::alert('success', 'Yay!', "Account created.");
 		}
 		else {
