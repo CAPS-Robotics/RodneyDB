@@ -47,7 +47,8 @@ class CheckinPage extends Page {
 			$user = $user[0];
 			if ($user['lastHourLog'] != 0) {
 				if (Utils::hoursSince($user['lastHourLog']) > CHECKIN_MAX) {
-					self::alert("danger", "Error!", "You've been checked in too long! Hours from the last session will not be counted.");
+					self::alert("danger", "Error!", "You've been checked in too long! Hours from the last session will not be counted. Input again if you need to be checked in.");
+					$core->getDB()->query("UPDATE `" . DB_USER_TABLE . "` SET `lastHourLog`='0' WHERE `studentId`='" . $studentId . "'");
 					return;
 				}
 				$hours = round(Utils::hoursSince($user['lastHourLog']) + $user['hours'], 3);
