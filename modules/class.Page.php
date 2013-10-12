@@ -46,7 +46,7 @@ height: 100%;
 min-height: 100%;
 height: auto !important;
 height: 100%;
-margin: 0 auto -60px;
+margin: 0 auto -61px;
 padding: 0 0 60px;
 }
 #footer {
@@ -55,7 +55,7 @@ background-color: #364d59;
 }
 #creditContainer {
 width: auto;
-max-width: 680px;
+border-top: 1px solid #f5f5f5;
 padding: 0 15px;
 }
 #creditContainer .credit {
