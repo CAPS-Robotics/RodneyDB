@@ -25,6 +25,19 @@ abstract class Page {
 <style>
 body {
 padding-top: 50px;
+background-image: linear-gradient(bottom, #364d59 0.07%, #3B3B3B 100%);
+background-image: -o-linear-gradient(bottom, #364d59 0.07%, #3B3B3B 100%);
+background-image: -moz-linear-gradient(bottom, #364d59 0.07%, #3B3B3B 100%);
+background-image: -webkit-linear-gradient(bottom, #364d59 0.07%, #3B3B3B 100%);
+background-image: -ms-linear-gradient(bottom, #364d59 0.07%, #3B3B3B 100%);
+background-image: -webkit-gradient(
+linear,
+left bottom,
+left top,
+color-stop(0.07, #364d59),
+color-stop(1, #3B3B3B)
+);
+background-attachment: fixed;
 }
 html, body{
 height: 100%;
@@ -38,7 +51,7 @@ padding: 0 0 60px;
 }
 #footer {
 height: 60px;
-background-color: #f5f5f5;
+background-color: #364d59;
 }
 #creditContainer {
 width: auto;
