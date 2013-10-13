@@ -8,8 +8,8 @@ class HomePage extends Page {
 		$content = 
 '
 <div class="jumbotron">
-<h1>Stuff</h1>
-<p class="lead">will go here.</p>
+<h1>Rodney</h1>
+<p class="lead">Team member management database for <a href="http://mmr2410.com/">FRC Team 2410</a>.</p>
 </div>
 ';
 		echo $content;
