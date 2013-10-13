@@ -55,7 +55,7 @@ class Core {
 		$stmt->bindParam(":studentId", $studentId);
 		$stmt->bindParam(":name", $name);
 		$stmt->bindParam(":email", $email);
-		$stmt->bindParam(":phone", $phoneNUm);
+		$stmt->bindParam(":phone", $phoneNum);
 		$stmt->bindParam(":password", $password);
 		$stmt->bindParam(":text", $text);
 		$stmt->execute();
