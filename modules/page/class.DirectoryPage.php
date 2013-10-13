@@ -25,7 +25,7 @@ class DirectoryPage extends Page {
 		$tableStr = "";
 		$teamArr = $core->fetchAllUsers();
 		foreach ($teamArr as $member) {
-			$tableStr .= "<tr><td>" . $member['name'] . "<span class='label label-" . ($member['rank'] == 7 ? "success"  : ($member['rank'] == 8 ? "danger" : ($member['rank'] == 9 ? "warning" : ($member['rank'] >= 10 ? "primary" : "default" ) ) ) ) . "'>" . Utils::getRankName($member['rank']) . "</span></td><td>" . $member['email'] . "</td><td>" . Utils::formatPhoneNum($member['phone']) . "</td>" . ($rank >= 7 ? "<td>" . $member['studentId'] . "</td>" . "<td>" . $member['hours'] . "</td>" . ($rank >= 10 ? "<td><a href='?p=del&id=" . $member['id'] . "'>Delete</a></td>" : "") : "") . "</tr>";
+			$tableStr .= "<tr><td>" . $member['name'] . " <span class='label label-" . ($member['rank'] == 7 ? "success"  : ($member['rank'] == 8 ? "danger" : ($member['rank'] == 9 ? "warning" : ($member['rank'] >= 10 ? "primary" : "default" ) ) ) ) . "'>" . Utils::getRankName($member['rank']) . "</span></td><td>" . $member['email'] . "</td><td>" . Utils::formatPhoneNum($member['phone']) . "</td>" . ($rank >= 7 ? "<td>" . $member['studentId'] . "</td>" . "<td>" . $member['hours'] . "</td>" . ($rank >= 10 ? "<td><a href='?p=del&id=" . $member['id'] . "'>Delete</a></td>" : "") : "") . "</tr>";
 		}
 		return $tableStr;
 	}
