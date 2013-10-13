@@ -14,6 +14,7 @@ require("modules/page/class.DirectoryPage.php");
 require("modules/page/class.CheckinPage.php");
 require("modules/page/class.DeletePage.php");
 require("modules/page/class.BroadcastPage.php");
+require("modules/page/class.ConfirmPage.php");
 require("modules/page/class.ErrorPage.php");
 error_reporting(E_ALL ^ E_NOTICE); //Get rid of annoying notices
 //Initialize the core with MySQL information
@@ -85,6 +86,10 @@ switch ($_GET['p']) {
 		break;
 	case "broadcast":
 		$page = new BroadcastPage("broadcast", $core);
+		$page->writePage();
+		break;
+	case "confirm":
+		$page = new ConfirmPage("confirm", $core);
 		$page->writePage();
 		break;
 	default:
