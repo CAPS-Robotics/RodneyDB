@@ -26,4 +26,6 @@ define("CHECKIN_MAX", 10);
 define("TROPO_MESSAGE_TOKEN", "");
 ?>
 ```
+or https://gist.github.com/tuogex/7015907
+
 Just put that in a file called config.php in the same directory as index.php, put in the configuration you need and go!
