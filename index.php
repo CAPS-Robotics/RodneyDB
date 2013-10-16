@@ -85,10 +85,20 @@ switch ($_GET['p']) {
 		$page->writePage();
 		break;
 	case "broadcast":
+		if (!$_SESSION['loggedIn'] || $core->getUser($_SESSION['email'])['rank'] < 9) {
+			$page = new ErrorPage("autherror", $core, "Authentication", "You don't have enough permissions to access this page!");
+			$page->writePage();
+			break;
+		}
 		$page = new BroadcastPage("broadcast", $core);
 		$page->writePage();
 		break;
 	case "confirm":
+		if (!$_SESSION['loggedIn'] || $core->getUser($_SESSION['email'])['rank'] < 9) {
+			$page = new ErrorPage("autherror", $core, "Authentication", "You don't have enough permissions to access this page!");
+			$page->writePage();
+			break;
+		}
 		$page = new ConfirmPage("confirm", $core);
 		$page->writePage();
 		break;
