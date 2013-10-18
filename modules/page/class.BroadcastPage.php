@@ -36,6 +36,9 @@ This form will send a SMS message to all members with the receive texts option.
   			if ((string)$xml->success === "true") {
   				$this->alert("success", "Yay!", "Message broadcasted to all members.");
   			}
+  			else {
+  				$this->alert("danger", "Error!", "Tropo error.");
+  			}
 		}
 		self::writePageContent();
 		self::writePageEnd();

@@ -21,7 +21,7 @@ Are you sure you want to confirm ' . $core->getUserFromId($_GET['id'])['name'] .
 		echo $content;
 	}
 
-	public function deleteAccount($id) {
+	public function confirmAccount($id) {
 		global $core;
 		$core->getDB()->query("UPDATE `" . DB_USER_TABLE . "` SET `rank`='6' WHERE `id`='" . $id . "'");
 		header("Location: ?p=directory");
@@ -38,7 +38,7 @@ Are you sure you want to confirm ' . $core->getUserFromId($_GET['id'])['name'] .
 		self::writePageStart();
 		if (array_key_exists("conf", $_GET)) {
 			if (is_numeric($_GET['id'])) {
-				self::deleteAccount($_GET['id']);
+				self::confirmAccount($_GET['id']);
 			}
 			else {
 				ob_clean();
