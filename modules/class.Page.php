@@ -24,7 +24,7 @@ abstract class Page {
 <link href="assets/css/theme.css" rel="stylesheet">
 </head>
 <body>
-'($hideNav ? '<div class="navbar navbar-inverse navbar-fixed-top">
+'(!$hideNav ? '<div class="navbar navbar-inverse navbar-fixed-top">
 <div class="container">
 <div class="navbar-header">
 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
