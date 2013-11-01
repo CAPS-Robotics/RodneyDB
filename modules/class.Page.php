@@ -20,6 +20,7 @@ abstract class Page {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="assets/ico/favicon.png">
 <title>Rodney</title>
+<script src="assets/js/jquery.js"></script>
 <link href="assets/css/bootstrap.css" rel="stylesheet">
 <link href="assets/css/theme.css" rel="stylesheet">
 </head>
@@ -63,7 +64,6 @@ abstract class Page {
 <p class="text-muted credit">Rodney 2.0 developed by Tony Ma for <a href="http://mmr2410.com/">FRC Team 2410</a></p>
 </div>
 </div>
-<script src="assets/js/jquery.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 </body>
 </html>';
