@@ -21,7 +21,7 @@ class CheckinPage extends Page {
 
 	public function writePage() {
 		global $core;
-		self::writePageStart();
+		self::writePageStart(true);
 		if (array_key_exists("studentId", $_POST)) {
 			if (!is_numeric($_POST['studentId'])) {
 				self::alert("danger", "Error!", "Student ID is invalid!");
