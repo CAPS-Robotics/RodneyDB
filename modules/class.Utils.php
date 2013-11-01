@@ -16,6 +16,9 @@ class Utils {
 	public static function getRankName($rankNum) {
 		$rankStr;
 		switch ($rankNum) {
+			case 5:
+				$rankStr = "Unconfirmed";
+				break;
 			case 6:
 				$rankStr = "Member";
 				break;

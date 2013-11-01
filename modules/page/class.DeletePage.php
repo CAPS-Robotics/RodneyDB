@@ -23,7 +23,7 @@ Are you sure you want to delete ' . $core->getUserFromId($_GET['id'])['name'] . 
 
 	public function deleteAccount($id) {
 		global $core;
-		$core->getDB()->query("DELETE FROM `" . DB_USER_TABLE . "` WHERE `id`='" . $core->getDB()->getMySQLi()->real_escape_string($id) . "'");
+		$core->getDB()->query("DELETE FROM `" . DB_USER_TABLE . "` WHERE `id`='" . $id . "'");
 		header("Location: ?p=directory");
 	}
 
@@ -37,7 +37,15 @@ Are you sure you want to delete ' . $core->getUserFromId($_GET['id'])['name'] . 
 		}
 		self::writePageStart();
 		if (array_key_exists("conf", $_GET)) {
-			self::deleteAccount($_GET['id']);
+			if (is_numeric($_GET['id'])) {
+				self::deleteAccount($_GET['id']);
+			}
+			else {
+				ob_clean();
+				$page = new ErrorPage("error", $core, "Action", "Invalid account ID.");
+				$page->writePage();
+				return;
+			}
 		}
 		self::writePageContent();
 		self::writePageEnd();
