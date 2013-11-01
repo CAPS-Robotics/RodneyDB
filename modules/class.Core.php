@@ -81,6 +81,7 @@ class Core {
 		$stmt->bindParam(":phone", $phone);
 		$stmt->bindParam(":studentId", $studentId);
 		$stmt->bindParam(":id", $id);
+		$stmt->bindParam(":text", $text);
                 $stmt->execute();
 	}
 
