@@ -100,6 +100,10 @@ Student ID
 			self::alert('danger', 'Error!', "Student ID is already registered to another user!");
 			return false;
 		}
+		if ($core->getDB()->getArray("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `phone`=" . $phoneNum)[0]['id'] !== $core->getUser($_SESSION['email'])['id']) {
+			self::alert('danger', 'Error!', "Phone number is already registered to another user!");
+			return false;
+		}
 		$core->updateContactDetails($email, $phoneNum, ($texting === "on" ? 1 : 0), $studentId, $core->getUser($_SESSION['email'])['id']);
 		$_SESSION['email'] = $email;
 		return true;
