@@ -8,11 +8,6 @@ class LoginPage extends Page {
 	public function writePageContent() {
 		$content = 
 '
-<script>
-$("[id="passwordInput"]").bind("enterKey",function(e){
-   document.forms[\'loginForm\'].submit();
-});
-</script>
 <div class="jumbotron">
 <h1>Sign in</h1>
 <form method="POST" id="loginForm">
@@ -36,6 +31,12 @@ Receive Texts
 </div>
 </form>
 </div>
+
+<script>
+$("#passwordInput").bind("enterKey",function(e){
+   document.forms[\'loginForm\'].submit();
+});
+</script>
 ';
 		echo $content;
 	}
