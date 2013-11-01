@@ -24,7 +24,7 @@ abstract class Page {
 <link href="assets/css/theme.css" rel="stylesheet">
 </head>
 <body>
-'(!$hideNav ? '<div class="navbar navbar-inverse navbar-fixed-top">
+'.(!$hideNav ? '<div class="navbar navbar-inverse navbar-fixed-top">
 <div class="container">
 <div class="navbar-header">
 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -44,7 +44,7 @@ abstract class Page {
 ' . ($_SESSION['loggedIn'] ? '<p class="navbar-text pull-right">Signed in as <a href="?p=me" class="navbar-link">' . $core->getUser($_SESSION['email'])['name'] . '</a> | <a href="?p=login" class="navbar-link">Sign out</a></p>' : '<p class="navbar-text pull-right"><a href="?p=login" class="navbar-link">Sign in</a></p>') . '
 </div>
 </div>
-</div>': '')'
+</div>': '').'
 <div id="wrap">
 <div class="container">';
 		echo $pageStart;
