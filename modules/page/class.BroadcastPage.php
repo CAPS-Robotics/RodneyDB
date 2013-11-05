@@ -12,7 +12,7 @@ class BroadcastPage extends Page {
 window.onload = function () {
 	$("#messageHolder").keyup(function() {
 		var charsLeft = (160 - $(this).val().length);
-		$("#charCount").html("<span class=\'label label-" + (charsLeft < 10 ? "warning" : (charsLeft <= 0 ? "danger" : "success")) + "\'>" + charsLeft + "</span>");
+		$("#charCount").html("<span class=\'label label-" + (charsLeft < 25 ? (charsLeft <= 0 ? "danger" : "warning") : "success") + "\'>" + charsLeft + "</span>");
 	});
 };
 </script>
