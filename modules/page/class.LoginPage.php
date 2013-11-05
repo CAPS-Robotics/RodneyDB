@@ -12,7 +12,7 @@ class LoginPage extends Page {
 <h1>Sign in</h1>
 <form method="POST" id="loginForm">
 <input class="form-control input-lg" type="text" name="email" placeholder="Email" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
-<input class="form-control input-lg" type="password" name="password" id="passwordInput" placeholder="Password" style="border-top-left-radius: 0; border-top-right-radius: 0;">
+<input class="form-control input-lg" type="password" name="password" onkeydown="if (event.keyCode == 13) document.forms[\'loginForm\'].submit();" placeholder="Password" style="border-top-left-radius: 0; border-top-right-radius: 0;">
 <div id="registerForm" class="panel-collapse collapse" style="margin-top: 10px;">
 <input class="form-control input-lg" type="password" name="checkPassword" placeholder="Confirm password" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
 <input class="form-control input-lg" type="text" name="name" placeholder="Full name" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-top-right-radius: 0;">
@@ -31,12 +31,6 @@ Receive Texts
 </div>
 </form>
 </div>
-
-<script>
-$("#passwordInput").bind("enterKey",function(e){
-   document.forms[\'loginForm\'].submit();
-});
-</script>
 ';
 		echo $content;
 	}
