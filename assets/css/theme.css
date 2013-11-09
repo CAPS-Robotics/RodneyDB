@@ -22,7 +22,7 @@ html, body{
 	height: auto !important;
 	height: 100%;
 	margin: 0 auto -61px;
-	padding: 0 0 60px;
+	padding: 60px 0 60px;
 }
 #footer {
 	height: 60px;
