@@ -21,6 +21,7 @@ abstract class Page {
 <link rel="shortcut icon" href="assets/ico/favicon.png">
 <title>Rodney</title>
 <script src="assets/js/jquery.js"></script>
+<script src="assets/js/size-fix.js"></script>
 <link href="assets/css/bootstrap.css" rel="stylesheet">
 <link href="assets/css/theme.css" rel="stylesheet">
 </head>
