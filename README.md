@@ -4,7 +4,7 @@ RodneyDB
 The user management system for FRC Team 2410
 
 Developed originally by David Maas
-Now maintained by Eric Osburn, Thomas Gorham, and Tony Ma
+Now maintained by Eric Osburn, Thomas Gorham, and Tony Ma, with help from others as well
 
 config.php
 ==
