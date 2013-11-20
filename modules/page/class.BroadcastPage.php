@@ -51,6 +51,9 @@ This form will send a SMS message to all members with the receive texts option.
 		$teamArr = $core->fetchAllUsers();
 		foreach ($teamArr as $member) {
 			$numbersStr .= ($member['text'] == 1 ? $member['phone'] . '|' : '');
+			if (strlen($member['parentPhones']) != 0) {
+				$numbersStr .= $member['parentPhones'] . '|';
+			}
 		}
 		$numbersStr = substr($numbersStr, 0, strlen($numbersStr) - 1);
 		return $numbersStr;
