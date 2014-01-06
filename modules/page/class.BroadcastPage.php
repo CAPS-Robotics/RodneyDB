@@ -13,6 +13,7 @@ window.onload = function () {
 	$("#messageHolder").keyup(function() {
 		var charsLeft = (160 - $(this).val().length);
 		$("#charCount").html("<span class=\'label label-" + (charsLeft < 25 ? (charsLeft <= 0 ? "danger" : "warning") : "success") + "\'>" + charsLeft + "</span>");
+        if(charsLeft < 0){$("#sendBtn").prop("disabled",true);}else{$("#sendBtn").prop("disabled",false);}
 	});
 };
 </script>
@@ -22,7 +23,7 @@ This form will send a SMS message to all members with the receive texts option.
 <form method="POST">
 <textarea class="form-control" rows="3" id="messageHolder" name="message" placeholder="Message (160 Character limit)"></textarea>
 <span style="float: right;" id="charCount"><span class="label label-success">160</span></span>
-<button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-bottom: 20px;">Send</button>
+<button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-bottom: 20px;" id="sendBtn">Send</button>
 </form>
 </div>
 ';
@@ -51,6 +52,9 @@ This form will send a SMS message to all members with the receive texts option.
 		$teamArr = $core->fetchAllUsers();
 		foreach ($teamArr as $member) {
 			$numbersStr .= ($member['text'] == 1 ? $member['phone'] . '|' : '');
+			if (strlen($member['parentPhones']) != 0) {
+				$numbersStr .= $member['parentPhones'] . '|';
+			}
 		}
 		$numbersStr = substr($numbersStr, 0, strlen($numbersStr) - 1);
 		return $numbersStr;
