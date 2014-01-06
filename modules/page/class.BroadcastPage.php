@@ -6,6 +6,7 @@ class BroadcastPage extends Page {
 	}
 
 	public function writePageContent() {
+        global $core;
 		$content = 
 '
 <script>
