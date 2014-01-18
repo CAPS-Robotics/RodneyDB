@@ -11,7 +11,7 @@ class CheckinPage extends Page {
 <div class="jumbotron" style="font-size: medium;">
 <h1>Check-In/Out</h1>
 <form method="POST">
-<input class="form-control input-lg" name="studentId" type="text" placeholder="Student ID" autofocus>
+<input class="form-control input-lg" name="studentId" type="text" placeholder="Student ID" autofocus autocomplete="off">
 <button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-top: 10px;">Check in/out</button>
 </form>
 </div>
