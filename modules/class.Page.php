@@ -22,11 +22,11 @@ abstract class Page {
 <title>Rodney</title>
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/size-fix.js"></script>
-<link href="assets/css/bootstrap.css" rel="stylesheet">
+<link href="assets/css/yeti.css" rel="stylesheet">
 <link href="assets/css/theme.css" rel="stylesheet">
 </head>
 <body>
-'.(!$hideNav ? '<div class="navbar navbar-inverse navbar-fixed-top">
+'.(!$hideNav ? '<div class="navbar navbar-default navbar-fixed-top">
 <div class="container">
 <div class="navbar-header">
 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
