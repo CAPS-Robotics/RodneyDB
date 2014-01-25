@@ -24,9 +24,9 @@ html, body{
 }
 #creditContainer .credit {
 	margin: 5px 0;
-}
-#creditCOntainer .credit > p {
 	color: rgba(153, 153, 153, 0.15);
+}
+#creditCOntainer .credit {
 }
 .jumbotron {
 	margin-top: 15px;
