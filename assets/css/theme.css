@@ -15,16 +15,15 @@ html, body{
 	padding: 0 0 60px;
 }
 #footer {
-	height: 60px;
+	height: 30px;
 	background-color: #333333;
 }
 #creditContainer {
 	width: auto;
-	border-top: 1px solid #f5f5f5;
 	padding: 0 15px;
 }
 #creditContainer .credit {
-	margin: 20px 0;
+	margin: 5px 0;
 }
 .jumbotron {
 	margin-top: 15px;
