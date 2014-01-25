@@ -19,14 +19,17 @@ html, body{
 	background-color: #333333;
 	opacity: .15;
 	transition: opacity .5s;
-	-webkit-transition: opacity .5s;
-}
-#footer:hover {
-	opacity: .85;
 }
 #creditContainer {
 	width: auto;
 	padding: 0 15px;
+}
+#creditContainer > p {
+	transition: opacity .5s;
+	-webkit-transition: opacity .5s;
+}
+#creditContainer:hover > p {
+	opacity: .85;
 }
 #creditContainer .credit {
 	margin: 5px 0;
