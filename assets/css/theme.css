@@ -16,23 +16,17 @@ html, body{
 }
 #footer {
 	height: 30px;
-	background-color: #333333;
-	opacity: .15;
-	transition: opacity .5s;
+	background-color: rgba(51, 51, 51, 0.15);
 }
 #creditContainer {
 	width: auto;
 	padding: 0 15px;
 }
-#creditContainer > p {
-	transition: opacity .5s;
-	-webkit-transition: opacity .5s;
-}
-#creditContainer:hover > p {
-	opacity: .85;
-}
 #creditContainer .credit {
 	margin: 5px 0;
+}
+#creditCOntainer .credit > p {
+	color: rgba(153, 153, 153, 0.15);
 }
 .jumbotron {
 	margin-top: 15px;
