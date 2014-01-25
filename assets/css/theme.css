@@ -17,6 +17,10 @@ html, body{
 #footer {
 	height: 30px;
 	background-color: #333333;
+	opacity: .15;
+}
+#footer:hover {
+	opacity: .85;
 }
 #creditContainer {
 	width: auto;
