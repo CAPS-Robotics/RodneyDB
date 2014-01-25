@@ -394,7 +394,7 @@ h6,
 .h5,
 .h6 {
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 300;
+  font-weight: 500;
   line-height: 1.1;
   color: inherit;
 }
@@ -703,7 +703,7 @@ blockquote {
 
 blockquote p {
   font-size: 18.75px;
-  font-weight: 300;
+  font-weight: 500;
   line-height: 1.25;
 }
 
@@ -5544,7 +5544,7 @@ a.list-group-item.active > .badge,
   padding: 30px;
   margin-bottom: 30px;
   font-size: 23px;
-  font-weight: 200;
+  font-weight: 400;
   line-height: 2.1428571435;
   color: inherit;
   background-color: #fafafa;
@@ -7509,7 +7509,7 @@ td.visible-print {
 
 .navbar {
   font-size: 13px;
-  font-weight: 300;
+  font-weight: 500;
   border: none;
 }
 
@@ -7530,7 +7530,7 @@ td.visible-print {
 .navbar .dropdown-menu > li > a,
 .navbar .dropdown-menu > li > a:focus {
   font-size: 13px;
-  font-weight: 300;
+  font-weight: 500;
   background-color: transparent;
 }
 
@@ -7696,7 +7696,7 @@ blockquote.pull-right {
 
 blockquote small {
   font-size: 12px;
-  font-weight: 300;
+  font-weight: 500;
 }
 
 table {
@@ -7742,12 +7742,12 @@ label,
 }
 
 .nav-pills {
-  font-weight: 300;
+  font-weight: 500;
 }
 
 .breadcrumb {
   font-size: 10px;
-  font-weight: 300;
+  font-weight: 500;
   text-transform: uppercase;
   border: 1px solid #dddddd;
   border-radius: 3px;
@@ -7755,7 +7755,7 @@ label,
 
 .pagination {
   font-size: 12px;
-  font-weight: 300;
+  font-weight: 500;
   color: #999999;
 }
 
@@ -7790,18 +7790,18 @@ label,
 
 .pager {
   font-size: 12px;
-  font-weight: 300;
+  font-weight: 500;
   color: #999999;
 }
 
 .list-group {
   font-size: 12px;
-  font-weight: 300;
+  font-weight: 500;
 }
 
 .alert {
   font-size: 12px;
-  font-weight: 300;
+  font-weight: 500;
 }
 
 .alert a,
@@ -7814,7 +7814,7 @@ label,
 .label {
   padding-right: 1em;
   padding-left: 1em;
-  font-weight: 300;
+  font-weight: 500;
   border-radius: 0;
 }
 
@@ -7824,7 +7824,7 @@ label,
 }
 
 .badge {
-  font-weight: 300;
+  font-weight: 500;
 }
 
 .progress {
@@ -7855,7 +7855,7 @@ label,
 
 .popover {
   font-size: 12px;
-  font-weight: 300;
+  font-weight: 500;
   color: #fff;
 }
 
