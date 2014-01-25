@@ -18,6 +18,8 @@ html, body{
 	height: 30px;
 	background-color: #333333;
 	opacity: .15;
+	transition: opacity .5s;
+	-webkit-transition: opacity .5s;
 }
 #footer:hover {
 	opacity: .85;
