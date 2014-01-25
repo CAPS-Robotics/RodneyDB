@@ -25,7 +25,7 @@ if (!array_key_exists("p", $_GET)) {
 	$home->writePage();
 	return;
 }
-//Switch ?p= and do stuff for each page
+//Switch ?p= and do stuff for each of the pages
 switch ($_GET['p']) {
 	case "home":
 		$page = new HomePage("home", $core);
