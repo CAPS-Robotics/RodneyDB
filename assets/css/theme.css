@@ -16,7 +16,7 @@ html, body{
 }
 #footer {
 	min-height: 30px;
-	background: rgba(51, 51, 51, 0.15);
+	background: rgba(51, 51, 51, 0.30);
 }
 #creditContainer {
 	width: auto;
