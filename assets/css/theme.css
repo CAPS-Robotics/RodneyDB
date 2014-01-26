@@ -1,6 +1,8 @@
 body {
 	padding-top: 50px;
-	background: #24282E;
+	background: url(../img/wallpaper2.jpg);
+	background-position: center;
+	background-size: contain;
 }
 html, body{
 	height: 100%;
