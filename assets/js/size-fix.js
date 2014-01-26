@@ -11,5 +11,9 @@ $(window).resize(function (e){
 |  loads background after page  |
 \* =========================== */ 
 $(function () {
-	$('body').css('background', 'url(assets/img/wallpaper2.jpg)');
+	$('body').css({
+		'background': 'url(assets/img/wallpaper2.jpg)',
+		'background-position': 'center',
+		'background-size': 'contain'
+	});
 });
