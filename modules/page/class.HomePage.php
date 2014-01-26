@@ -8,7 +8,7 @@ class HomePage extends Page {
 		$content = 
 '
 <div class="jumbotron">
-<img src="assets/img/mustang.svg"></img>
+<img src="assets/img/mustang.svg" width="250"></img>
 <h1>Rodney</h1>
 <p class="lead">Team member management database for <a href="http://mmr2410.com/">FRC Team 2410</a>.</p>
 </div>
