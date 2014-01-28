@@ -62,7 +62,7 @@ abstract class Page {
 </div>
 <div id="footer">
 <div class="container" id="creditContainer">
-<p class="credit">Rodney 2.0 developed by Tony Ma for <a href="http://mmr2410.com/">FRC Team 2410</a></p>
+<p class="credit">Rodney 2.1 developed by Tony Ma, Doc Tassio, and Wes Caldwell for <a href="http://mmr2410.com/">FRC Team 2410</a></p>
 </div>
 </div>
 <script src="assets/js/bootstrap.min.js"></script>
