@@ -19,7 +19,8 @@ class CheckinPage extends Page {
 </form>
 </div>
 ';
-		echo $content . $this->ritterisms->write();
+		echo $content;
+		$this->ritterisms->write();
 	}
 
 	public function writePage() {
