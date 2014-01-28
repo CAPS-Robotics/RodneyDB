@@ -23,7 +23,7 @@ window.onload = function () {
 This form will send a SMS message to all members with the receive texts option.
 <form method="POST">
 <textarea class="form-control" rows="3" id="messageHolder" name="message" placeholder="Message (160 Character limit)"></textarea>
-<span style="float: right;" id="charCount"><span class="label label-success">160</span></span>
+<span style="margin-top: -30px; z-index: 1; position: relative; float: left; opacity: 0.7;" id="charCount"><span class="label label-success">160</span></span>
 <button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-bottom: 20px;" id="sendBtn">Send</button>
 </form>
 </div>

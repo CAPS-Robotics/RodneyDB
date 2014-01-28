@@ -16,6 +16,7 @@ require("modules/page/class.DeletePage.php");
 require("modules/page/class.BroadcastPage.php");
 require("modules/page/class.ConfirmPage.php");
 require("modules/page/class.ErrorPage.php");
+require("modules/page/class.Ritterisms.php");
 error_reporting(E_ALL ^ E_NOTICE); //Get rid of annoying notices
 //Initialize the core with MySQL information
 $core = new Core(new MySQL(MYSQL_HOST, MYSQL_PORT, MYSQL_DB, MYSQL_USER, MYSQL_PASSWORD));

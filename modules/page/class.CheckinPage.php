@@ -1,8 +1,11 @@
 <?php
 class CheckinPage extends Page {
+	
+	private $ritterisms;
 
 	public function __construct($trigger, $core) {
 		parent::__construct($trigger, $core);
+		$this->ritterisms = new Ritterisms();
 	}
 
 	public function writePageContent() {
@@ -17,6 +20,7 @@ class CheckinPage extends Page {
 </div>
 ';
 		echo $content;
+		$this->ritterisms->write();
 	}
 
 	public function writePage() {
