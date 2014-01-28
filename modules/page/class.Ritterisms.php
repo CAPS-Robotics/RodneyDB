@@ -17,7 +17,7 @@ class Ritterisms {
 <p style="text-align:right;font-style:italic">&mdash;Daniel Ritter</p>
 </div>
 ';
-                echo $content;
+                //echo $content;
         }
 }
 ?>
