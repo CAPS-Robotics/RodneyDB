@@ -3,8 +3,7 @@ body {
 	background: #24282E;
 	background: url(../img/wallpaper2.jpg);
 	background-position: center;
-	background-size: cover;
-	background-repeat: no-repeat;
+	background-size: contain;
 }
 html, body{
 	height: 100%;
