@@ -1,5 +1,5 @@
 <?php
-class HomePage extends Page {
+class Json extends Page {
 	public function __construct($trigger, $core) {
 		parent::__construct($trigger, $core);
 	}
