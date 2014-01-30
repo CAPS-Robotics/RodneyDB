@@ -20,7 +20,7 @@ abstract class Page {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="shortcut icon" href="assets/ico/favicon.png">
 <title>Rodney</title>
-<script src="assets/js/jquery.js"></script>
+<script src="assets/js/jquery-1.11.0.min.js"></script>
 <script src="assets/js/size-fix.js"></script>
 <link href="assets/css/yeti.min.css" rel="stylesheet">
 <link href="assets/css/theme.css" rel="stylesheet">
