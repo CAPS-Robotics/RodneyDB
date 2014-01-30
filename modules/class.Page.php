@@ -22,7 +22,7 @@ abstract class Page {
 <title>Rodney</title>
 <script src="assets/js/jquery.js"></script>
 <script src="assets/js/size-fix.js"></script>
-<link href="assets/css/yeti.css" rel="stylesheet">
+<link href="assets/css/yeti.min.css" rel="stylesheet">
 <link href="assets/css/theme.css" rel="stylesheet">
 </head>
 <body>
