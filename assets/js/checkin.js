@@ -20,6 +20,9 @@ $(window).load(function(){
             level='warning';
             description='You\'ve been checked in too long! Hours from the last session will not be counted. Input again if you need to be checked in.';
         }
+        if(msg.code=="false"){
+            description='The entered ID is either too short or too nonexistant.';
+        }
         $('#alertbox').html('<div class="alert alert-'+level+'" style="margin-top: -7px;"><strong>'+title+'</strong> '+description+'</div>');
     }
     $('#checkin').click(function () {

@@ -35,8 +35,12 @@ class Json extends Page {
 					$rank=0;
 					break;
 				}
-				if($rank>=9){
+				if($rank>=9 && self::checkId($_GET['d'])){
 					$data = self::doCheckin($_GET['d']);
+				}else{
+					$data = array(
+					    'code'=>'false'
+					);
 				}
 				break;
 			default:
@@ -48,6 +52,17 @@ class Json extends Page {
 		echo json_encode($data);
 
 	}
+
+	public function checkId($studentId) {
+		if (!is_numeric($_POST['studentId'])) {
+			return false;
+		}
+		if (sizeof($core->getDB()->getArray("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `studentId`='" . $_POST['studentId'] . "'")) == 0) {
+			return false;
+		}
+		return true;
+	}
+
 	public function doCheckin($studentId) {
 		global $core;
 		$user = $core->getDB()->getArray("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `studentId`='" . $studentId . "'");
