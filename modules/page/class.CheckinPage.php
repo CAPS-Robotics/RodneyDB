@@ -21,7 +21,7 @@ class CheckinPage extends Page {
 
     </button>
 </div>
-<div class="jumbotron" style="font-size: medium;">
+<div class="jumbotron" style="font-size: medium;padding-bottom: 10px;">
 <div id="countdown">
 </div>
 </div>
