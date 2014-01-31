@@ -13,7 +13,7 @@ $(window).load(function(){
         l.start();
         $.ajax({
             type: "GET",
-            url: "/",
+            url: "/repositories/RodneyDB/json/",
             data: {
                 p: "json",
                 r: "checkin",
