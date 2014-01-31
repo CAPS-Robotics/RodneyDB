@@ -10,6 +10,12 @@ class Json extends Page {
 		switch ($_GET['r']) {
 			case "rank":
 				$users = $core->fetchAllUsers();
+				foreach ($users as &$value) {
+					$value = array(
+						'name'=>$value['name'],
+						'hours'=>$value['hours']
+					)
+				}
 				var_dump($users);
 				$data = array(
 				    'success'=>'true',
