@@ -25,6 +25,19 @@ class Json extends Page {
 				    'data'=>$users
 				);
 				break;
+			case "checkin":
+				if(array_key_exists("email", $_SESSION)){
+					$rank=$core->getUser($_SESSION['email'])['rank'];
+				}else{
+					$data = array(
+					    'success'=>'false'
+					);
+					break;
+				}
+				if($rank>=9){
+					$data = doCheckin($_GET['d']);
+				}
+				break;
 			default:
 				$data = array(
 				    'success'=>'false'
@@ -34,7 +47,43 @@ class Json extends Page {
 		echo json_encode($data);
 
 	}
-
+	public function doCheckin($studentId) {
+		global $core;
+		$user = $core->getDB()->getArray("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `studentId`='" . $studentId . "'");
+		if (sizeof($user) > 1) {
+			return array(
+			    'code'=>'problem'
+			);
+		}
+		else {
+			$user = $user[0];
+			if ($user['lastHourLog'] != 0) {
+				if (Utils::hoursSince($user['lastHourLog']) > CHECKIN_MAX) {
+					$core->getDB()->query("UPDATE `" . DB_USER_TABLE . "` SET `lastHourLog`='0' WHERE `studentId`='" . $studentId . "'");
+					return array(
+					    'code'=>'exceed'
+					);
+				}
+				$hours = round(Utils::hoursSince($user['lastHourLog']) + $user['hours'], 3);
+				$core->getDB()->query("UPDATE `" . DB_USER_TABLE . "` SET `lastHourLog`='0', `hours`='" . $hours . "' WHERE `studentId`='" . $studentId . "'");
+				if ($user['rank'] == 6 && $hours >= 50) {
+					$core->getDB()->query("UPDATE `" . DB_USER_TABLE . "` SET `rank`='7' WHERE `id`='" . $user['id'] . "'");
+				}
+				return array(
+				    'code'=>'checkout',
+				    'name'=>$user['name'],
+				    'hours'=>$hours
+				);
+			}
+			else {
+				$core->getDB()->query("UPDATE `" . DB_USER_TABLE . "` SET `lastHourLog`='" . time() . "' WHERE `studentId`='" . $studentId . "'");
+				return array(
+				    'code'=>'checkin',
+				    'name'=>$user['name']
+				);
+			}
+		}
+	}
 	public function writePage() {
 		header('Content-Type: application/json');
 		self::writePageContent();
