@@ -54,10 +54,10 @@ class Json extends Page {
 	}
 
 	public function checkId($studentId) {
-		if (!is_numeric($_POST['studentId'])) {
+		if (!is_numeric($studentId)) {
 			return false;
 		}
-		else if (sizeof($core->getDB()->getArray("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `studentId`='" . $_POST['studentId'] . "'")) == 0) {
+		else if (sizeof($core->getDB()->getArray("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `studentId`='" . $studentId . "'")) == 0) {
 			return false;
 		}
 		else {
