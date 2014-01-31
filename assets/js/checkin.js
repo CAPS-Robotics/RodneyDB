@@ -1,9 +1,11 @@
 $(window).load(function(){
     $('#studentid').focus();
     var l;
+    var working = false;
     handleresponse = function (msg) {
         console.log(msg);
         l.stop();
+        working = false;
         $('#studentid').val('').focus();
         var level='danger';
         var title='Uh-Oh...';
@@ -29,14 +31,17 @@ $(window).load(function(){
         $('#alertbox').fadeIn(200);
     }
     $('#checkin').click(function () {
-        l = Ladda.create(this);
-        l.start();
-        $('#alertbox').fadeOut(100);
-        var studentid=$('#studentid').val();
-        $.ajax({
-            type: "GET",
-            url: '/repositories/RodneyDB/json/?p=json&r=checkin&d='+studentid
-        }).done(handleresponse).fail(function(){console.log('Something has gone very wrong')});
+        if(!working){
+            l = Ladda.create(this);
+            l.start();
+            working = true;
+            $('#alertbox').fadeOut(100);
+            var studentid=$('#studentid').val();
+            $.ajax({
+                type: "GET",
+                url: '/repositories/RodneyDB/json/?p=json&r=checkin&d='+studentid
+            }).done(handleresponse).fail(function(){console.log('Something has gone very wrong')});
+        }
     });
     $("#studentid").keyup(function(event){
     if(event.keyCode == 13){
