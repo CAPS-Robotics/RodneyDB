@@ -5,12 +5,11 @@ class Json extends Page {
 	}
 
 	public function writePageContent() {
+		global $core;
 		array_key_exists("r", $_GET);
 		switch ($_GET['r']) {
 			case "rank":
-				$data = array(
-				    'success'=>'true'
-				);
+				$data = $core->fetchAllUsers();
 				break;
 			default:
 				$data = array(
