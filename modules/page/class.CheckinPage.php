@@ -11,6 +11,7 @@ class CheckinPage extends Page {
 	public function writePageContent() {
 		$content = 
 '
+<script src="assets/js/countdown.min.js"></script>
 <script src="assets/js/checkin.js"></script>
 <div id="alertbox"></div>  
 <div class="jumbotron" style="font-size: medium;">  
