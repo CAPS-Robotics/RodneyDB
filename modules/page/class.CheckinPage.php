@@ -16,6 +16,7 @@ class CheckinPage extends Page {
 <div class="container" style="position: relative;">
 <div id="alertbox"></div>
 </div>
+<div class="container">
 <div class="jumbotron" style="font-size: medium;">  
 <h1>Check-In/Out</h1>
 
