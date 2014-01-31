@@ -14,7 +14,7 @@ class Json extends Page {
 					$value = array(
 						'name'=>$value['name'],
 						'hours'=>$value['hours']
-					)
+					);
 				}
 				var_dump($users);
 				$data = array(
