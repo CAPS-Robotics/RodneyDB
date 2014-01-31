@@ -21,7 +21,7 @@ class Json extends Page {
 				array_multisort($hours,SORT_DESC,$users);
 				$users=array_slice($users,0,10);
 				$data = array(
-				    'success'=>'true',
+				    'code'=>'true',
 				    'data'=>$users
 				);
 				break;
@@ -30,17 +30,17 @@ class Json extends Page {
 					$rank=$core->getUser($_SESSION['email'])['rank'];
 				}else{
 					$data = array(
-					    'success'=>'false'
+					    'code'=>'false'
 					);
 					break;
 				}
 				if($rank>=9){
-					$data = doCheckin($_GET['d']);
+					$data = self::doCheckin($_GET['d']);
 				}
 				break;
 			default:
 				$data = array(
-				    'success'=>'false'
+				    'code'=>'false'
 				);
 				break;
 		}
