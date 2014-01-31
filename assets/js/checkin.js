@@ -44,13 +44,11 @@ $(document).ready(function(){
         }
     });
     $("#studentid").keyup(function(event){
-    if(event.keyCode == 13){
-        $("#checkin").click();
-    }
-    console.log('Initiating timer');
-    var timerId =countdown(new Date("February 18, 2014"),function(ts) {
-        console.log('update');
-        $('#countdown').text(ts.toString());
+        if(event.keyCode == 13){
+            $("#checkin").click();
+        }
+    });
+    var timerId =countdown(new Date(2014, 1, 18, 20),function(ts) {
+        $('#countdown').text(ts.toString()+' left');
     },countdown.DAYS|countdown.HOURS|countdown.MINUTES|countdown.SECONDS);
-});
 });
