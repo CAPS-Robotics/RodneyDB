@@ -9,7 +9,12 @@ class Json extends Page {
 		array_key_exists("r", $_GET);
 		switch ($_GET['r']) {
 			case "rank":
-				$data = $core->fetchAllUsers();
+				$users = $core->fetchAllUsers();
+				var_dump($users);
+				$data = array(
+				    'success'=>'true',
+				    'data'=>$users
+				);
 				break;
 			default:
 				$data = array(
