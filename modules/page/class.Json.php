@@ -5,11 +5,22 @@ class Json extends Page {
 	}
 
 	public function writePageContent() {
-		$sample = array(
-		    'name'=>'My Name',
-		    'email'=>'my_email@example.com'
-		);
-		echo json_encode($sample);
+		array_key_exists("r", $_GET)
+		$req = $_GET['r'];
+		switch ($req) {
+			case "rank":
+				$data = array(
+				    'success'=>'true'
+				);
+				break;
+			default:
+				$data = array(
+				    'success'=>'false'
+				);
+				break;
+		}
+		echo json_encode($data);
+
 	}
 
 	public function writePage() {
