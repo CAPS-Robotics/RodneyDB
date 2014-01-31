@@ -11,8 +11,11 @@ class CheckinPage extends Page {
 	public function writePageContent() {
 		$content = 
 '
+</div>
 <script src="assets/js/checkin.js"></script>
-<div id="alertbox"></div>  
+<div class="container" style="position: relative;">
+<div id="alertbox"></div>
+</div>
 <div class="jumbotron" style="font-size: medium;">  
 <h1>Check-In/Out</h1>
 

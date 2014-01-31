@@ -35,3 +35,10 @@ html, body{
 	padding-top: 10px;
 	text-align: center;
 }
+#alertbox {
+	display: block;
+	position: absolute;
+	width: auto;
+	left: 15px;
+	right: 15px;
+}
