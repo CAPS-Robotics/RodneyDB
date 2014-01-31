@@ -36,6 +36,7 @@ switch ($_GET['p']) {
 	case "login":
 		if ($_SESSION['loggedIn']) {
 			$_SESSION['loggedIn'] = false;
+			$_SESSION['email'] = 'THISISREALLYINSECURETONY';
 			header("Location: ?p=home");
 		}
 		else {
