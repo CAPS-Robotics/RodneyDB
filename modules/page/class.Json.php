@@ -5,9 +5,8 @@ class Json extends Page {
 	}
 
 	public function writePageContent() {
-		array_key_exists("r", $_GET)
-		$req = $_GET['r'];
-		switch ($req) {
+		array_key_exists("r", $_GET);
+		switch ($_GET['r']) {
 			case "rank":
 				$data = array(
 				    'success'=>'true'
