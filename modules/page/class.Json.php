@@ -57,10 +57,12 @@ class Json extends Page {
 		if (!is_numeric($_POST['studentId'])) {
 			return false;
 		}
-		if (sizeof($core->getDB()->getArray("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `studentId`='" . $_POST['studentId'] . "'")) == 0) {
+		else if (sizeof($core->getDB()->getArray("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `studentId`='" . $_POST['studentId'] . "'")) == 0) {
 			return false;
 		}
-		return true;
+		else {
+			return true;
+		}
 	}
 
 	public function doCheckin($studentId) {
