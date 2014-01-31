@@ -1,5 +1,6 @@
 $(document).ready(function(){
     $('#studentid').focus();
+    var timeout;
     var l;
     var working = false;
     handleresponse = function (msg) {
@@ -29,12 +30,14 @@ $(document).ready(function(){
         }
         $('#alertbox').html('<div class="alert alert-'+level+'" style="margin-top: -7px;"><strong>'+title+'</strong> '+description+'</div>');
         $('#alertbox').fadeIn(200);
+        timeout=setTimeout(function(){$('#alertbox').fadeOut(100);},3000);
     }
     $('#checkin').click(function () {
         if(!working){
             l = Ladda.create(this);
             l.start();
             working = true;
+            clearTimeout(timeout);
             $('#alertbox').fadeOut(100);
             var studentid=$('#studentid').val();
             $.ajax({
