@@ -26,7 +26,6 @@ class Json extends Page {
 				);
 				break;
 			case "checkin":
-				var_dump($_SESSION);
 				if(array_key_exists("email", $_SESSION)){
 					$rank=$core->getUser($_SESSION['email'])['rank'];
 				}else{
