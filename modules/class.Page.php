@@ -24,6 +24,7 @@ abstract class Page {
 <script src="assets/js/size-fix.js"></script>
 <script src="assets/js/spin.min.js"></script>
 <script src="assets/js/ladda.min.js"></script>
+<script src="assets/js/countdown.min.js"></script>
 <link href="assets/css/yeti.min.css" rel="stylesheet">
 <link href="assets/css/ladda-themeless.min.css" rel="stylesheet">
 <link href="assets/css/theme.css" rel="stylesheet">

@@ -1,4 +1,4 @@
-$(window).load(function(){
+$(document).ready(function(){
     $('#studentid').focus();
     var l;
     var working = false;
