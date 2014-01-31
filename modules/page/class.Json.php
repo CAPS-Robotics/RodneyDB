@@ -32,6 +32,7 @@ class Json extends Page {
 					$data = array(
 					    'code'=>'false'
 					);
+					$rank=0;
 					break;
 				}
 				if($rank>=9){
