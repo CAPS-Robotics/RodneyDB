@@ -47,8 +47,10 @@ $(document).ready(function(){
     if(event.keyCode == 13){
         $("#checkin").click();
     }
+    console.log('Initiating timer');
     var timerId =countdown(new Date("February 18, 2014"),function(ts) {
-        $('#countdown').text(ts.toString().replace(',', ''));
+        console.log('update');
+        $('#countdown').text(ts.toString());
     },countdown.DAYS|countdown.HOURS|countdown.MINUTES|countdown.SECONDS);
 });
 });
