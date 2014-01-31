@@ -54,6 +54,7 @@ class Json extends Page {
 	}
 
 	public function checkId($studentId) {
+		global $core;
 		if (!is_numeric($studentId)) {
 			return false;
 		}
