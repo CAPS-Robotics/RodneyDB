@@ -19,6 +19,7 @@ class Json extends Page {
 					$hours[] = $value['hours'];
 				}
 				array_multisort($hours,SORT_DESC,$users);
+				$users=array_slice($users,0,9);
 				var_dump($users);
 				$data = array(
 				    'success'=>'true',
