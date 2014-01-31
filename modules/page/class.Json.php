@@ -13,9 +13,12 @@ class Json extends Page {
 				foreach ($users as &$value) {
 					$value = array(
 						'name'=>$value['name'],
-						'hours'=>$value['hours']
+						'hours'=>$value['hours'],
+						'rank'=>$value['rank']
 					);
+					$hours[] = $users['hours'];
 				}
+				array_multisort($hours,SORT_DESC,$users);
 				var_dump($users);
 				$data = array(
 				    'success'=>'true',
