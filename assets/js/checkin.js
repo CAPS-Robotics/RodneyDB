@@ -23,7 +23,10 @@ $(window).load(function(){
         if(msg.code=="false"){
             description='The entered ID is either too short or too nonexistant.';
         }
-        $('#alertbox').html('<div class="alert alert-'+level+'" style="margin-top: -7px;"><strong>'+title+'</strong> '+description+'</div>');
+        $('#alertbox').fadeOut(200,function(){
+            this.html('<div class="alert alert-'+level+'" style="margin-top: -7px;"><strong>'+title+'</strong> '+description+'</div>');
+            this.fadeIn(200);
+        });
     }
     $('#checkin').click(function () {
         l = Ladda.create(this);
