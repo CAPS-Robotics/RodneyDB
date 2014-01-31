@@ -16,7 +16,7 @@ class Json extends Page {
 						'hours'=>$value['hours'],
 						'rank'=>$value['rank']
 					);
-					$hours[] = $users['hours'];
+					$hours[] = $value['hours'];
 				}
 				array_multisort($hours,SORT_DESC,$users);
 				var_dump($users);
