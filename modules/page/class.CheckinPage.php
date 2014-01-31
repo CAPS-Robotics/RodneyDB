@@ -11,12 +11,15 @@ class CheckinPage extends Page {
 	public function writePageContent() {
 		$content = 
 '
-<div class="jumbotron" style="font-size: medium;">
+<script src="assets/js/checkin.js"></script>
+<div id="alertbox"></div>  
+<div class="jumbotron" style="font-size: medium;">  
 <h1>Check-In/Out</h1>
-<form method="POST">
-<input class="form-control input-lg" name="studentId" type="text" placeholder="Student ID" autofocus autocomplete="off">
-<button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-top: 10px;">Check in/out</button>
-</form>
+
+    <input id="studentid" class="form-control input-lg" type="text" placeholder="Student ID" autofocus autocomplete="off">
+    <button id="checkin" class="btn btn-primary btn-lg btn-block ladda-button" data-style="slide-up" style="margin-top: 10px;"><span class="ladda-label">Check In/Out</span>
+
+    </button>
 </div>
 ';
 		echo $content;
