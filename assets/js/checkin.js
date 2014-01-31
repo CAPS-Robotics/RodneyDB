@@ -13,12 +13,12 @@ $(window).load(function(){
         l.start();
         $.ajax({
             type: "GET",
-            url: "/repositories/RodneyDB/json/",
+            url: "/repositories/RodneyDB/json",
             data: {
                 p: "json",
                 r: "checkin",
                 d: "11111111"
             }
-        }).done(handleresponse);
+        }).done(handleresponse).fail(function(){console.log('Something has gone very wrong')});
     });
 });
