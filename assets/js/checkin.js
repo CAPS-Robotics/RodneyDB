@@ -11,6 +11,7 @@ $(window).load(function(){
     $('#checkin').click(function () {
         l = Ladda.create(this);
         l.start();
+        var studentid=$('#studentid').val();
         $.ajax({
             type: "GET",
             url: '/repositories/RodneyDB/json/?p=json&r=checkin&d='+studentid
