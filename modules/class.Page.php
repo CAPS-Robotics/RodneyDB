@@ -22,7 +22,10 @@ abstract class Page {
 <title>Rodney</title>
 <script src="assets/js/jquery-1.11.0.min.js"></script>
 <script src="assets/js/size-fix.js"></script>
+<script src="assets/js/ladda.min.js"></script>
+<script src="assets/js/spin.min.js"></script>
 <link href="assets/css/yeti.min.css" rel="stylesheet">
+<link href="assets/css/ladda-themeless.css" rel="stylesheet">
 <link href="assets/css/theme.css" rel="stylesheet">
 </head>
 <body>
