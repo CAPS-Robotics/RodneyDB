@@ -4,7 +4,7 @@ $(window).load(function(){
         console.log(msg);
         l.stop();
         var level='danger';
-        var title='OH SHIT';
+        var title='OH NO!';
         var description='YOU DUN GOOFED, SON';
         $('#alertbox').html('<div id="alert" class="alert alert-'+level+'" style="margin-top: -7px;"><strong>'+title+'</strong> '+description+'</div>');
     }
