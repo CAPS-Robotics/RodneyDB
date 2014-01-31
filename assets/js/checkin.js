@@ -47,5 +47,8 @@ $(window).load(function(){
     if(event.keyCode == 13){
         $("#checkin").click();
     }
+    var timerId =countdown(new Date("February 18, 2014"),function(ts) {
+        $('#countdown').text(ts.toString().replace(',', ''));
+    },countdown.DAYS|countdown.HOURS|countdown.MINUTES|countdown.SECONDS);
 });
 });
