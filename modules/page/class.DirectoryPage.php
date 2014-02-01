@@ -23,7 +23,11 @@ class DirectoryPage extends Page {
 $(\'span.editable\').on(\'click\', function() { var $this = $(this); var value = $this.text(); $this.html(\'<input type="text" class="form-control" value="\' + value + \'" autofocus autocomplete="off">\') });
 </script>
 ';
-		echo $content, $script;
+		echo $content;
+		if (Utils::getRankName($member['rank']) === 'Administrator' || Utils::getRankName($member['rank']) === 'Mentor' ) {
+			echo $script;
+		}
+
 	}
 
 	public function getDirectoryTable($rank) {
