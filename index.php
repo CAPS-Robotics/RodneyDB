@@ -17,6 +17,7 @@ require("modules/page/class.BroadcastPage.php");
 require("modules/page/class.ConfirmPage.php");
 require("modules/page/class.ErrorPage.php");
 require("modules/page/class.Ritterisms.php");
+require("modules/page/class.Json.php");
 error_reporting(E_ALL ^ E_NOTICE); //Get rid of annoying notices
 //Initialize the core with MySQL information
 $core = new Core(new MySQL(MYSQL_HOST, MYSQL_PORT, MYSQL_DB, MYSQL_USER, MYSQL_PASSWORD));
@@ -35,12 +36,17 @@ switch ($_GET['p']) {
 	case "login":
 		if ($_SESSION['loggedIn']) {
 			$_SESSION['loggedIn'] = false;
+			unset($_SESSION['email']);
 			header("Location: ?p=home");
 		}
 		else {
 			$page = new LoginPage("login", $core);
 			$page->writePage();
 		}
+		break;
+	case "json":
+		$page = new Json("json", $core);
+		$page->writePage();
 		break;
 	case "me":
 		//Make sure user is signed in before showing me
