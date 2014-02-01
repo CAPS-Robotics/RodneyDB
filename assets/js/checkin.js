@@ -42,7 +42,7 @@ $(document).ready(function(){
             var studentid=$('#studentid').val();
             $.ajax({
                 type: "GET",
-                url: '/repositories/RodneyDB/json/?p=json&r=checkin&d='+studentid
+                url: '?p=json&r=checkin&d='+studentid
             }).done(handleresponse).fail(function(){console.log('Something has gone very wrong')});
         }
     });
