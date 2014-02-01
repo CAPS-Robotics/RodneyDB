@@ -24,10 +24,7 @@ $(\'span.editable\').on(\'click\', function() { var $this = $(this); var value =
 $(\'input.edit\').focusout(function () { var $parent = $(this).parent(); $parent.html(\'<span class="editablet">\' + $(this).value() + \'</span>\') });
 </script>
 ';
-		echo $content;
-		if (Utils::getRankName($member['rank']) === 'Administrator' || Utils::getRankName($member['rank']) === 'Mentor' ) {
-			echo $script;
-		}
+		echo $content, $script;
 
 	}
 
