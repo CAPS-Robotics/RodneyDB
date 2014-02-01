@@ -21,8 +21,7 @@ class DirectoryPage extends Page {
 '
 $(\'span.editable\').on(\'click\', function() { var $this = $(this), var value = $this.text(); $this.html(\'<input type="text" class="form-control" value="\' + value + \'" autofocus autocomplete="off">\') });
 '
-		echo $content;
-		echo $script;
+		echo $content, $script;
 	}
 
 	public function getDirectoryTable($rank) {
