@@ -20,7 +20,7 @@ class DirectoryPage extends Page {
 		$script =
 '
 <script>
-$("span.editable").on("click",function(){$(this).html(\'<input type="text" class="form-control edit" value="\'+$(this).text()+\'" autocomplete="off">\');$("input.form-control.edit").focus();$("input.edit").focusout(function(){$(this).replaceWith($(this).val())})})
+$("span.editable").on("click",function(){$(this).html(\'<input type="text" class="form-control edit input-sm" value="\'+$(this).text()+\'" autocomplete="off">\');$("input.form-control.edit").focus();$("input.edit").focusout(function(){$(this).replaceWith($(this).val())})})
 </script>
 ';
 		echo $content, $script;
