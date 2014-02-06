@@ -36,7 +36,7 @@ $(".editable").click(
                 function(){
                     thisObj = $(this).parent();
                     thisObj.popover({
-                        placement: 'right',
+                        placement: 'bottom',
                         html: 'true',
                         trigger: 'manual',
                         title: 'Confirm edit',
