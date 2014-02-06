@@ -25,5 +25,10 @@ class MySQL extends PDO{
         return $stmt->fetchAll();
     }
 
+    public function updateDB($id,$field,$value) {
+        $query = "UPDATE `". DB_USER_TABLE ."` SET `". $field ."`=\"". $value ."\" WHERE `id`='". $id ."'";
+        return $this->exec($query);
+    }
+
 }
 ?>
