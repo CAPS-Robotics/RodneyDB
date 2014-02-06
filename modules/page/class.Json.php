@@ -55,6 +55,9 @@ class Json extends Page {
 				}
 				if( $rank>=7 ){
 					switch($_GET['f']){
+						case '0':
+							$field = "name";
+							break;
 						case '1':
 							$field = "email";
 							break;
