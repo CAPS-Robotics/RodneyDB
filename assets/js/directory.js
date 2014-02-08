@@ -49,6 +49,8 @@ $(".editable").click( function(){
                     thisObj.popover('show');
                     newVal = $(this).val();
                     $(this).replaceWith( $(this).val() );
+                } else {
+                    $(this).replaceWith( oldVal );
                 }
             }
         )
