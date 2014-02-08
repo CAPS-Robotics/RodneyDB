@@ -35,8 +35,8 @@ $(".editable").click( function(){
         $("input.form-control.edit").focus();
         $("input.edit").focusout(
             function(){
+                thisObj = $(this).parent();
                 if (oldVal !== $(this).val()) {
-                    thisObj = $(this).parent();
                     thisObj.popover({
                         placement: 'bottom',
                         html: 'true',
@@ -46,12 +46,10 @@ $(".editable").click( function(){
                     }).on('hide', function(){
                         btnDeny();
                     });
-                    thisObj.popover('show');
-                    newVal = $(this).val();
-                    $(this).replaceWith( $(this).val() );
-                } else {
-                    $(this).replaceWith( oldVal );
                 }
+                thisObj.popover('show');
+                newVal = $(this).val();
+                $(this).replaceWith( $(this).val() );
             }
         )
     }
