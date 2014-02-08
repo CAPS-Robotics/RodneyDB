@@ -34,20 +34,22 @@ $(".editable").click( function(){
         $(this).html('<input type="text" class="form-control edit input-sm" value="'+ $(this).text() +'" autocomplete="off">');
         $("input.form-control.edit").focus();
         $("input.edit").focusout(
-            function(){
-                thisObj = $(this).parent();
-                thisObj.popover({
-                    placement: 'bottom',
-                    html: 'true',
-                    trigger: 'manual',
-                    title: 'Confirm edit',
-                    content: '<div class="btn-group"><button type="button" class="btn btn-default ladda-button" data-style="slide-up" onclick="btnConfirm(this)"><span class="ladda-label">Yes</span></button><button type="button" class="btn btn-default ladda-button" data-style="slide-up" onclick="btnDeny()"><span class="ladda-label">No</span></button></div>'
-                }).on('hide', function(){
-                    btnDeny();
-                });
-                thisObj.popover('show');
-                newVal = $(this).val();
-                $(this).replaceWith( $(this).val() );
+            if ($(this).val() == $(this).attr('value')) {
+                function(){
+                    thisObj = $(this).parent();
+                    thisObj.popover({
+                        placement: 'bottom',
+                        html: 'true',
+                        trigger: 'manual',
+                        title: 'Confirm edit',
+                        content: '<div class="btn-group"><button type="button" class="btn btn-default ladda-button" data-style="slide-up" onclick="btnConfirm(this)"><span class="ladda-label">Yes</span></button><button type="button" class="btn btn-default ladda-button" data-style="slide-up" onclick="btnDeny()"><span class="ladda-label">No</span></button></div>'
+                    }).on('hide', function(){
+                        btnDeny();
+                    });
+                    thisObj.popover('show');
+                    newVal = $(this).val();
+                    $(this).replaceWith( $(this).val() );
+                }
             }
         )
     }
