@@ -42,8 +42,11 @@ abstract class Page {
 </div>
 <div class="collapse navbar-collapse">
 <ul class="nav navbar-nav">
-<li' . ($navTrigger === "home" ? ' class="active"' : '') . '><a href="?p=home">Home</a></li>
+<li' . ($navTrigger === "home" ? ' class="active"' : '') . '><a href="?p=home">Home</a></li><li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Directories <b class="caret"></b></a><ul class="dropdown-menu">
 ' . ($_SESSION['loggedIn'] ? '<li' . ($navTrigger === "directory" ? ' class="active"' : '') . '><a href="?p=directory">Team Directory</a></li>' : '') . '
+' . ($_SESSION['loggedIn'] && $core->getUser($_SESSION['email'])['rank'] >= 8 ? '<li' . ($navTrigger === "admindir" ? ' class="active"' : '') . '><a href="?p=admindir">Admin Directory</a></li>' : '') . '
+' . ($_SESSION['loggedIn'] && $core->getUser($_SESSION['email'])['rank'] >= 8 ? '<li' . ($navTrigger === "parentdir" ? ' class="active"' : '') . '><a href="?p=parentdir">Parent Directory</a></li>' : '') . '
+</ul>
 ' . ($_SESSION['loggedIn'] && $core->getUser($_SESSION['email'])['rank'] >= 9 ? '<li' . ($navTrigger === "checkin" ? ' class="active"' : '') . '><a href="?p=checkin">Check-In</a></li>' : '') . '
 ' . ($_SESSION['loggedIn'] && $core->getUser($_SESSION['email'])['rank'] >= 9 ? '<li' . ($navTrigger === "broadcast" ? ' class="active"' : '') . '><a href="?p=broadcast">Send Broadcast</a></li>' : '') . '
 </ul>

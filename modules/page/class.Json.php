@@ -53,7 +53,7 @@ class Json extends Page {
 					$rank = 0;
 					break;
 				}
-				if( $rank>=7 ){
+				if( $rank>7 ){
 					switch($_GET['f']){
 						case '0':
 							$field = "name";
@@ -69,6 +69,114 @@ class Json extends Page {
 							break;
 						case '4':
 							$field = "hours";
+							break;
+					}
+					switch( $core->getDB()->updateDB($_GET['d'], $field, $_GET['n']) ){
+						case 0:
+							$data = array(
+							    'code'=>'nothing'
+							);
+							break;
+						case 1:
+							$data = array(
+							    'code'=>'success'
+							);
+							break;
+						default:
+							$data = array(
+							    'code'=>'failure'
+							);
+							break;
+					}
+				}else{
+					$data = array(
+					    'code'=>'failure'
+					);
+				}
+				break;
+			case "edit2":
+				if(array_key_exists("email", $_SESSION)){
+					$rank=$core->getUser($_SESSION['email'])['rank'];
+				} else {
+					$data = array(
+					    'code'=>'failure'
+					);
+					$rank = 0;
+					break;
+				}
+				if( $rank>7 ){
+					switch($_GET['f']){
+						case '0':
+							$field = "name";
+							break;
+						case '1':
+							$field = "rank";
+							break;
+						case '2':
+							$field = "studentId";
+							break;
+						case '3':
+							$field = "school";
+							break;
+						case '4':
+							$field = "grade";
+							break;
+						case '5':
+							$field = "ethnicity";
+							break;
+						case '6':
+							$field = "frc";
+							break;
+						case '7':
+							$field = "ftc";
+							break;
+					}
+					switch( $core->getDB()->updateDB($_GET['d'], $field, $_GET['n']) ){
+						case 0:
+							$data = array(
+							    'code'=>'nothing'
+							);
+							break;
+						case 1:
+							$data = array(
+							    'code'=>'success'
+							);
+							break;
+						default:
+							$data = array(
+							    'code'=>'failure'
+							);
+							break;
+					}
+				}else{
+					$data = array(
+					    'code'=>'failure'
+					);
+				}
+				break;
+			case "edit3":
+				if(array_key_exists("email", $_SESSION)){
+					$rank=$core->getUser($_SESSION['email'])['rank'];
+				} else {
+					$data = array(
+					    'code'=>'failure'
+					);
+					$rank = 0;
+					break;
+				}
+				if( $rank>7 ){
+					switch($_GET['f']){
+						case '0':
+							$field = "name";
+							break;
+						case '1':
+							$field = "parentName";
+							break;
+						case '2':
+							$field = "parentEmail";
+							break;
+						case '3':
+							$field = "parentPhone";
 							break;
 					}
 					switch( $core->getDB()->updateDB($_GET['d'], $field, $_GET['n']) ){
