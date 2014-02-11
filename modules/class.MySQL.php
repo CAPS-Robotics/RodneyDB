@@ -30,5 +30,16 @@ class MySQL extends PDO{
         return $this->exec($query);
     }
 
+    public function checkUserExists($username){
+        $query = "SELECT COUNT(*) FROM `". DB_USER_TABLE ."` WHERE `name` LIKE \"". $username ."\"";
+        $res = $this->query($query);
+        return $res->fetchColumn();
+    }
+
+    public function addNewUser($name,$email,$phone,$parent,$paremail,$parphone){
+        $query = "INSERT INTO `". DB_USER_TABLE ."` SET `name`=\"".$name."\",`email`=\"".$email."\"" . (($parent!=null) ? ",`phone`=".$phone.",`parentName`=\"".$parent."\",`parentEmail`=\"".$paremail."\",`parentPhone`=".$parphone."" : "");
+        return $this->exec($query);
+    }
+
 }
 ?>
