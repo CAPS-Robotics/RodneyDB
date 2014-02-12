@@ -17,13 +17,17 @@ class ParentDirectoryPage extends Page {
 <div class="jumbotron">
 <h1>Team Directory</h1>
 <table class="table table-hover" style="text-align: left; font-size: medium;">
-<thead></tr><th>Name</th><th>Parent</th><th>Parent Email</th><th>Parent Phone</th></tr></thead>
+<thead></tr><th>Name</th>
+<th>Parent</th>
+<th>Parent Email</th>
+<th>Parent Phone</th></tr></thead>
 ' . self::getDirectoryTable($core->getUser($_SESSION['email'])['rank']) . '
 </table>
 </div>
 ';
         $script =
-'<script src="assets/js/parentdirectory.js"></script>';
+'<script src="assets/js/parentdirectory.js"></script>
+<script src="assets/js/reports.js"></script>';
         echo $content, $script;
     }
 

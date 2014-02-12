@@ -17,13 +17,21 @@ class AdminDirectoryPage extends Page {
 <div class="jumbotron">
 <h1>Team Directory</h1>
 <table class="table table-hover" style="text-align: left; font-size: medium;">
-<thead></tr><th>Name</th>'. ($core->getUser($_SESSION['email'])['rank'] == 10 ? '<th>Rank</th>' : '') .'<th>StudentID</th><th>School</th><th>Grade</th><th>Ethnicity</th><th>FRC</th><th>FTC</th></tr></thead>
+<thead></tr><th>Name</th>
+'. ($core->getUser($_SESSION['email'])['rank'] == 10 ? '<th>Rank</th>' : '') .'
+<th>StudentID</th>
+<th style="text-decoration:underline;cursor:progress" onclick="report(3,\'School\')">School</th>
+<th style="text-decoration:underline;cursor:progress" onclick="report(4,\'Grade\')">Grade</th>
+<th style="text-decoration:underline;cursor:progress" onclick="report(5,\'Ethnicity\')">Ethnicity</th>
+<th style="text-decoration:underline;cursor:progress" onclick="toggle(6)">FRC</th>
+<th style="text-decoration:underline;cursor:progress" onclick="toggle(7)">FTC</th></tr></thead><tbody>
 ' . self::getDirectoryTable($core->getUser($_SESSION['email'])['rank']) . '
-</table>
+</tbody></table>
 </div>
 ';
         $script =
-'<script src="assets/js/admindirectory.js"></script>';
+'<script src="assets/js/admindirectory.js"></script>
+<script src="assets/js/reports.js"></script>';
         echo $content, $script;
     }
 
