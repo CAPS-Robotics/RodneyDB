@@ -32,7 +32,7 @@ class AdminDirectoryPage extends Page {
         $tableStr = "";
         $teamArr = $core->fetchAllUsersNotMentors();
         foreach ($teamArr as $member) {
-            $tableStr .= "<tr id=\"". $member['id'] ."\"><td><span class='editable'>". ($member['rank'] == 5 ? "<a href='?p=confirm&id=" . $member['id'] . "' title='Confirm user'>" : "") . $member['name'] . ($member['rank'] == 5 ? "</a>" : "") . "</td>". ($core->getUser($_SESSION['email'])['rank'] == 10 ? "<td><span class='editable'>". $member['rank'] . "</td>" : "") ."<td><span class='editable'>" . $member['studentId'] . "</td><td><span class='editable'>". $member['school'] ."</td><td><span class='editable'>". $member['grade'] ."</td><td><span class='editable'>". $member['ethnicity'] ."</td><td><span class='editable'>". $member['frc'] ."</td><td><span class='editable'>". $member['ftc'] ."</td></tr>";
+            $tableStr .= "<tr id=\"". $member['id'] ."\"><td><span class='editable'>". ($member['rank'] == 5 ? "<a href='?p=confirm&id=" . $member['id'] . "' title='Confirm user'>" : "") . $member['name'] . ($member['rank'] == 5 ? "</a>" : "") . "</td>". ($core->getUser($_SESSION['email'])['rank'] == 10 ? "<td><span class='editable'>". $member['rank'] . "</td>" : "") ."<td><span class='editable'>" . $member['studentId'] . "</td><td><span class='editable'>". $member['school'] ."</td><td><span class='editable'>". $member['grade'] ."</td><td><span class='editable'>". $member['ethnicity'] ."</td><td><input type='checkbox' ". ( $member['frc'] ? 'checked' : '' ) ."></td><td><input type='checkbox' ". ( $member['ftc'] ? 'checked' : '' ) ."></td></tr>";
         }
         return $tableStr;
     }
