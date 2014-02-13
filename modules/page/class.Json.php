@@ -110,25 +110,25 @@ class Json extends Page {
 							$field = "name";
 							break;
 						case '1':
-							$field = "rank";
-							break;
-						case '2':
 							$field = "studentId";
 							break;
-						case '3':
+						case '2':
 							$field = "school";
 							break;
-						case '4':
+						case '3':
 							$field = "grade";
 							break;
-						case '5':
+						case '4':
 							$field = "ethnicity";
 							break;
-						case '6':
+						case '5':
 							$field = "frc";
 							break;
-						case '7':
+						case '6':
 							$field = "ftc";
+							break;
+						case '7':
+							$field = "rank";
 							break;
 					}
 					switch( $core->getDB()->updateDB($_GET['d'], $field, $_GET['n']) ){
