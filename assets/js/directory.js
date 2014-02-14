@@ -4,6 +4,7 @@ var thisObj = null;
 var timeout;
 var l;
 var working = false;
+var tabbed = false;
 
 function btnConfirm(btnThis){
     if(!working){
@@ -20,12 +21,14 @@ function btnConfirm(btnThis){
     }
 }
 
-function btnDeny(){
+function btnDeny(btnThis){
     if(thisObj != null){
         thisObj.popover('destroy');
         thisObj.html(oldVal);
         thisObj = null;
     }
+    if (tabbed)
+        $(this).parent().next().children('.editable').click();
 }
 
 $(".editable").click( function(){
@@ -35,8 +38,9 @@ $(".editable").click( function(){
         $("input.form-control.edit").focus();
         $("input.edit").on('focusout keypress',
             function(e){
-                console.log(e);
-                if (e.type === "focusout" || e.which === 13) {
+                if (e.type === "focusout" || e.which === 13 || e.which === 9) {
+                    if (e.which === 9)
+                        tabbed = true;
                     if (oldVal !== $(this).val()) {
                         thisObj = $(this).parent();
                         thisObj.popover({
@@ -44,9 +48,7 @@ $(".editable").click( function(){
                             html: 'true',
                             trigger: 'manual',
                             title: 'Confirm edit',
-                            content: '<div class="btn-group"><button type="button" class="btn btn-default ladda-button" data-style="slide-up" onclick="btnConfirm(this)"><span class="ladda-label">Yes</span></button><button type="button" class="btn btn-default ladda-button" data-style="slide-up" onclick="btnDeny()"><span class="ladda-label">No</span></button></div>'
-                        }).on('hide', function(){
-                            btnDeny();
+                            content: '<div class="btn-group"><button type="button" class="btn btn-default ladda-button" data-style="slide-up" onclick="btnConfirm(this)"><span class="ladda-label">Yes</span></button><button type="button" class="btn btn-default ladda-button" data-style="slide-up" onclick="btnDeny(this)"><span class="ladda-label">No</span></button></div>'
                         });
                         thisObj.popover('show');
                         newVal = $(this).val();
