@@ -35,6 +35,7 @@ $(".editable").click( function(){
         $("input.form-control.edit").focus();
         $("input.edit").on('focusout',
             function(e){
+                console.log(e);
                 if (oldVal !== $(this).val()) {
                     thisObj = $(this).parent();
                     thisObj.popover({
