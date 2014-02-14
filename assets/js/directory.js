@@ -29,6 +29,7 @@ function btnDeny(btnThis){
     }
     if (tabbed)
         $(this).parent().next().children('.editable').click();
+    tabbed = false;
 }
 
 $(".editable").click( function(){
@@ -53,6 +54,7 @@ $(".editable").click( function(){
                         thisObj.popover('show');
                         newVal = $(this).val();
                         $('[data-style=slide-up]:eq(0)').focus();
+                        tabbed = true;
                     }
                     $(this).replaceWith( $(this).val() );
                 }
