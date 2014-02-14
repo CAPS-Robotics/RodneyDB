@@ -4,7 +4,6 @@ var thisObj = null;
 var timeout;
 var l;
 var working = false;
-var tabbed = false;
 
 function btnConfirm(btnThis){
     if(!working){
@@ -27,9 +26,6 @@ function btnDeny(btnThis){
         thisObj.html(oldVal);
         thisObj = null;
     }
-    if (tabbed)
-        $(this).parent().next().children('.editable').click();
-    tabbed = false;
 }
 
 $(".editable").click( function(){
@@ -39,10 +35,7 @@ $(".editable").click( function(){
         $("input.form-control.edit").focus();
         $("input.edit").on('focusout keypress',
             function(e){
-                e.preventDefault();
-                if (e.type === "focusout" || e.which === 13 || e.which === 9) {
-                    if (e.which === 9)
-                        tabbed = true;
+                if (e.type === "focusout" || e.which === 13) {
                     if (oldVal !== $(this).val()) {
                         thisObj = $(this).parent();
                         thisObj.popover({
@@ -55,7 +48,6 @@ $(".editable").click( function(){
                         thisObj.popover('show');
                         newVal = $(this).val();
                         $('[data-style=slide-up]:eq(0)').focus();
-                        tabbed = true;
                     }
                     $(this).replaceWith( $(this).val() );
                 }
