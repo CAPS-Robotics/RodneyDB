@@ -15,15 +15,15 @@ class AdminDirectoryPage extends Page {
 </div>
 <div class="container" style="margin-top: 55px;">
 <div class="jumbotron">
-<h1>Team Directory</h1>
+<h1 style="text-decoration:underline;cursor:progress" onclick="countfrcftc(5,6)">Team Directory</h1>
 <table class="table table-hover" style="text-align: left; font-size: medium;">
 <thead></tr><th>Name</th>
 <th>StudentID</th>
-<th style="text-decoration:underline;cursor:progress" onclick="report(3,\'School\')">School</th>
-<th style="text-decoration:underline;cursor:progress" onclick="report(4,\'Grade\')">Grade</th>
-<th style="text-decoration:underline;cursor:progress" onclick="report(5,\'Ethnicity\')">Ethnicity</th>
-<th style="text-decoration:underline;cursor:progress" onclick="toggle(6)">FRC</th>
-<th style="text-decoration:underline;cursor:progress" onclick="toggle(7)">FTC</th>
+<th style="text-decoration:underline;cursor:progress" onclick="report(2,\'School\')">School</th>
+<th style="text-decoration:underline;cursor:progress" onclick="report(3,\'Grade\')">Grade</th>
+<th style="text-decoration:underline;cursor:progress" onclick="report(4,\'Ethnicity\')">Ethnicity</th>
+<th style="text-decoration:underline;cursor:progress" onclick="toggle(5)">FRC</th>
+<th style="text-decoration:underline;cursor:progress" onclick="toggle(6)">FTC</th>
 '. ($core->getUser($_SESSION['email'])['rank'] == 10 ? '<th>Rank</th>' : '') .'
 </tr></thead><tbody>
 ' . self::getDirectoryTable($core->getUser($_SESSION['email'])['rank']) . '
