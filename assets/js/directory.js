@@ -39,6 +39,7 @@ $(".editable").click( function(){
         $("input.form-control.edit").focus();
         $("input.edit").on('focusout keypress',
             function(e){
+                e.preventDefault();
                 if (e.type === "focusout" || e.which === 13 || e.which === 9) {
                     if (e.which === 9)
                         tabbed = true;
