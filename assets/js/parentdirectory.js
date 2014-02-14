@@ -33,23 +33,26 @@ $(".editable").click( function(){
         oldVal = $(this).text();
         $(this).html('<input type="text" class="form-control edit input-sm" value="'+ $(this).text() +'" autocomplete="off">');
         $("input.form-control.edit").focus();
-        $("input.edit").focusout(
-            function(){
-                if (oldVal !== $(this).val()) {
-                    thisObj = $(this).parent();
-                    thisObj.popover({
-                        placement: 'bottom',
-                        html: 'true',
-                        trigger: 'manual',
-                        title: 'Confirm edit',
-                        content: '<div class="btn-group"><button type="button" class="btn btn-default ladda-button" data-style="slide-up" onclick="btnConfirm(this)"><span class="ladda-label">Yes</span></button><button type="button" class="btn btn-default ladda-button" data-style="slide-up" onclick="btnDeny()"><span class="ladda-label">No</span></button></div>'
-                    }).on('hide', function(){
-                        btnDeny();
-                    });
-                    thisObj.popover('show');
-                    newVal = $(this).val();
+        $("input.edit").on('focusout keypress',
+            function(e){
+                if (e.type === "focusout" || e.which === 13) {
+                    if (oldVal !== $(this).val()) {
+                        thisObj = $(this).parent();
+                        thisObj.popover({
+                            placement: 'bottom',
+                            html: 'true',
+                            trigger: 'manual',
+                            title: 'Confirm edit',
+                            content: '<div class="btn-group"><button type="button" class="btn btn-default ladda-button" data-style="slide-up" onclick="btnConfirm(this)"><span class="ladda-label">Yes</span></button><button type="button" class="btn btn-default ladda-button" data-style="slide-up" onclick="btnDeny()"><span class="ladda-label">No</span></button></div>'
+                        }).on('hide', function(){
+                            btnDeny();
+                        });
+                        thisObj.popover('show');
+                        newVal = $(this).val();
+                        $('[data-style=slide-up]:eq(0)').focus();
+                    }
+                    $(this).replaceWith( $(this).val() );
                 }
-                $(this).replaceWith( $(this).val() );
             }
         )
     }
