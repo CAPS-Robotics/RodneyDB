@@ -33,7 +33,7 @@ $(".editable").click( function(){
         oldVal = $(this).text();
         $(this).html('<input type="text" class="form-control edit input-sm" value="'+ $(this).text() +'" autocomplete="off">');
         $("input.form-control.edit").focus();
-        $("input.edit").on('focusout',
+        $("input.edit").on('focusout keypress',
             function(e){
                 console.log(e);
                 if (oldVal !== $(this).val()) {
