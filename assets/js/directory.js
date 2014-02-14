@@ -33,8 +33,8 @@ $(".editable").click( function(){
         oldVal = $(this).text();
         $(this).html('<input type="text" class="form-control edit input-sm" value="'+ $(this).text() +'" autocomplete="off">');
         $("input.form-control.edit").focus();
-        $("input.edit").focusout(
-            function(){
+        $("input.edit").on('focusout',
+            function(e){
                 if (oldVal !== $(this).val()) {
                     thisObj = $(this).parent();
                     thisObj.popover({
