@@ -2,11 +2,13 @@ function report( fieldid, key ){
     data={};
 
     $('tbody tr').each( function(){
-        thisval = $(this).children('td:eq('+ fieldid +')').text();
-        if( typeof data[thisval] == "undefined" )
-            data[thisval] = 1;
-        else
-            data[thisval] += 1;
+        if( $(this).css("display") != "none" ){
+            thisval = $(this).children('td:eq('+ fieldid +')').text();
+            if( typeof data[thisval] == "undefined" )
+                data[thisval] = 1;
+            else
+                data[thisval] += 1;
+        }
     });
 
     table = '<table class="table-striped table-condensed" style="margin:0 auto"><tr><th>'+ key +'</th><th>Number</th></tr><tr>';
@@ -31,11 +33,20 @@ function countfrcftc( frcid, ftcid ){
     data = {frc:0,ftc:0};
 
     $('tbody tr').each( function(){
-        thisval = $(this).children('td:eq('+ fieldid +')').text();
-        if( typeof data[thisval] == "undefined" )
-            data[thisval] = 1;
-        else
-            data[thisval] += 1;
+        if( $(this).children('td:eq('+ frcid +')').children("input:eq(0)").prop("checked") )
+            data.frc += 1;
+        if( $(this).children('td:eq('+ ftcid +')').children("input:eq(0)").prop("checked") )
+            data.ftc += 1;
+    });
+
+    table = '<table class="table-striped table-condensed" style="margin:0 auto"><tr><th>FRC</th><th>FTC</th></tr><tr><td>'+ data.frc +'</td><td>'+ data.ftc +'</td></tr></table>';
+
+    modal = '<div class="modal fade" id="rmodal"><div class="modal-dialog"><div class="modal-content"><div class="modal-body" style="text-align:center">'+ table +'</div></div></div></div>';
+    $("body").append(modal);
+    $("#rmodal").modal("show");
+
+    $("#rmodal").on("hidden.bs.modal", function () {
+        $("#rmodal").remove();
     });
 }
 
