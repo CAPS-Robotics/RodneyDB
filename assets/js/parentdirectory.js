@@ -49,6 +49,7 @@ $(".editable").click( function(){
                         });
                         thisObj.popover('show');
                         newVal = $(this).val();
+                        $('[data-style=slide-up]:eq(0)').focus();
                     }
                     $(this).replaceWith( $(this).val() );
                 }
