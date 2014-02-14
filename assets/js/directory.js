@@ -50,7 +50,7 @@ $(".editable").click( function(){
                         });
                         thisObj.popover('show');
                         newVal = $(this).val();
-                        $('[onclick=btnConfirm(this)]').focus();
+                        $('[data-style=slide-up]:eq(0)').focus();
                     }
                     $(this).replaceWith( $(this).val() );
                 }
