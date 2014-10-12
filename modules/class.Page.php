@@ -2,8 +2,8 @@
 abstract class Page {
 
 	public $navTrigger;
+	public $mustache;
 	private $core;
-	private $mustache;
 
 	public function __construct($trigger, $CORE) {
 		global $navTrigger, $core, $mustache;

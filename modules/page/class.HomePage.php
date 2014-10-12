@@ -26,7 +26,7 @@ class HomePage extends Page {
 	}
 
 	public function render() {
-		$page = self::mustache->loadTemplate('home');
+		$page = $this->mustache->loadTemplate('home');
 		echo $page->render([
 			"loggedIn" => $_SESSION['loggedIn'],
 			"aboveMember" => $core->getUser($_SESSION['email'])['rank'] > 7,
