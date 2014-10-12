@@ -2,7 +2,7 @@
 // TODO: Lots of commenting
 // Load config and modules
 ob_start();
-require_once '';
+require_once "vendor/autoload.php";
 require_once "config.php";
 require_once "modules/class.Core.php";
 require_once "modules/class.MySQL.php";
