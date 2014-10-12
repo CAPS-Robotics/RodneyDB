@@ -41,8 +41,8 @@ class HomePage extends Page {
 		$page = $mustache->loadTemplate('home');
 		echo $page->render([
 			"loggedIn" => $_SESSION['loggedIn'],
-			"aboveMember" => $core->getUser($_SESSION['email'])['rank'] > 7,
-			"user" => $core->getUser($_SESSION['email']),
+			"aboveMember" => self::$core->getUser($_SESSION['email'])['rank'] > 7,
+			"user" => self::$core->getUser($_SESSION['email']),
 			"home" => "active"
 		]);
 	}
