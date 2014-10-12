@@ -26,7 +26,14 @@ class HomePage extends Page {
 	}
 
 	public function render() {
-		$page = $this->mustache->loadTemplate('home');
+
+		$mustache = new Mustache_Engine([
+			'cache' => dirname(__FILE__).'/tmp/cache/mustache',
+			'loader' => new Mustache_Loader_FilesystemLoader(__DIR__.'/../views'),
+			'partials_loader' => new Mustache_Loader_FilesystemLoader(__DIR__.'/../views/partials')
+		]);
+
+		$page = $mustache->loadTemplate('home');
 		echo $page->render([
 			"loggedIn" => $_SESSION['loggedIn'],
 			"aboveMember" => $core->getUser($_SESSION['email'])['rank'] > 7,

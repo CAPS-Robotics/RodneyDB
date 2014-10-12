@@ -2,18 +2,12 @@
 abstract class Page {
 
 	public $navTrigger;
-	public $mustache;
 	private $core;
 
 	public function __construct($trigger, $CORE) {
-		global $navTrigger, $core, $mustache;
+		global $navTrigger, $core;
 		$navTrigger = $trigger;
 		$core = $CORE;
-		$mustache = new Mustache_Engine([
-			'cache' => dirname(__FILE__).'/tmp/cache/mustache',
-			'loader' => new Mustache_Loader_FilesystemLoader(__DIR__.'/../views'),
-			'partials_loader' => new Mustache_Loader_FilesystemLoader(__DIR__.'/../views/partials')
-		]);
 	}
 
 	public function writePageStart($hideNav = false) {
