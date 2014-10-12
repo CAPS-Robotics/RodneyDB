@@ -1,0 +1,14 @@
+{
+    "name": "caps-robotics/rodney",
+    "description": "Team management system",
+    "require": {
+        "mustache/mustache": "~2.7"
+    },
+    "license": "Mozila Public License 2.0",
+    "authors": [
+        {
+            "name": "Dominic Tassio",
+            "email": "dmattt98@gmail.com"
+        }
+    ]
+}
