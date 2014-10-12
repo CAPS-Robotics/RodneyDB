@@ -86,8 +86,6 @@ abstract class Page {
 		echo $pageEnd;
 	}
 
-	abstract function render();
-
 	public function alert($level, $title, $text) {
 		echo '<div class="alert alert-' . $level . '" style="margin-top: -7px;"><strong>' . $title . '</strong> ' . $text . '</div>';
 	}
