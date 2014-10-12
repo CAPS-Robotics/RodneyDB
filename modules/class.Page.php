@@ -3,11 +3,17 @@ abstract class Page {
 
 	public $navTrigger;
 	private $core;
+	private $mustache;
 
 	public function __construct($trigger, $CORE) {
-		global $navTrigger, $core;
+		global $navTrigger, $core, $mustache;
 		$navTrigger = $trigger;
 		$core = $CORE;
+		$mustache = new Mustache_Engine([
+			'cache' => dirname(__FILE__).'/tmp/cache/mustache',
+			'loader' => new Mustache_Loader_FilesystemLoader(__DIR__.'/views'),
+			'partials_loader' => new Mustache_Loader_FilesystemLoader(__DIR__.'/views/partials')
+		]);
 	}
 
 	public function writePageStart($hideNav = false) {
@@ -79,6 +85,8 @@ abstract class Page {
 </html>';
 		echo $pageEnd;
 	}
+
+	abstract function render();
 
 	public function alert($level, $title, $text) {
 		echo '<div class="alert alert-' . $level . '" style="margin-top: -7px;"><strong>' . $title . '</strong> ' . $text . '</div>';

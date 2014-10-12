@@ -24,5 +24,15 @@ class HomePage extends Page {
 		self::writePageContent();
 		self::writePageEnd();
 	}
+
+	public function render() {
+		$page = self::mustache->loadTemplate('home');
+		echo $page->render([
+			"loggedIn" => $_SESSION['loggedIn'],
+			"aboveMember" => $core->getUser($_SESSION['email'])['rank'] > 7,
+			"user" => $core->getUser($_SESSION['email']),
+			"home" => "active"
+		]);
+	}
 }
 ?>

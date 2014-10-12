@@ -21,7 +21,7 @@ if (!array_key_exists("p", $_GET)) {
 	require_once "modules/page/class.HomePage.php";
 
 	$home = new HomePage("home", $core);
-	$home->writePage();
+	$home->render();
 	return;
 }
 
@@ -30,7 +30,7 @@ switch ($_GET['p']) {
 	case "home":
 		require_once "modules/page/class.HomePage.php";
 		$page = new HomePage("home", $core);
-		$page->writePage();
+		$page->render();
 		break;
 
 	case "login":
