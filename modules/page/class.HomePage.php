@@ -1,7 +1,12 @@
 <?php
 class HomePage extends Page {
-	public function __construct($trigger, $core) {
-		parent::__construct($trigger, $core);
+
+	private $core;
+
+	public function __construct($trigger, $CORE) {
+		global $core;
+		parent::__construct($trigger, $CORE);
+		$core = $CORE;
 	}
 
 	public function writePageContent() {
