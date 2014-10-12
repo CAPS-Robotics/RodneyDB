@@ -48,11 +48,6 @@
 								<li class="{{ checkin }}"><a href="?p=checkin">Check In/Out</a></li>
 								<li class="{{ broadcast }}"><a href="?p=broadcast">Broadcast</a></li>
 							{{/ aboveMember }}
-							<li class="{{ me }}"><a href="?p=me">{{ user.name }}</a></li>
-							<li><a href="?p=login">Sign Out <span class="glyphicon glyphicon-log-out"></span></a></li>
-						{{/ loggedIn }}
-						{{^ loggedIn }}
-							<li><a href="?P=login">Sign In <span class="glyphicon glyphicon-log-in"></span></a></li>
 						{{/ loggedIn }}
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
