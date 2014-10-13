@@ -34,7 +34,7 @@ class HomePage extends Page {
 		global $core;
 
 		$mustache = new Mustache_Engine([
-			'cache' => dirname(__FILE__).'/tmp/cache/mustache',
+			'cache' => __DIR__.'/../../tmp/cache/mustache',
 			'loader' => new Mustache_Loader_FilesystemLoader(__DIR__.'/../../views'),
 			'partials_loader' => new Mustache_Loader_FilesystemLoader(__DIR__.'/../../views/partials')
 		]);

@@ -2,13 +2,8 @@
 // TODO: Lots of commenting
 // Load config and modules
 ob_start();
-require_once "vendor/autoload.php";
-require_once "config.php";
-require_once "modules/class.Core.php";
-require_once "modules/class.MySQL.php";
-require_once "modules/class.Page.php";
-require_once "modules/class.Utils.php";
-require_once "modules/page/class.ErrorPage.php";
+require_once 'vendor/autoload.php';
+require_once 'config.php';
 
 // Get rid of annoying notices
 error_reporting(E_ALL ^ E_NOTICE);
@@ -28,7 +23,6 @@ if (!array_key_exists("p", $_GET)) {
 // Switch ?p= and do stuff for each page
 switch ($_GET['p']) {
 	case "home":
-		require_once "modules/page/class.HomePage.php";
 		$page = new HomePage("home", $core);
 		$page->render();
 		break;
@@ -40,8 +34,6 @@ switch ($_GET['p']) {
 			header("Location: ?p=home");
 		}
 		else {
-			require_once "modules/page/class.LoginPage.php";
-
 			$page = new LoginPage("login", $core);
 			$page->writePage();
 		}
@@ -49,8 +41,6 @@ switch ($_GET['p']) {
 		break;
 
 	case "json":
-		require_once "modules/page/class.Json.php";
-
 		$page = new Json("json", $core);
 		$page->writePage();
 
@@ -64,8 +54,6 @@ switch ($_GET['p']) {
 
 			break;
 		}
-
-		require_once "modules/page/class.UserPage.php";
 
 		$page = new UserPage("me", $core);
 		$page->writePage();
@@ -81,8 +69,6 @@ switch ($_GET['p']) {
 			break;
 		}
 
-		require_once "modules/page/class.DirectoryPage.php";
-
 		$page = new DirectoryPage("directory", $core);
 		$page->writePage();
 
@@ -96,8 +82,6 @@ switch ($_GET['p']) {
 
 			break;
 		}
-
-		require_once "modules/page/class.AdminDirectoryPage.php";
 
 		$page = new AdminDirectoryPage("admindir", $core);
 		$page->writePage();
@@ -113,7 +97,6 @@ switch ($_GET['p']) {
 			break;
 		}
 
-		require_once "modules/page/class.ParentDirectoryPage.php";
 		$page = new ParentDirectoryPage("parentdir", $core);
 		$page->writePage();
 
@@ -134,8 +117,6 @@ switch ($_GET['p']) {
 			break;
 		}
 
-		require_once "modules/page/class.DeletePage.php";
-
 		$page = new DeletePage("del", $core);
 		$page->writePage();
 
@@ -148,9 +129,6 @@ switch ($_GET['p']) {
 
 			break;
 		}
-
-		require_once "modules/page/class.CheckinPage.php";
-		require_once "modules/page/class.Ritterisms.php";
 
 		$page = new CheckinPage("checkin", $core);
 		$page->writePage();
@@ -165,8 +143,6 @@ switch ($_GET['p']) {
 			break;
 		}
 
-		require_once "modules/page/class.BroadcastPage.php";
-
 		$page = new BroadcastPage("broadcast", $core);
 		$page->writePage();
 
@@ -179,8 +155,6 @@ switch ($_GET['p']) {
 
 			break;
 		}
-
-		require_once "modules/page/class.ConfirmPage.php";
 
 		$page = new ConfirmPage("confirm", $core);
 		$page->writePage();

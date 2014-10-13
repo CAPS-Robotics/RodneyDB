@@ -1,8 +1,17 @@
+nav {
+	-webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+       -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
 .jumbotron {
 	margin-top: 15px;
 	padding: 40px 15px;
 	padding-top: 10px;
 	text-align: center;
+	-webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+       -moz-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 #alertbox {
 	display: block;

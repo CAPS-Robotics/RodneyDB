@@ -4,6 +4,11 @@
     "require": {
         "mustache/mustache": "~2.7"
     },
+    "autoload": {
+        "classmap": [
+            "modules"
+        ]
+    },
     "license": "Mozila Public License 2.0",
     "authors": [
         {
