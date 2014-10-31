@@ -202,6 +202,18 @@ class Json extends Page {
 					);
 				}
 				break;
+			case 'checkoutAll':
+				$users = getAllLoggedIn();
+				if(count($users) > 0) {
+					foreach ($users as $user) {
+						doCheckin($user['studentId']);		
+					}	
+				} else {
+					$data = array(
+						'code' => 'failure'
+					);
+				}
+				break;
 			default:
 				$data = array(
 				    'code'=>'false'
@@ -223,6 +235,12 @@ class Json extends Page {
 		else {
 			return true;
 		}
+	}
+
+	public function getAllLoggedIn() {
+		global $core;
+		$users = $core->getDB()->getArray("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `lastHourLog` > 0");
+		return $users;	
 	}
 
 	public function doCheckin($studentId) {
