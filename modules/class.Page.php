@@ -46,7 +46,7 @@ if (!$hideNav):
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="?p=home">Rodney <span class="label label-primary">&#x3B2;</span></a>
+				<a class="navbar-brand" href="?p=home">Rodney <span class="label label-primary">2.2</span></a>
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
@@ -105,24 +105,6 @@ if (!$hideNav):
 
 	<script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/stat.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.1.5/trianglify.min.js"></script>
-	<script>
-	function triangl(opacity) {
-		var opacity = opacity || 0.7;
-
-		var t = new Trianglify({
-			fillOpacity: opacity,
-			x_gradient: ["#4d4d4d","#999999","#e0e0e0","#e0e0e0","#999999","#4d4d4d"],
-			y_gradient: ["#4d4d4d","#999999","#e0e0e0","#e0e0e0","#999999","#4d4d4d"]
-		});
-
-		var pattern = t.generate(document.body.clientWidth, document.body.clientHeight);
-		document.body.setAttribute('style', 'background-image: ' + pattern.dataUrl);
-	}
-
-	triangl();
-	</script>
 </body>
 </html>
 

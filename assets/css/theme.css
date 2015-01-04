@@ -1,11 +1,11 @@
 body {
 	padding-top: 50px;
 	background: #24282E;
-	/* background: url(../img/wallpaper2.jpg);
+	background: url(../img/wallpaper2.jpg);
 	background-position: center;
 	background-attachment: fixed;
 	background-size: cover;
-	background-repeat: no-repeat; */
+	background-repeat: no-repeat;
 }
 html, body{
 	height: 100%;
