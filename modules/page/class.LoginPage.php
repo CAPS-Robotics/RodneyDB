@@ -27,8 +27,8 @@ class LoginPage extends Page {
 			</div>
 		</div>
 		<div class="btn-group btn-group-justified" style="margin-top: 10px;">
-			<a class="btn btn-lg btn-primary btn-block" onClick="document.forms[\'loginForm\'].submit();" id="loginButton">Sign in</a>
-			<a class="btn btn-lg btn-primary btn-block" data-toggle="collapse" data-target="#registerForm" onClick="$(\'#loginButton\').html(\'Create account\'); $(\'#toggleRegister\').hide();" id="toggleRegister">Create account</a>
+			<button type="submit" class="btn btn-lg btn-primary btn-block" onclick="document.forms[\'loginForm\'].submit();" id="loginButton">Sign in</button>
+			<button type="button" class="btn btn-lg btn-primary btn-block" data-toggle="collapse" data-target="#registerForm" onclick="$('#loginButton').html('Create account'); $('#toggleRegister').hide();" id="toggleRegister">Create account</button>
 		</div>
 	</form>
 </div>
