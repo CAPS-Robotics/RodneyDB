@@ -109,8 +109,8 @@ if (!$hideNav):
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.1.5/trianglify.min.js"></script>
 	<script>
 	var t = new Trianglify({
-		x_gradient: ["#d1e5f0", "#92c5de", "#2166ac", "#bababa", "#878787", "#1a1a1a"],
-		y_gradient: ["#d1e5f0", "#92c5de", "#2166ac", "#bababa", "#878787", "#1a1a1a"]
+		x_gradient: ["#4d4d4d","#999999","#e0e0e0","#ffffff","#e0e0e0","#999999","#4d4d4d"],
+		y_gradient: ["#4d4d4d","#999999","#e0e0e0","#ffffff","#e0e0e0","#999999","#4d4d4d"]
 	});
 	var pattern = t.generate(document.body.clientWidth, document.body.clientHeight);
 	document.body.setAttribute('style', 'background-image: ' + pattern.dataUrl);
