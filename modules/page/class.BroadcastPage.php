@@ -7,28 +7,33 @@ class BroadcastPage extends Page {
 
 	public function writePageContent() {
         global $core;
-		$content = 
-'
+
+?>
+
 <script>
 window.onload = function () {
 	$("#messageHolder").keyup(function() {
 		var charsLeft = (160 - $(this).val().length);
-		$("#charCount").html("<span class=\'label label-" + (charsLeft < 25 ? (charsLeft <= 0 ? "danger" : "warning") : "success") + "\'>" + charsLeft + "</span>");'
-		.($core->getUser($_SESSION['email'])['rank'] >= 10 ? '' : 'if(charsLeft < 0){$("#sendBtn").prop("disabled",true);}else{$("#sendBtn").prop("disabled",false);}').
-'	});
+		$("#charCount").html("<span class=\'label label-" + (charsLeft < 25 ? (charsLeft <= 0 ? "danger" : "warning") : "success") + "\'>" + charsLeft + "</span>");
+		<?php ($core->getUser($_SESSION['email'])['rank'] >= 10 ? '' : 'if(charsLeft < 0){$("#sendBtn").prop("disabled",true);}else{$("#sendBtn").prop("disabled",false);}'); ?>
+	});
 };
 </script>
+
 <div class="jumbotron" style="font-size: medium;">
-<h1>Broadcast</h1>
-This form will send a SMS message to all members with the receive texts option.
-<form method="POST">
-<textarea class="form-control" rows="3" id="messageHolder" name="message" placeholder="Message (160 Character limit)"></textarea>
-<span style="margin-top: -30px; z-index: 1; position: relative; float: left; opacity: 0.7;" id="charCount"><span class="label label-success">160</span></span>
-<button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-bottom: 20px;" id="sendBtn">Send</button>
-</form>
+	<h1>Broadcast</h1>
+	This form will send a SMS message to all members with the receive texts option.
+	<form method="POST">
+		<textarea class="form-control" rows="3" id="messageHolder" name="message" placeholder="Message (160 Character limit)"></textarea>
+		<span style="margin-top: -30px; z-index: 1; position: relative; float: left; opacity: 0.7;" id="charCount">
+			<span class="label label-success">160</span>
+		</span>
+		<button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-bottom: 20px;" id="sendBtn">Send</button>
+	</form>
 </div>
-';
-		echo $content;
+
+<?php
+
 	}
 
 	public function writePage() {
