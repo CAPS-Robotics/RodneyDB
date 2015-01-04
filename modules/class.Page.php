@@ -108,12 +108,20 @@ if (!$hideNav):
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.1.5/trianglify.min.js"></script>
 	<script>
-	var t = new Trianglify({
-		x_gradient: ["#4d4d4d","#999999","#e0e0e0","#e0e0e0","#999999","#4d4d4d"],
-		y_gradient: ["#4d4d4d","#999999","#e0e0e0","#e0e0e0","#999999","#4d4d4d"]
-	});
-	var pattern = t.generate(document.body.clientWidth, document.body.clientHeight);
-	document.body.setAttribute('style', 'background-image: ' + pattern.dataUrl);
+	function triangl(opacity) {
+		var opacity = opacity || 0.7;
+
+		var t = new Trianglify({
+			fillOpacity: opacity,
+			x_gradient: ["#4d4d4d","#999999","#e0e0e0","#e0e0e0","#999999","#4d4d4d"],
+			y_gradient: ["#4d4d4d","#999999","#e0e0e0","#e0e0e0","#999999","#4d4d4d"]
+		});
+
+		var pattern = t.generate(document.body.clientWidth, document.body.clientHeight);
+		document.body.setAttribute('style', 'background-image: ' + pattern.dataUrl);
+	}
+
+	triangl();
 	</script>
 </body>
 </html>
