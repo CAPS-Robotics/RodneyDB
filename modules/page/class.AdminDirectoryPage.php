@@ -10,6 +10,7 @@ class AdminDirectoryPage extends Page {
 
 ?>
 
+</div>
 <div class="container" style="position: relative;">
     <div id="alertbox"></div>
 </div>
