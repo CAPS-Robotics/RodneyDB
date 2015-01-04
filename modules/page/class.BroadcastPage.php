@@ -15,7 +15,7 @@ window.onload = function () {
 	$("#messageHolder").keyup(function() {
 		var charsLeft = (160 - $(this).val().length);
 		$("#charCount").html("<span class=\'label label-" + (charsLeft < 25 ? (charsLeft <= 0 ? "danger" : "warning") : "success") + "\'>" + charsLeft + "</span>");
-		<?php ($core->getUser($_SESSION['email'])['rank'] >= 10 ? '' : 'if(charsLeft < 0){$("#sendBtn").prop("disabled",true);}else{$("#sendBtn").prop("disabled",false);}'); ?>
+		<?php echo ($core->getUser($_SESSION['email'])['rank'] >= 10 ? '' : 'if(charsLeft < 0){$("#sendBtn").prop("disabled",true);}else{$("#sendBtn").prop("disabled",false);}'); ?>
 	});
 };
 </script>

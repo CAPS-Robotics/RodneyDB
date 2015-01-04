@@ -24,7 +24,7 @@ class DirectoryPage extends Page {
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone Number</th>
-                        <?php ($core->getUser($_SESSION['email'])['rank']> 7 ? '<th>Student ID</th><th>Hours</th>' . ($core->getUser($_SESSION['email'])['rank']>= 10 ? '<th>Delete</th>' : '') : '') . '</tr></thead>
+                        <?php echo ($core->getUser($_SESSION['email'])['rank']> 7 ? '<th>Student ID</th><th>Hours</th>' . ($core->getUser($_SESSION['email'])['rank']>= 10 ? '<th>Delete</th>' : '') : '') . '</tr></thead>
 ' . self::getDirectoryTable($core->getUser($_SESSION['email'])['rank']); ?>
             </table>
         </div>

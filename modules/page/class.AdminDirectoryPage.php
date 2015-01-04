@@ -28,11 +28,11 @@ class AdminDirectoryPage extends Page {
                     <th style="text-decoration:underline;cursor:progress" onclick="report(4,\'Ethnicity\')">Ethnicity</th>
                     <th style="text-decoration:underline;cursor:progress" onclick="toggle(5)">FRC</th>
                     <th style="text-decoration:underline;cursor:progress" onclick="toggle(6)">FTC</th>
-                    <?php ($core->getUser($_SESSION['email'])['rank'] == 10 ? '<th>Rank</th>' : ''); ?>
+                    <?php echo ($core->getUser($_SESSION['email'])['rank'] == 10 ? '<th>Rank</th>' : ''); ?>
                 </tr>
             </thead>
             <tbody>
-                <?php self::getDirectoryTable($core->getUser($_SESSION['email'])['rank']); ?>
+                <?php echo self::getDirectoryTable($core->getUser($_SESSION['email'])['rank']); ?>
             </tbody>
         </table>
     </div>

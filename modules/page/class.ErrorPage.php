@@ -13,14 +13,16 @@ class ErrorPage extends Page {
 
 	public function writePageContent() {
 		global $error, $details; 
-		$content = 
-'
+
+?>
+
 <div class="jumbotron">
-<h1>Error - ' . $error . '</h1>
-' . $details . '
+<h1>Error - <?php echo $error; ?></h1>
+	<?php echo $details; ?>
 </div>
-';
-		echo $content;
+
+<?php
+
 	}
 
 	public function writePage() {

@@ -11,7 +11,7 @@ class ConfirmPage extends Page {
 
 <div class="jumbotron" style="font-size: medium;">
 	<h1>Confirm Account</h1>
-	Are you sure you want to confirm <?php $core->getUserFromId($_GET['id'])['name']; ?>'s account?
+	Are you sure you want to confirm <?php echo $core->getUserFromId($_GET['id'])['name']; ?>'s account?
 	<div class="btn-group btn-group-justified">
 		<a class="btn btn-lg btn-success btn-block" href="?p=confirm&id=<?php $_GET['id']?>&conf">Yes</a>
 		<a class="btn btn-lg btn-danger btn-block" href="?p=directory">No</a>
