@@ -26,8 +26,8 @@ Receive Texts
 </div>
 </div>
 <div class="btn-group btn-group-justified" style="margin-top: 10px;">
-<a class="btn btn-lg btn-primary btn-block" href="javascript: document.forms[\'loginForm\'].submit();" id="loginButton">Sign in</a>
-<a class="btn btn-lg btn-primary btn-block" data-toggle="collapse" data-target="#registerForm" href="javascript: $(\'#loginButton\').html(\'Create account\'); $(\'#toggleRegister\').hide();" id="toggleRegister">Create account</a>
+<a class="btn btn-lg btn-primary btn-block" onClick="document.forms[\'loginForm\'].submit();" id="loginButton">Sign in</a>
+<a class="btn btn-lg btn-primary btn-block" data-toggle="collapse" data-target="#registerForm" onClick="$(\'#loginButton\').html(\'Create account\'); $(\'#toggleRegister\').hide();" id="toggleRegister">Create account</a>
 </div>
 </form>
 </div>
