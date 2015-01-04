@@ -52,8 +52,8 @@ if (!$hideNav):
 				<ul class="nav navbar-nav">
 					<li <?php if ($navTrigger === "home"): ?>class="active"<?php endif; ?>><a href="?p=home">Home</a></li>
 					<?php if ($_SESSION['loggedIn']): ?>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle <?php if (in_array($navTrigger, ['directory', 'admindir', 'parentdir'])): ?>active<?php endif; ?>" data-toggle="dropdown">Directories <b class="caret"></b></a>
+						<li class="dropdown <?php if (in_array($navTrigger, ['directory', 'admindir', 'parentdir'])): ?>active<?php endif; ?>">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Directories <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li <?php if ($navTrigger === "directory"): ?>class="active"<?php endif; ?>><a href="?p=directory">Team Directory</a></li>
 								<?php if ($core->getUser($_SESSION['email'])['rank'] >= 8): ?>
