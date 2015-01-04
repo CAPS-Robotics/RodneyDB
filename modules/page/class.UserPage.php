@@ -53,7 +53,7 @@ class UserPage extends Page {
 							Receive Texts
 							<input type="checkbox" name="texting"<?php echo ($core->getUser($_SESSION['email'])['text'] == 1 ? " checked" : ""); ?>>
 						</span>
-						<input class="form-control input-lg" type="text" name="phoneNum" placeholder="Phone number" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-top-right-radius: 0;" value="' . Utils::formatPhoneNum($core->getUser($_SESSION['email'])['phone']) . '">
+						<input class="form-control input-lg" type="text" name="phoneNum" placeholder="Phone number" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-top-right-radius: 0;" value="<?php echo Utils::formatPhoneNum($core->getUser($_SESSION['email'])['phone']); ?>">
 					</div>
 					<input class="form-control input-lg" type="text" name="studentId" placeholder="Student ID" style="border-top-left-radius: 0; border-top-right-radius: 0;" value="<?php echo $core->getUser($_SESSION['email'])['studentId']; ?>">
 					<button type="submit" class="btn btn-primary btn-xs">Update details</button>
