@@ -7,24 +7,34 @@ class DirectoryPage extends Page {
 
     public function writePageContent() {
         global $core;
-        $content = 
-'
+
+?>
+
 </div>
-<div class="container" style="position: relative;">
-<div id="alertbox"></div>
+    <div class="container" style="position: relative;">
+        <div id="alertbox"></div>
+    </div>
+
+    <div class="container" style="margin-top: 55px;">
+        <div class="jumbotron">
+            <h1>Team Directory</h1>
+            <table class="table table-hover" style="text-align: left; font-size: medium;">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <?php ($core->getUser($_SESSION['email'])['rank']> 7 ? '<th>Student ID</th><th>Hours</th>' . ($core->getUser($_SESSION['email'])['rank']>= 10 ? '<th>Delete</th>' : '') : '') . '</tr></thead>
+' . self::getDirectoryTable($core->getUser($_SESSION['email'])['rank']); ?>
+            </table>
+        </div>
+    </div>
 </div>
-<div class="container" style="margin-top: 55px;">
-<div class="jumbotron">
-<h1>Team Directory</h1>
-<table class="table table-hover" style="text-align: left; font-size: medium;">
-<thead></tr><th>Name</th><th>Email</th><th>Phone Number</th>' . ($core->getUser($_SESSION['email'])['rank']> 7 ? '<th>Student ID</th><th>Hours</th>' . ($core->getUser($_SESSION['email'])['rank']>= 10 ? '<th>Delete</th>' : '') : '') . '</tr></thead>
-' . self::getDirectoryTable($core->getUser($_SESSION['email'])['rank']) . '
-</table>
-</div>
-';
-        $script =
-'<script src="assets/js/directory.js"></script>';
-        echo $content, $script;
+
+<script src="assets/js/directory.js"></script>
+
+<?php
+
     }
 
     public function getDirectoryTable($rank) {
