@@ -47,7 +47,7 @@ class UserPage extends Page {
 			<div class="panel panel-info">
 				<div class="panel-heading">Contact Details</div>
 				<form method="POST" style="padding: 10px 10px 10px 10px;">
-					<input class="form-control input-lg" type="text" name="email" placeholder="Email" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;" value="' . $core->getUser($_SESSION['email'])['email'] . '">
+					<input class="form-control input-lg" type="text" name="email" placeholder="Email" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;" value="<?php echo $core->getUser($_SESSION['email'])['email']; ?>">
 					<div class="input-group">
 						<span class="input-group-addon" style="border-top-left-radius: 0;">
 							Receive Texts
@@ -55,7 +55,7 @@ class UserPage extends Page {
 						</span>
 						<input class="form-control input-lg" type="text" name="phoneNum" placeholder="Phone number" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-top-right-radius: 0;" value="' . Utils::formatPhoneNum($core->getUser($_SESSION['email'])['phone']) . '">
 					</div>
-					<input class="form-control input-lg" type="text" name="studentId" placeholder="Student ID" style="border-top-left-radius: 0; border-top-right-radius: 0;" value="' . $core->getUser($_SESSION['email'])['studentId'] . '">
+					<input class="form-control input-lg" type="text" name="studentId" placeholder="Student ID" style="border-top-left-radius: 0; border-top-right-radius: 0;" value="<?php echo $core->getUser($_SESSION['email'])['studentId']; ?>">
 					<button type="submit" class="btn btn-primary btn-xs">Update details</button>
 				</form>
 			</div>
