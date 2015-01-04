@@ -12,52 +12,75 @@ abstract class Page {
 
 	public function writePageStart($hideNav = false) {
 		global $navTrigger, $core;
-		$pageStart = 
-'<!DOCTYPE html>
+
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" href="assets/ico/favicon.png">
-<title>Rodney</title>
-<script src="assets/js/jquery-1.11.0.min.js"></script>
-<script src="assets/js/size-fix.js"></script>
-<script src="assets/js/spin.min.js"></script>
-<script src="assets/js/ladda.min.js"></script>
-<script src="assets/js/countdown.min.js"></script>
-<link href="assets/css/yeti.min.css" rel="stylesheet">
-<link href="assets/css/ladda-themeless.min.css" rel="stylesheet">
-<link href="assets/css/theme.css" rel="stylesheet">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="assets/ico/favicon.png">
+	<title>Rodney</title>
+	<script src="assets/js/jquery-1.11.0.min.js"></script>
+	<script src="assets/js/size-fix.js"></script>
+	<script src="assets/js/spin.min.js"></script>
+	<script src="assets/js/ladda.min.js"></script>
+	<script src="assets/js/countdown.min.js"></script>
+	<link href="assets/css/yeti.min.css" rel="stylesheet">
+	<link href="assets/css/ladda-themeless.min.css" rel="stylesheet">
+	<link href="assets/css/theme.css" rel="stylesheet">
 </head>
 <body>
-'.(!$hideNav ? '<div class="navbar navbar-default navbar-fixed-top">
-<div class="container">
-<div class="navbar-header">
-<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-</button>
-<a class="navbar-brand" href="?p=home">Rodney <span class="label label-primary">&#x3B2</span></a>
-</div>
-<div class="collapse navbar-collapse">
-<ul class="nav navbar-nav">
-<li' . ($navTrigger === "home" ? ' class="active"' : '') . '><a href="?p=home">Home</a></li>
-' . ($_SESSION['loggedIn'] ? '<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Directories <b class="caret"></b></a><ul class="dropdown-menu">
-<li' . ($navTrigger === "directory" ? ' class="active"' : '') . '><a href="?p=directory">Team Directory</a></li>
-' . ($core->getUser($_SESSION['email'])['rank'] >= 8 ? '<li' . ($navTrigger === "admindir" ? ' class="active"' : '') . '><a href="?p=admindir">Admin Directory</a></li>' : '') . '
-' . ($core->getUser($_SESSION['email'])['rank'] >= 8 ? '<li' . ($navTrigger === "parentdir" ? ' class="active"' : '') . '><a href="?p=parentdir">Parent Directory</a></li>' : '') . '
-</ul>' : '' ) . '
-' . ($_SESSION['loggedIn'] && $core->getUser($_SESSION['email'])['rank'] >= 9 ? '<li' . ($navTrigger === "checkin" ? ' class="active"' : '') . '><a href="?p=checkin">Check-In</a></li>' : '') . '
-' . ($_SESSION['loggedIn'] && $core->getUser($_SESSION['email'])['rank'] >= 9 ? '<li' . ($navTrigger === "broadcast" ? ' class="active"' : '') . '><a href="?p=broadcast">Send Broadcast</a></li>' : '') . '
-</ul>
-' . ($_SESSION['loggedIn'] ? '<p class="navbar-text pull-right">Signed in as <a href="?p=me" class="navbar-link">' . $core->getUser($_SESSION['email'])['name'] . '</a> | <a href="?p=login" class="navbar-link">Sign out <i class="glyphicon glyphicon-log-out"></i></a></p>' : '<p class="navbar-text pull-right"><a href="?p=login" class="navbar-link">Sign in <i class="glyphicon glyphicon-log-in"></i></a></p>') . '
-</div>
-</div>
-</div>': '').'
-<div id="wrap">
-<div class="container">';
-		echo $pageStart;
+<?php
+
+if (!$hideNav) {
+
+?>
+
+	<div class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="?p=home">Rodney <span class="label label-primary">&#x3B2;</span></a>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li <?php if ($navTrigger === "home"): ?>class="active"<?php endif; ?>><a href="?p=home">Home</a></li>
+					<?php if ($_SESSION['loggedIn']): ?>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Directories <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li <?php if ($navTrigger === "directory"): ?>class="active"<?php endif; ?>><a href="?p=directory">Team Directory</a></li>
+								<?php if ($core->getUser($_SESSION['email'])['rank'] >= 8): ?>
+									<li <?php if ($navTrigger === "admindir"): ?>class="active"<?php endif; ?>><a href="?p=admindir">Admin Directory</a></li>
+									<li <?php if ($navTrigger === "parentdir"): ?>class="active"<?php endif; ?>><a href="?p=parentdir">Parent Directory</a></li>
+								<?php endif; ?>
+							</ul>
+						</li>
+					<?php endif; ?>
+					<?php if ($_SESSION['loggedIn'] && $core->getUser($_SESSION['email'])['rank'] >= 9): ?>
+						<li <?php if ($navTrigger === "checkin"): ?>class="active"<?php endif; ?>><a href="?p=checkin">Check-In</a></li>
+						<li <?php if ($navTrigger === "broadcast"): ?>class="active"<?php endif; ?>><a href="?p=broadcast">Send Broadcast</a></li>
+					<?php endif; ?>
+				</ul>
+				<?php if ($_SESSION['loggedIn']): ?>
+					<p class="navbar-text pull-right">Signed in as <a href="?p=me" class="navbar-link"><?php echo $core->getUser($_SESSION['email'])['name']; ?></a> | <a href="?p=login" class="navbar-link">Sign out <i class="glyphicon glyphicon-log-out"></i></a></p>
+				<?php else: ?>
+					<p class="navbar-text pull-right"><a href="?p=login" class="navbar-link">Sign in <i class="glyphicon glyphicon-log-in"></i></a></p>
+				<?php endif; ?>
+			</div>
+		</div>
+	</div>
+	<div id="wrap">
+		<div class="container">
+
+<?php
+
 	}
 
 	abstract function writePageContent();
@@ -65,19 +88,32 @@ abstract class Page {
 	abstract function writePage();
 
 	public function writePageEnd() {
-		$pageEnd = 
-'</div>
-</div>
-<div id="footer">
-<div class="container" id="creditContainer">
-<p class="credit">Rodney 2.1 developed by Tony Ma, Doc Tassio, Thomas Gorham, and Wes Caldwell for <a href="http://mmr2410.com/">FRC Team 2410</a></p>
-</div>
-</div>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/stat.js"></script>
+
+?>
+
+		</div>
+	</div>
+
+	<div id="footer">
+		<div class="container" id="creditContainer">
+			<p class="credit">Rodney 2.2 developed by Tony Ma, Dominic Tassio, Thomas Gorham, and Wes Caldwell for <a href="http://mmr2410.com/">FRC Team 2410</a></p>
+		</div>
+	</div>
+
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/stat.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.1.5/trianglify.min.js"></script>
+	<script>
+	var t = new Trianglify();
+	var pattern = t.generate(document.body.clientWidth, document.body.clientHeight);
+	document.body.setAttribute('style', 'background-image: ' + pattern.dataUrl);
+	</script>
 </body>
-</html>';
-		echo $pageEnd;
+</html>
+
+<?php
+
 	}
 
 	public function alert($level, $title, $text) {
