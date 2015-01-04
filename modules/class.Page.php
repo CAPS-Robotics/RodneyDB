@@ -34,7 +34,7 @@ abstract class Page {
 <body>
 <?php
 
-if (!$hideNav) {
+if (!$hideNav):
 
 ?>
 
@@ -76,6 +76,9 @@ if (!$hideNav) {
 			</div>
 		</div>
 	</div>
+
+<?php endif; ?>
+
 	<div id="wrap">
 		<div class="container">
 
