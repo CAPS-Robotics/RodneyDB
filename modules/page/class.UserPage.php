@@ -7,77 +7,86 @@ class UserPage extends Page {
 
 	public function writePageContent() {
 		global $core;
-		$content = 
-'<div class="jumbotron" style="text-align: left; font-size: medium;">
-<h1>' . $core->getUser($_SESSION['email'])['name'] . '<a href="?p=me' . (array_key_exists("edit", $_GET) ? "" : "&edit") . '" class="btn btn-primary btn-xs" style="float: right;">' . (array_key_exists("edit", $_GET) ? "Done" : "Edit account") . '</a></h1>
-<div class="row">
-<div class="col-md-4">
-<div class="panel panel-info">
-<div class="panel-heading">Information</div>
-<ul class="list-group" style="line-height: 1;">
-<li class="list-group-item">
-<span class="badge">' . $core->getUser($_SESSION['email'])['hours'] . '</span>
-Hours
-</li>
-<li class="list-group-item">
-<span class="badge">' . Utils::getRankName($core->getUser($_SESSION['email'])['rank']) . '</span>
-Rank
-</li>
-</ul>
-</div>
-</div>
-<div class="col-md-8">';
+
+?>
+
+<div class="jumbotron" style="text-align: left; font-size: medium;">
+	<h1>
+		<?php echo $core->getUser($_SESSION['email'])['name']?>
+		<a href="?p=me<?php echo (array_key_exists("edit", $_GET) ? "" : "&edit")?>" class="btn btn-primary btn-xs" style="float: right;">
+			<?php echo (array_key_exists("edit", $_GET) ? "Done" : "Edit account"); ?>
+		</a>
+	</h1>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="panel panel-info">
+				<div class="panel-heading">Information</div>
+				<ul class="list-group" style="line-height: 1;">
+					<li class="list-group-item">
+						<span class="badge"><?php echo $core->getUser($_SESSION['email'])['hours']; ?></span> Hours
+					</li>
+					<li class="list-group-item">
+						<span class="badge"><?php echo Utils::getRankName($core->getUser($_SESSION['email'])['rank']); ?></span> Rank
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-8">
+<?php 
 		if (array_key_exists("edit", $_GET)) {
-			$content .= 
-'<div class="panel panel-info">
-<div class="panel-heading">Change Password</div>
-<form method="POST" style="padding: 10px 10px 10px 10px;">
-<input class="form-control input-lg" type="password" name="oldPassword" placeholder="Current password" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
-<input class="form-control input-lg" type="password" name="newPassword" placeholder="New password" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-top-right-radius: 0;">
-<input class="form-control input-lg" type="password" name="checkNewPassword" placeholder="Confirm new password" style="border-top-left-radius: 0; border-top-right-radius: 0;">
-<button type="submit" class="btn btn-primary btn-xs">Change password</button>
-</form>
-</div>
-<div class="panel panel-info">
-<div class="panel-heading">Contact Details</div>
-<form method="POST" style="padding: 10px 10px 10px 10px;">
-<input class="form-control input-lg" type="text" name="email" placeholder="Email" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;" value="' . $core->getUser($_SESSION['email'])['email'] . '">
-<div class="input-group">
-<span class="input-group-addon" style="border-top-left-radius: 0;">
-Receive Texts
-<input type="checkbox" name="texting"' . ($core->getUser($_SESSION['email'])['text'] == 1 ? " checked" : "") . '>
-</span>
-<input class="form-control input-lg" type="text" name="phoneNum" placeholder="Phone number" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-top-right-radius: 0;" value="' . Utils::formatPhoneNum($core->getUser($_SESSION['email'])['phone']) . '">
-</div>
-<input class="form-control input-lg" type="text" name="studentId" placeholder="Student ID" style="border-top-left-radius: 0; border-top-right-radius: 0;" value="' . $core->getUser($_SESSION['email'])['studentId'] . '">
-<button type="submit" class="btn btn-primary btn-xs">Update details</button>
-</form>
-</div>';
+?>
+			<div class="panel panel-info">
+				<div class="panel-heading">Change Password</div>
+				<form method="POST" style="padding: 10px 10px 10px 10px;">
+					<input class="form-control input-lg" type="password" name="oldPassword" placeholder="Current password" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
+					<input class="form-control input-lg" type="password" name="newPassword" placeholder="New password" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-top-right-radius: 0;">
+					<input class="form-control input-lg" type="password" name="checkNewPassword" placeholder="Confirm new password" style="border-top-left-radius: 0; border-top-right-radius: 0;">
+					<button type="submit" class="btn btn-primary btn-xs">Change password</button>
+				</form>
+			</div>
+			<div class="panel panel-info">
+				<div class="panel-heading">Contact Details</div>
+				<form method="POST" style="padding: 10px 10px 10px 10px;">
+					<input class="form-control input-lg" type="text" name="email" placeholder="Email" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;" value="' . $core->getUser($_SESSION['email'])['email'] . '">
+					<div class="input-group">
+						<span class="input-group-addon" style="border-top-left-radius: 0;">
+							Receive Texts
+							<input type="checkbox" name="texting"<?php echo ($core->getUser($_SESSION['email'])['text'] == 1 ? " checked" : ""); ?>>
+						</span>
+						<input class="form-control input-lg" type="text" name="phoneNum" placeholder="Phone number" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-top-right-radius: 0;" value="' . Utils::formatPhoneNum($core->getUser($_SESSION['email'])['phone']) . '">
+					</div>
+					<input class="form-control input-lg" type="text" name="studentId" placeholder="Student ID" style="border-top-left-radius: 0; border-top-right-radius: 0;" value="' . $core->getUser($_SESSION['email'])['studentId'] . '">
+					<button type="submit" class="btn btn-primary btn-xs">Update details</button>
+				</form>
+			</div>
+<?php
+		} else {
+?> 
+
+			<div class="panel panel-info">
+				<div class="panel-heading">Contact Details</div>
+				<ul class="list-group" style="line-height: 1;">
+					<li class="list-group-item">
+						<span class="badge"><?php echo $core->getUser($_SESSION['email'])['email']; ?></span> Email address
+					</li>
+					<li class="list-group-item">
+						<span class="badge"><?php echo Utils::formatPhoneNum($core->getUser($_SESSION['email'])['phone']); ?></span> Phone number
+					</li>
+					<li class="list-group-item">
+						<span class="badge"><?php echo $core->getUser($_SESSION['email'])['studentId']; ?></span> Student ID
+					</li>
+				</ul>
+			</div>
+
+<?php
 		}
-		else {
-			$content .= 
-'<div class="panel panel-info">
-<div class="panel-heading">Contact Details</div>
-<ul class="list-group" style="line-height: 1;">
-<li class="list-group-item">
-<span class="badge">' . $core->getUser($_SESSION['email'])['email'] . '</span>
-Email address
-</li>
-<li class="list-group-item">
-<span class="badge">' . Utils::formatPhoneNum($core->getUser($_SESSION['email'])['phone']) . '</span>
-Phone number
-</li>
-<li class="list-group-item">
-<span class="badge">' . $core->getUser($_SESSION['email'])['studentId'] . '</span>
-Student ID
-</li>
-</ul>
-</div>';
-		}
-		$content .= 
-'</div>
+?>
+
+		</div>
+	</div>
 </div>
-</div>';
+
+<?php
 		echo $content;
 	}
 
