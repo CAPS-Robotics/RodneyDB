@@ -29,7 +29,7 @@ class CheckinPage extends Page {
 	</div>
 
 	<div class="jumbotron" style="font-size: medium;padding-bottom: 10px;">
-		<div id="countdown"></div>
+		<div id="clock"></div>
 	</div>
 </div>
 

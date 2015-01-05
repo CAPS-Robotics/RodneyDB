@@ -51,7 +51,15 @@ $(document).ready(function(){
             $("#checkin").click();
         }
     });
-    var timerId =countdown(new Date(2014, 10, 31, 20),function(ts) {
-        $('#countdown').text(ts.toString()+' left');
-    },countdown.DAYS|countdown.HOURS|countdown.MINUTES|countdown.SECONDS);
+    var FlipClockCss = document.createElement("link");
+    FlipClockCss.rel = "stylesheet";
+    FlipClockCss.href = "assets/css/flipclock.css";
+    document.head.appendChild(FlipClockCss);
+    var clock = $('#clock').FlipClock({
+        autostart: false,
+        countdown: true,
+        clockFace: 'DailyCounter'
+    });
+    clock.setTime(new Date(2015, 2, 17));
+    clock.start();
 });
