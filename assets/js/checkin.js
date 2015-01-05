@@ -60,6 +60,7 @@ $(document).ready(function(){
         countdown: true,
         clockFace: 'DailyCounter'
     });
-    clock.setTime(new Date(2015, 2, 17));
+    var millisecondsUntil = new Date(2015, 2, 17).getTime() - Date.UTC();
+    clock.setTime(millisecondsUntil);
     clock.start();
 });
