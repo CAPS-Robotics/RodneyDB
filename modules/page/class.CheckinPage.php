@@ -14,6 +14,7 @@ class CheckinPage extends Page {
 
 </div>
 <script src="assets/js/checkin.js"></script>
+<script src="assets/js/flipclock.min.js"></script>
 <div class="container" style="position: relative;">
 	<div id="alertbox"></div>
 </div>
