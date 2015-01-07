@@ -51,5 +51,5 @@ $(document).ready(function(){
             $("#checkin").click();
         }
     });
-    $('#clock').text(countdown(new Date(2015, 2, 17)).tostring());
+    $('#clock').text(countdown(new Date(2015, 2, 17)).toString());
 });
