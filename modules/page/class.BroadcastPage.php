@@ -55,7 +55,7 @@ $({
 	public function writePage() {
 		if (array_key_exists("number", $_POST)) {
 			$url = 'http://api.tropo.com/1.0/sessions?action=create&token=' . TROPO_MESSAGE_TOKEN . '&numbers=' . $_POST['number'] . '&msg=' . $_POST['message'];
-			$xml = simplexml_load_file($url) or echo "Error! Tropo API not responding.";
+			$xml = simplexml_load_file($url);
 			if ((string)$xml->success === "true") {
 				echo "Success! Test message sent to your number.";
 			} else {
