@@ -41,7 +41,7 @@ $(function() {
 		<span style="margin-top: -30px; z-index: 1; position: relative; float: left; opacity: 0.7;" id="charCount">
 			<span class="label label-success">160</span>
 		</span>
-		<div>
+		<div class="btn-group">
 			<button type="submit" class="btn btn-lg btn-primary col-md-9 col-xs-12">Send</button>
 			<button id="sendTestButton" class="btn btn-lg btn-default col-md-3 col-xs-12">Test</button>
 		</div>
