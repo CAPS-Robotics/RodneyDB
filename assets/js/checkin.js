@@ -51,16 +51,5 @@ $(document).ready(function(){
             $("#checkin").click();
         }
     });
-    var FlipClockCss = document.createElement("link");
-    FlipClockCss.rel = "stylesheet";
-    FlipClockCss.href = "assets/css/flipclock.css";
-    document.head.appendChild(FlipClockCss);
-    var clock = $('#clock').FlipClock({
-        autostart: false,
-        countdown: true,
-        clockFace: 'DailyCounter'
-    });
-    var millisecondsUntil = new Date(2015, 2, 17).getTime() - Date.UTC();
-    clock.setTime(millisecondsUntil);
-    clock.start();
+    $('#clock').text(countdown(new Date(2015, 2, 17)).tostring());
 });
