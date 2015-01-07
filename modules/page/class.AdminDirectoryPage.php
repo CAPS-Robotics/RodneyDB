@@ -7,33 +7,42 @@ class AdminDirectoryPage extends Page {
 
     public function writePageContent() {
         global $core;
-        $content = 
-'
+
+?>
+
 </div>
 <div class="container" style="position: relative;">
-<div id="alertbox"></div>
+    <div id="alertbox"></div>
 </div>
+
 <div class="container" style="margin-top: 55px;">
-<div class="jumbotron">
-<h1 style="text-decoration:underline;cursor:progress" onclick="countfrcftc(5,6)">Team Directory</h1>
-<table class="table table-hover" style="text-align: left; font-size: medium;">
-<thead></tr><th>Name</th>
-<th>StudentID</th>
-<th style="text-decoration:underline;cursor:progress" onclick="report(2,\'School\')">School</th>
-<th style="text-decoration:underline;cursor:progress" onclick="report(3,\'Grade\')">Grade</th>
-<th style="text-decoration:underline;cursor:progress" onclick="report(4,\'Ethnicity\')">Ethnicity</th>
-<th style="text-decoration:underline;cursor:progress" onclick="toggle(5)">FRC</th>
-<th style="text-decoration:underline;cursor:progress" onclick="toggle(6)">FTC</th>
-'. ($core->getUser($_SESSION['email'])['rank'] == 10 ? '<th>Rank</th>' : '') .'
-</tr></thead><tbody>
-' . self::getDirectoryTable($core->getUser($_SESSION['email'])['rank']) . '
-</tbody></table>
+    <div class="jumbotron">
+        <h1 style="text-decoration:underline;cursor:progress" onclick="countfrcftc(5,6)">Team Directory</h1>
+        <table class="table table-hover" style="text-align: left; font-size: medium;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>StudentID</th>
+                    <th style="text-decoration:underline;cursor:progress" onclick="report(2,\'School\')">School</th>
+                    <th style="text-decoration:underline;cursor:progress" onclick="report(3,\'Grade\')">Grade</th>
+                    <th style="text-decoration:underline;cursor:progress" onclick="report(4,\'Ethnicity\')">Ethnicity</th>
+                    <th style="text-decoration:underline;cursor:progress" onclick="toggle(5)">FRC</th>
+                    <th style="text-decoration:underline;cursor:progress" onclick="toggle(6)">FTC</th>
+                    <?php echo ($core->getUser($_SESSION['email'])['rank'] == 10 ? '<th>Rank</th>' : ''); ?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php echo self::getDirectoryTable($core->getUser($_SESSION['email'])['rank']); ?>
+            </tbody>
+        </table>
+    </div>
 </div>
-';
-        $script =
-'<script src="assets/js/admindirectory.js"></script>
-<script src="assets/js/reports.js"></script>';
-        echo $content, $script;
+    
+<script src="assets/js/admindirectory.js"></script>
+<script src="assets/js/reports.js"></script>
+
+<?php
+
     }
 
     public function getDirectoryTable($rank) {

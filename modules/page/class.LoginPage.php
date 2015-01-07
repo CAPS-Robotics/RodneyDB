@@ -6,33 +6,35 @@ class LoginPage extends Page {
 	}
 
 	public function writePageContent() {
-		$content = 
-'
+
+?>
+
 <div class="jumbotron">
-<h1>Sign in</h1>
-<form method="POST" id="loginForm">
-<input class="form-control input-lg" type="text" name="email" placeholder="Email" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
-<input class="form-control input-lg" type="password" name="password" onkeydown="if (event.keyCode == 13) document.forms[\'loginForm\'].submit();" placeholder="Password" style="border-top-left-radius: 0; border-top-right-radius: 0;">
-<div id="registerForm" class="panel-collapse collapse" style="margin-top: 10px;">
-<input class="form-control input-lg" type="password" name="checkPassword" placeholder="Confirm password" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
-<input class="form-control input-lg" type="text" name="name" placeholder="Full name" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-top-right-radius: 0;">
-<input class="form-control input-lg" type="text" name="studentId" placeholder="Student ID" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-top-right-radius: 0;">
-<div class="input-group" style="margin-top: -1px;">
-<span class="input-group-addon" style="border-top-left-radius: 0;">
-Receive Texts
-<input type="checkbox" name="texting">
-</span>
-<input class="form-control input-lg" type="text" name="phoneNum" placeholder="Phone number (xxx-xxx-xxxx)" maxlength="12" style="border-top-right-radius: 0;">
+	<h1>Sign in</h1>
+	<form method="POST" id="loginForm">
+		<input class="form-control input-lg" type="text" name="email" placeholder="Email" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
+		<input class="form-control input-lg" type="password" name="password" onkeydown="if (event.keyCode == 13) document.forms[\'loginForm\'].submit();" placeholder="Password" style="border-top-left-radius: 0; border-top-right-radius: 0;">
+		<div id="registerForm" class="panel-collapse collapse" style="margin-top: 10px;">
+			<input class="form-control input-lg" type="password" name="checkPassword" placeholder="Confirm password" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
+			<input class="form-control input-lg" type="text" name="name" placeholder="Full name" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-top-right-radius: 0;">
+			<input class="form-control input-lg" type="text" name="studentId" placeholder="Student ID" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-top-right-radius: 0;">
+			<div class="input-group" style="margin-top: -1px;">
+				<span class="input-group-addon" style="border-top-left-radius: 0;">
+					Receive Texts
+					<input type="checkbox" name="texting">
+				</span>
+				<input class="form-control input-lg" type="text" name="phoneNum" placeholder="Phone number (xxx-xxx-xxxx)" maxlength="12" style="border-top-right-radius: 0;">
+			</div>
+		</div>
+		<div class="btn-group btn-group-justified" style="margin-top: 10px;">
+			<a href="#" type="submit" class="btn btn-lg btn-primary" onclick="document.forms['loginForm'].submit();" id="loginButton">Sign in</a>
+			<a href="#" type="button" class="btn btn-lg btn-primary" data-toggle="collapse" data-target="#registerForm" onclick="$('#loginButton').html('Create account'); $('#toggleRegister').hide();" id="toggleRegister">Create account</a>
+		</div>
+	</form>
 </div>
-</div>
-<div class="btn-group btn-group-justified" style="margin-top: 10px;">
-<a class="btn btn-lg btn-primary btn-block" onClick="document.forms[\'loginForm\'].submit();" id="loginButton">Sign in</a>
-<a class="btn btn-lg btn-primary btn-block" data-toggle="collapse" data-target="#registerForm" onClick="$(\'#loginButton\').html(\'Create account\'); $(\'#toggleRegister\').hide();" id="toggleRegister">Create account</a>
-</div>
-</form>
-</div>
-';
-		echo $content;
+
+<?php
+
 	}
 
 	public function writePage() {
