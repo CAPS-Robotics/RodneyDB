@@ -25,7 +25,9 @@ $({
 			data: {
 				message: $("#messageHolder").val(),
 				number: "<?php echo $core->getUser($_SESSION['email'])['phone']; ?>"
-			},
+			}
+		}).done(function(data) {
+			alert()
 		});
 	});
 });
@@ -53,7 +55,12 @@ $({
 	public function writePage() {
 		if (array_key_exists("number", $_POST)) {
 			$url = 'http://api.tropo.com/1.0/sessions?action=create&token=' . TROPO_MESSAGE_TOKEN . '&numbers=' . $_POST['number'] . '&msg=' . $_POST['message'];
-			$xml = simplexml_load_file($url);
+			$xml = simplexml_load_file($url) or echo "Error! Tropo API not responding.";
+			if ((string)$xml->success === "true") {
+				echo "Success! Test message sent to your number.";
+			} else {
+				echo "Error! There was a problem with Tropo.";
+			}
 			return;
 		}
 		self::writePageStart();
