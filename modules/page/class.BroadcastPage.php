@@ -27,7 +27,7 @@ $(function() {
 				number: "<?php echo $core->getUser($_SESSION['email'])['phone']; ?>"
 			}
 		}).done(function(data) {
-			alert()
+			alert(data);
 		});
 	});
 });
@@ -41,9 +41,9 @@ $(function() {
 		<span style="margin-top: -30px; z-index: 1; position: relative; float: left; opacity: 0.7;" id="charCount">
 			<span class="label label-success">160</span>
 		</span>
-		<div class="btn-group btn-group-justified">
-			<a href="#" class="btn btn-lg btn-primary" onclick="document.forms['sendForm'].submit();">Send To All</a>
-			<a href="#" id="sendTestButton" class="btn btn-lg btn-default">Send Test to Self</a>
+		<div class="row">
+			<button type="submit" class="btn btn-lg btn-primary col-md-9 col-xs-12">Send</button>
+			<button id="sendTestButton" class="btn btn-lg btn-default col-md-3 col-xs-12">Test</button>
 		</div>
 	</form>
 </div>
@@ -54,7 +54,7 @@ $(function() {
 
 	public function writePage() {
 		if (array_key_exists("number", $_POST)) {
-			$url = 'http://api.tropo.com/1.0/sessions?action=create&token=' . TROPO_MESSAGE_TOKEN . '&numbers=' . $_POST['number'] . '&msg=' . $_POST['message'];
+			$url = 'http://api.tropo.com/1.0/sessions?action=create&token=' . TROPO_MESSAGE_TOKEN . '&numbers=' . $_POST['number'] . '&msg=' . urlencode($_POST['message']);
 			$xml = simplexml_load_file($url);
 			if ((string)$xml->success === "true") {
 				echo "Success! Test message sent to your number.";
@@ -65,7 +65,7 @@ $(function() {
 		}
 		self::writePageStart();
 		if (array_key_exists("message", $_POST)) {
-			$url = 'http://api.tropo.com/1.0/sessions?action=create&token=' . TROPO_MESSAGE_TOKEN . '&numbers=' . $this->getFormattedNumbers() . '&msg=' . $_POST['message'];
+			$url = 'http://api.tropo.com/1.0/sessions?action=create&token=' . TROPO_MESSAGE_TOKEN . '&numbers=' . $this->getFormattedNumbers() . '&msg=' . urlencode($_POST['message']);
   			$xml = simplexml_load_file($url) or $this->alert("danger", "Error!", "Tropo API not responding.");
   			if ((string)$xml->success === "true") {
   				$this->alert("success", "Yay!", "Message broadcasted to all members.");
