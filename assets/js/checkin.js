@@ -53,5 +53,5 @@ $(document).ready(function(){
     });
     var timer = countdown(new Date(2015, 2, 17), function(ts) {
         document.getElementById('clock').innerHTML = ts.toString();
-    }, countdown.HOURS | countdown.MINUTES | countdown.SECONDS);
+    }, countdown.DAYS | countdown.HOURS | countdown.MINUTES | countdown.SECONDS);
 });
