@@ -11,7 +11,7 @@ class BroadcastPage extends Page {
 ?>
 
 <script>
-$({
+$(function() {
 	$("#messageHolder").keyup(function() {
 		var charsLeft = (160 - $(this).val().length);
 		$("#charCount").html("<span class=\'label label-" + (charsLeft < 25 ? (charsLeft <= 0 ? "danger" : "warning") : "success") + "\'>" + charsLeft + "</span>");
