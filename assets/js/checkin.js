@@ -51,5 +51,7 @@ $(document).ready(function(){
             $("#checkin").click();
         }
     });
-    $('#clock').text(countdown(new Date(2015, 2, 17)).toString());
+    var timer = countdown(new Date(2015, 2, 17), function(ts) {
+        document.getElementById('clock').innerHTML = ts.toString();
+    }, countdown.HOURS | countdown.MINUTES | countdown.SECONDS);
 });
