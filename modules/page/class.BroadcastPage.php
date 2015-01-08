@@ -65,7 +65,7 @@ $(function() {
 		}
 		self::writePageStart();
 		if (array_key_exists("message", $_POST)) {
-			$url = 'http://api.tropo.com/1.0/sessions?action=create&token=' . TROPO_MESSAGE_TOKEN . '&numbers=' . $this->getFormattedNumbers() . '&msg=' . urlencode($_POST['message']);
+			$url = 'http://api.tropo.com/1.0/sessions?action=create&token=' . TROPO_MESSAGE_TOKEN . '&numbers=' . urlencode($this->getFormattedNumbers()) . '&msg=' . urlencode($_POST['message']);
   			$xml = simplexml_load_file($url) or $this->alert("danger", "Error!", "Tropo API not responding.");
   			if ((string)$xml->success === "true") {
   				$this->alert("success", "Yay!", "Message broadcasted to all members.");
