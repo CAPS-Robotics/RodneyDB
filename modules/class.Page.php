@@ -30,7 +30,6 @@ abstract class Page {
 	<link href="assets/css/yeti.min.css" rel="stylesheet">
 	<link href="assets/css/ladda-themeless.min.css" rel="stylesheet">
 	<link href="assets/css/theme.css" rel="stylesheet">
-	<link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64" href="http://rodney.mmr2410.com/favicon.ico">
 </head>
 <body>
 <?php
