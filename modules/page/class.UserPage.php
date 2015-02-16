@@ -44,8 +44,8 @@ class UserPage extends Page {
 					<button type="submit" class="btn btn-primary btn-xs">Change password</button>
 				</form>
 			</div>
-			<form method="POST" style="padding: 10px 10px 10px 10px;">
-				<div class="panel panel-primary">
+			<div class="panel panel-primary">
+				<form method="POST" style="padding: 10px 10px 10px 10px;">
 					<div class="panel-heading">Contact Details</div>
 					<input class="form-control input-lg" type="text" name="email" placeholder="Email" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;" value="<?php echo $core->getUser($_SESSION['email'])['email']; ?>">
 					<div class="input-group">
@@ -57,15 +57,13 @@ class UserPage extends Page {
 					</div>
 					<input class="form-control input-lg" type="text" name="studentId" placeholder="Student ID" style="border-top-left-radius: 0; border-top-right-radius: 0;" value="<?php echo $core->getUser($_SESSION['email'])['studentId']; ?>">
 					<button type="submit" class="btn btn-primary btn-xs">Update details</button>
-				</div>
-				<div class="panel panel-primary">
 					<div class="panel-heading">Parent Contact Details</div>
 					<input class="form-control input-lg" type="text" name="parentName" placeholder="Parent Name" style="border-top-left-radius: 0; border-top-right-radius: 0;" value="<?php echo $core->getUser($_SESSION['email'])['parentName']; ?>">
 					<input class="form-control input-lg" type="text" name="parentEmail" placeholder="Parent Email" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;" value="<?php echo $core->getUser($_SESSION['email'])['parentEmail']; ?>">
 					<input class="form-control input-lg" type="text" name="parentPhone" placeholder="Parent Phone Number" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-top-right-radius: 0;" value="<?php echo Utils::formatPhoneNum($core->getUser($_SESSION['email'])['parentPhone']); ?>">
 					<button type="submit" class="btn btn-primary btn-xs">Update details</button>
-				</div>
-			</form>
+				</form>
+			</div>
 <?php
 		} else {
 ?> 
@@ -111,9 +109,10 @@ class UserPage extends Page {
 		echo $content;
 	}
 
-	public function updateContactDetails($email, $formattedPhoneNum, $studentId, $texting, $parentName, $parentEmail, $parentPhone) {
+	public function updateContactDetails($email, $formattedPhoneNum, $studentId, $texting, $parentName, $parentEmail, $formattedParentPhone) {
 		global $core;
 		$phoneNum = str_replace("-", "", $formattedPhoneNum);
+		$parentPhone = str_replace("-", "", $formattedParentPhone);
 		if (!is_numeric($studentId)) {
 			self::alert("danger", "Error!", "Student ID is invalid!");
 			return false;
