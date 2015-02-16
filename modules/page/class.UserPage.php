@@ -19,7 +19,7 @@ class UserPage extends Page {
 	</h1>
 	<div class="row">
 		<div class="col-md-4">
-			<div class="panel panel-info">
+			<div class="panel panel-primary">
 				<div class="panel-heading">Information</div>
 				<ul class="list-group" style="line-height: 1;">
 					<li class="list-group-item">
@@ -35,7 +35,7 @@ class UserPage extends Page {
 <?php 
 		if (array_key_exists("edit", $_GET)) {
 ?>
-			<div class="panel panel-info">
+			<div class="panel panel-primary">
 				<div class="panel-heading">Change Password</div>
 				<form method="POST" style="padding: 10px 10px 10px 10px;">
 					<input class="form-control input-lg" type="password" name="oldPassword" placeholder="Current password" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
@@ -44,7 +44,7 @@ class UserPage extends Page {
 					<button type="submit" class="btn btn-primary btn-xs">Change password</button>
 				</form>
 			</div>
-			<div class="panel panel-info">
+			<div class="panel panel-primary">
 				<div class="panel-heading">Contact Details</div>
 				<form method="POST" style="padding: 10px 10px 10px 10px;">
 					<input class="form-control input-lg" type="text" name="email" placeholder="Email" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;" value="<?php echo $core->getUser($_SESSION['email'])['email']; ?>">
@@ -63,7 +63,7 @@ class UserPage extends Page {
 		} else {
 ?> 
 
-			<div class="panel panel-info">
+			<div class="panel panel-primary">
 				<div class="panel-heading">Contact Details</div>
 				<ul class="list-group" style="line-height: 1;">
 					<li class="list-group-item">
