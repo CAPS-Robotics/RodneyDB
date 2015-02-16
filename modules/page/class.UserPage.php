@@ -19,7 +19,7 @@ class UserPage extends Page {
 	</h1>
 	<div class="row">
 		<div class="col-md-4">
-			<div class="panel panel-info">
+			<div class="panel panel-primary">
 				<div class="panel-heading">Information</div>
 				<ul class="list-group" style="line-height: 1;">
 					<li class="list-group-item">
@@ -35,7 +35,7 @@ class UserPage extends Page {
 <?php 
 		if (array_key_exists("edit", $_GET)) {
 ?>
-			<div class="panel panel-info">
+			<div class="panel panel-primary">
 				<div class="panel-heading">Change Password</div>
 				<form method="POST" style="padding: 10px 10px 10px 10px;">
 					<input class="form-control input-lg" type="password" name="oldPassword" placeholder="Current password" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;">
@@ -44,7 +44,7 @@ class UserPage extends Page {
 					<button type="submit" class="btn btn-primary btn-xs">Change password</button>
 				</form>
 			</div>
-			<div class="panel panel-info">
+			<div class="panel panel-primary">
 				<div class="panel-heading">Contact Details</div>
 				<form method="POST" style="padding: 10px 10px 10px 10px;">
 					<input class="form-control input-lg" type="text" name="email" placeholder="Email" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;" value="<?php echo $core->getUser($_SESSION['email'])['email']; ?>">
@@ -59,21 +59,44 @@ class UserPage extends Page {
 					<button type="submit" class="btn btn-primary btn-xs">Update details</button>
 				</form>
 			</div>
+			<div class="panel panel-primary">
+				<div class="panel-heading">Parent Contact Details</div>
+				<form method="POST" style="padding: 10px 10px 10px 10px;">
+					<input class="form-control input-lg" type="text" name="studentId" placeholder="Name" style="border-top-left-radius: 0; border-top-right-radius: 0;" value="<?php echo $core->getUser($_SESSION['email'])['parentName']; ?>">
+					<input class="form-control input-lg" type="text" name="email" placeholder="Email" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;" value="<?php echo $core->getUser($_SESSION['email'])['parentEmail']; ?>">
+					<input class="form-control input-lg" type="text" name="phoneNum" placeholder="Phone Number" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-top-right-radius: 0;" value="<?php echo Utils::formatPhoneNum($core->getUser($_SESSION['email'])['parentPhone']); ?>">
+					<button type="submit" class="btn btn-primary btn-xs">Update details</button>
+				</form>
+			</div>
 <?php
 		} else {
 ?> 
 
-			<div class="panel panel-info">
+			<div class="panel panel-primary">
 				<div class="panel-heading">Contact Details</div>
 				<ul class="list-group" style="line-height: 1;">
 					<li class="list-group-item">
-						<span class="badge"><?php echo $core->getUser($_SESSION['email'])['email']; ?></span> Email address
+						<span class="badge"><?php echo $core->getUser($_SESSION['email'])['email']; ?></span> Email Address
 					</li>
 					<li class="list-group-item">
-						<span class="badge"><?php echo Utils::formatPhoneNum($core->getUser($_SESSION['email'])['phone']); ?></span> Phone number
+						<span class="badge"><?php echo Utils::formatPhoneNum($core->getUser($_SESSION['email'])['phone']); ?></span> Phone Number
 					</li>
 					<li class="list-group-item">
 						<span class="badge"><?php echo $core->getUser($_SESSION['email'])['studentId']; ?></span> Student ID
+					</li>
+				</ul>
+			</div>
+			<div class="panel panel-primary">
+				<div class="panel-heading">Parent Contact Details</div>
+				<ul class="list-group" style="line-height: 1;">	
+					<li class="list-group-item">
+						<span class="badge"><?php echo $core->getUser($_SESSION['email'])['parentName']; ?></span> Parent Name
+					</li>
+					<li class="list-group-item">
+						<span class="badge"><?php echo $core->getUser($_SESSION['email'])['parentEmail']; ?></span> Parent Email Address
+					</li>
+					<li class="list-group-item">
+						<span class="badge"><?php echo Utils::formatPhoneNum($core->getUser($_SESSION['email'])['parentPhone']); ?></span> Parent Phone Number
 					</li>
 				</ul>
 			</div>
@@ -90,7 +113,7 @@ class UserPage extends Page {
 		echo $content;
 	}
 
-	public function updateContactDetails($email, $formattedPhoneNum, $studentId, $texting) {
+	public function updateContactDetails($email, $formattedPhoneNum, $studentId, $texting, $parentName, $parentEmail, $parentPhone) {
 		global $core;
 		$phoneNum = str_replace("-", "", $formattedPhoneNum);
 		if (!is_numeric($studentId)) {
@@ -98,6 +121,10 @@ class UserPage extends Page {
 			return false;
 		}
 		if (!is_numeric($phoneNum) || strlen($phoneNum) != 10) {
+			self::alert("danger", "Error!", "Phone number is invalid!");
+			return false;
+		}
+		if (!is_numeric($parentPhone) || strlen($parentPhone) != 10) {
 			self::alert("danger", "Error!", "Phone number is invalid!");
 			return false;
 		}
@@ -113,7 +140,7 @@ class UserPage extends Page {
 			self::alert('danger', 'Error!', "Phone number is already registered to another user!");
 			return false;
 		}
-		$core->updateContactDetails($email, $phoneNum, ($texting === "on" ? 1 : 0), $studentId, $core->getUser($_SESSION['email'])['id']);
+		$core->updateContactDetails($email, $phoneNum, ($texting === "on" ? 1 : 0), $studentId, $core->getUser($_SESSION['email'])['id'], $parentName, $parentEmail, $parentPhone);
 		$_SESSION['email'] = $email;
 		return true;
 	}

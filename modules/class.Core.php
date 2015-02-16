@@ -18,7 +18,7 @@ class Core {
 		$this->fetchAllStmt = $this->db->prepare("SELECT * FROM `" . DB_USER_TABLE . "`");
 		$this->fetchAllNonMentorsStmt = $this->db->prepare("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `rank`<>8");
 		$this->updatePasswordStmt = $this->db->prepare("UPDATE `" . DB_USER_TABLE . "` SET `password`=:newPass WHERE `id`=:id");
-		$this->updateContactStmt = $this->db->prepare("UPDATE `" . DB_USER_TABLE . "` SET `email`=:email, `phone`=:phone, `text`=:text, `studentId`=:studentId WHERE `id`=:id");
+		$this->updateContactStmt = $this->db->prepare("UPDATE `" . DB_USER_TABLE . "` SET `email`=:email, `phone`=:phone, `text`=:text, `studentId`=:studentId, `parentName`=:parentName, `parentEmail`=:parentEmail, `parentPhone`=:parentPhone WHERE `id`=:id");
 	}
 
 	public function login($email, $password) {
@@ -82,14 +82,17 @@ class Core {
 		$stmt->execute();
 	}
 
-	public function updateContactDetails($email, $phone, $text, $studentId, $id) {
+	public function updateContactDetails($email, $phone, $text, $studentId, $id, $parentName, $parentEmail, $parentPhone) {
 		$stmt = $this->updateContactStmt;
 		$stmt->bindParam(":email", $email);
 		$stmt->bindParam(":phone", $phone);
 		$stmt->bindParam(":studentId", $studentId);
+		$stmt->bindParam(":parentName", $parentName);
+		$stmt->bindParam(":parentEmail", $parentEmail);
+		$stmt->bindParam(":parentPhone", $parentPhone);
 		$stmt->bindParam(":id", $id);
 		$stmt->bindParam(":text", $text);
-                $stmt->execute();
+        $stmt->execute();
 	}
 
 	public function getDB() {
