@@ -7,7 +7,7 @@ class UserPage extends Page {
 
 	public function writePageContent() {
 		global $core;
-
+		print_r($_POST);
 ?>
 
 <div class="jumbotron" style="text-align: left; font-size: medium;">
@@ -125,7 +125,7 @@ class UserPage extends Page {
 			return false;
 		}
 		if (!is_numeric($parentPhone) || strlen($parentPhone) != 10) {
-			self::alert("danger", "Error!", "Phone number is invalid!");
+			self::alert("danger", "Error!", "Parent phone number is invalid!");
 			return false;
 		}
 		if (sizeof($core->getUser($email)) != 0 && $email !== $_SESSION['email']) {
