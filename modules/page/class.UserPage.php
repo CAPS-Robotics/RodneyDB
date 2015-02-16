@@ -162,7 +162,7 @@ class UserPage extends Page {
 	public function writePage() {
 		self::writePageStart();
 		if (array_key_exists("email", $_POST) && array_key_exists("phoneNum", $_POST) && array_key_exists("studentId", $_POST)) {
-			if (self::updateContactDetails($_POST['email'],  $_POST['phoneNum'], $_POST['studentId'], $_POST['texting']), $_POST['parentName'], $_POST['parentEmail'], $_POST['parentPhone']) {
+			if (self::updateContactDetails($_POST['email'],  $_POST['phoneNum'], $_POST['studentId'], $_POST['texting'], $_POST['parentName'], $_POST['parentEmail'], $_POST['parentPhone'])) {
 				self::alert("success", "Yay!", "Contanct details updated successfully.");
 			}
 		}
