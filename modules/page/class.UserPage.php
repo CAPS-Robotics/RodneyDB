@@ -96,13 +96,13 @@ class UserPage extends Page {
 					<?php
 						foreach (explode('|', $core->getUser($_SESSION['email'])['parentPhoners']) as $number) {
 					?>
-						<li>
-							<input class="form-control input-lg" type="text" name="parentPhone" value="<?php echo $number ?>">
+						<li class="list-group-item">
+							<input class="form-control input-lg" type="text" name="parentPhone" value="<?php echo $number; ?>">
 						</li>
 					<?php
 						}
 					?>
-					<li>
+					<li class="list-group-item">
 						<input class="form-control input-lg" style="curser: pointer;" type="text" disabled="disabled" placeholder="+1 (000) 000-0000">
 					</li>
 				</ul>
