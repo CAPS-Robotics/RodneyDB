@@ -93,8 +93,17 @@ class UserPage extends Page {
 					<li class="list-group-item">
 						<span class="badge"><?php echo $core->getUser($_SESSION['email'])['parentEmail']; ?></span> Parent Email Address
 					</li>
-					<li class="list-group-item">
-						<span class="badge"><?php echo Utils::formatPhoneNum($core->getUser($_SESSION['email'])['parentPhone']); ?></span> Parent Phone Number
+					<?php
+						foreach ($core->getUser($_SESSION['email'])['parentPhoners'] as $number) {
+					?>
+						<li>
+							<input class="form-control input-lg" type="text" name="parentPhone" value="<?php echo $number ?>">
+						</li>
+					<?php
+						}
+					?>
+					<li>
+						<input class="form-control input-lg" style="curser: pointer;" type="text" disabled="disabled" placeholder="+1 (000) 000-0000">
 					</li>
 				</ul>
 			</div>
@@ -106,6 +115,8 @@ class UserPage extends Page {
 		</div>
 	</div>
 </div>
+
+<script src="assets/js/userPage.js"></script>
 
 <?php
 		echo $content;
