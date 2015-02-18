@@ -94,7 +94,7 @@ class UserPage extends Page {
 						<span class="badge"><?php echo $core->getUser($_SESSION['email'])['parentEmail']; ?></span> Parent Email Address
 					</li>
 					<?php
-						foreach ($core->getUser($_SESSION['email'])['parentPhoners'] as $number) {
+						foreach (explode('|', $core->getUser($_SESSION['email'])['parentPhoners']) as $number) {
 					?>
 						<li>
 							<input class="form-control input-lg" type="text" name="parentPhone" value="<?php echo $number ?>">
