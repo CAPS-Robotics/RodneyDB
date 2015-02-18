@@ -62,7 +62,15 @@ class UserPage extends Page {
 				<form method="POST" style="padding: 10px 10px 10px 10px;">
 					<input class="form-control input-lg" type="text" name="parentName" placeholder=" Parent Name" style="border-top-left-radius: 0; border-top-right-radius: 0;" value="<?php echo $core->getUser($_SESSION['email'])['parentName']; ?>">
 					<input class="form-control input-lg" type="text" name="parentEmail" placeholder="Parent Email" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;" value="<?php echo $core->getUser($_SESSION['email'])['parentEmail']; ?>">
-					<input class="form-control input-lg" type="text" name="parentPhone" placeholder="Parent Phone Number" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-top-right-radius: 0;" value="<?php echo Utils::formatPhoneNum($core->getUser($_SESSION['email'])['parentPhone']); ?>">
+					<?php
+						foreach (explode('|', $core->getUser($_SESSION['email'])['parentPhones']) as $number) {
+					?>
+							<input class="form-control input-lg" type="text" name="parentPhones[]" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;" value="<?php echo $number; ?>">
+					<?php
+						}
+					?>
+					<input class="form-control input-lg" type="text" name="parentPhones[]" placeholder="Phone Number">
+					<!-- <input class="form-control input-lg" type="text" name="parentPhone" placeholder="Parent Phone Number" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-top-right-radius: 0;" value="<?php echo Utils::formatPhoneNum($core->getUser($_SESSION['email'])['parentPhone']); ?>"> -->
 					<button type="submit" class="btn btn-primary btn-xs">Update details</button>
 				</form>
 			</div>
