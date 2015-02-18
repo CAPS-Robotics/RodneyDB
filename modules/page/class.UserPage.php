@@ -155,14 +155,17 @@ class UserPage extends Page {
 		return true;
 	}
 
-	public function updateParentContactDetails($parentName, $parentEmail, $formattedParentPhone) {
+	public function updateParentContactDetails($parentName, $parentEmail, $parentPhones) {
 		global $core;
-		$parentPhone = str_replace("-", "", $formattedParentPhone);
-		if (!is_numeric($parentPhone) || strlen($parentPhone) != 10) {
-			self::alert("danger", "Error!", "Parent phone number is invalid!");
-			return false;
+		foreach ($parentPhones as $number) {
+			if (!is_numeric($number) || strlen($number) != 10) {
+				self::alert("danger", "Error!", "Parent phone number is invalid!");
+				return false;
+			}
 		}
-		$core->updateParentContactDetails($core->getUser($_SESSION['email'])['id'], $parentName, $parentEmail, $parentPhone);
+		$parentPhones = implode('|', $parentPhones);
+		$parentPhones = str_replace("-", "", $parentPhones);
+		$core->updateParentContactDetails($core->getUser($_SESSION['email'])['id'], $parentName, $parentEmail, $parentPhones);
 		return true;
 	}
 
