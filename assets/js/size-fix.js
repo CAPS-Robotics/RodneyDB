@@ -1,1 +1,0 @@
-$(function(){var e=$("#wrap").css("padding-top",$(".navbar").height()-40+"px");$(window).on("resize",function(){e.css("padding-top",$(".navbar").height()-40+"px")})})
