@@ -1,0 +1,179 @@
+extends ./layout.jade
+block includes
+	link(rel="stylesheet", href="css/dash.css")
+block js
+	script(type="text/javascript" src="js/dash.js")
+block content
+	.workspace
+		.nav-frame(style="height: 100%; overflow-y: auto;")
+			.btn-nav.user-info#profile-button(target="#profile")
+				.avatar
+					img(src="http://www.gravatar.com/avatar/00000000000000000000000000000000?s=80")
+				.h6(style="color: inherit; margin-bottom: -5px;")="Signed in as"
+				.h1(style="color: inherit; margin-bottom: -5px;")#first-name="FIRST"
+				.h6(style="color: inherit;")#last-name="LAST"
+			.btn-container
+				.btn-nav#home-button(target="#home")
+					="Home"
+				.btn-nav#calendar-button(target="#calendar")
+					="Calendar"
+				.btn-nav#directory-button(target="#directory")
+					="Directory"
+				.btn-nav#checkin-button(target="#checkin")
+					="Check-In"
+				.btn-nav#broadcast-button(target="#broadcast")
+					="Broadcast"
+				.btn-nav#settings-button(target="#settings")
+					="Settings"
+				.btn-nav#logout-button
+					="Log out"
+			.nav-empty
+			.nav-bottom
+				var(style="color: rgb(149, 165, 166); width: 100%;")="Rodney 3"
+		.content-frame
+			.content-page#profile
+				.page-ico
+					i.fa.fa-user
+				.wide-column(style="margin-top: 150px;")
+					.panel.profile-head
+						.ico(style="margin-left: -170px")
+							i.fa.fa-user
+						.avatar
+							img(src="http://www.gravatar.com/avatar/00000000000000000000000000000000?s=150")
+						.profile-name="Name"
+						.label.label-blue="role"
+						.label.label-outline.label-white="team"
+						br
+						="Bio: "
+						span#bio="Hi"
+					.panel
+						.ico
+							i.fa.fa-share
+						input(type="text", name="statusUpdate", placeholder="What's up right now?").width-90.light
+						.btn-underline(style="width: calc(10% - 5px); margin-left: 5px;")#send
+							i.fa.fa-bullhorn
+					.panel
+						.ico
+							i.fa.fa-comments-o
+						small(style="color: #eee;")="Here's what everyone else is up to."
+						.comment
+							.profile
+								.avatar
+									img(src="http://www.gravatar.com/avatar/00000000000000000000000000000000?s=40")
+								div.name#name-0="Name"
+							.panel-inner="hi"
+						.btn-underline#load-more.width-100="Load more"
+			.content-page#home
+				.page-ico
+					i.fa.fa-home
+			.content-page#calendar
+				.page-ico
+					i.fa.fa-calendar
+			.content-page#directory
+				.page-ico
+					i.fa.fa-book
+				.wide-column(style="margin-top: 65px;")
+					.panel
+						.ico
+							i.fa.fa-list
+						table#checkin-table
+							thead
+								tr
+									th.width-80="Name"
+									th="Hours"
+							tbody
+								tr
+									td.width-80="test"
+									td="0"
+								tr
+									td.width-80="test"
+									td="0"
+								tr
+									td.width-80="test"
+									td="0"
+								tr
+									td.width-80="test"
+									td="0"
+								tr
+									td.width-80="test"
+									td="0"
+			.content-page#checkin
+				.page-ico
+					i.fa.fa-map-marker
+				.wide-column(style="margin-top: 65px;")
+					.panel
+						.ico
+							i.fa.fa-street-view
+						.panel-cover.panel-success
+							span.cover-label
+						.panel-cover.panel-failure
+							span.cover-label
+						.panel-cover#loading
+							span.cover-label
+								i(style="font-size: 24px;").fa.fa-cog.fa-spin
+						small(style="color: #eee;")="Type your student ID and press enter to check in/out."
+						span.right#popout
+							a(href="dash#checkin", onclick="var w = window.open('dash#checkin', '0', 'toolbar=0, menubar=0, location=0, status=0'); w.nonav = true; return false;", style="color: #fff;")
+								i.fa.fa-external-link
+						input(type="text", name="id", placeholder="ID").width-100.light
+					.panel
+						.ico
+							i.fa.fa-list
+						small(style="color: #eee;")="Here's a list of everyone that's checked in right now."
+						table#checkin-table
+							thead
+								tr
+									th.width-80="Name"
+									th="Hours"
+							tbody
+			.content-page#broadcast
+				.page-ico
+					i.fa.fa-paper-plane
+			.content-page#settings
+				.page-ico
+					i.fa.fa-wrench
+				.narrow-column
+					.avatar
+						img(src="http://www.gravatar.com/avatar/00000000000000000000000000000000?s=200")
+					.panel#details
+						.ico
+							i.fa.fa-user
+						.panel-cover.panel-success
+							span.cover-label
+						.panel-cover.panel-failure
+							span.cover-label
+						.panel-cover#loading
+							span.cover-label
+								i(style="font-size: 24px;").fa.fa-cog.fa-spin
+						input(type="text", name="name", placeholder="Name").width-100.light
+						input(type="email", name="email", placeholder="Email").width-100.light
+						input(type="text", name="phone", placeholder="Phone").width-100.light
+					.panel#grav
+						.ico
+							i.fa.fa-globe
+						.panel-cover.panel-success
+							span.cover-label
+						.panel-cover.panel-failure
+							span.cover-label
+						.panel-cover#loading
+							span.cover-label
+								i(style="font-size: 24px;").fa.fa-cog.fa-spin
+						small(style="color: #eee;")="Rodney uses Gravatar for user avatars. If your Gravatar email is different from your account email, put it here. If you leave this blank, we will try to use your account email for Gravatar."
+						input(type="text", name="gravEmail", placeholder="Gravatar email").width-100.light
+					.panel#password
+						.ico
+							i.fa.fa-lock
+						.panel-cover.panel-success
+							span.cover-label
+						.panel-cover.panel-failure
+							span.cover-label
+						.panel-cover#loading
+							span.cover-label
+								i(style="font-size: 24px;").fa.fa-cog.fa-spin
+						small(style="color: #eee;")="Fill out the form below if you want to change your account password."
+						input(type="password", name="curPassword", placeholder="Current password").width-100.light
+						input(type="password", name="newPassword", placeholder="New password").width-100.light
+						input(type="password", name="newPasswordAgain", placeholder="New password again").width-100.light
+					.btn.btn-outline.width-100(style="margin-bottom: 20px;")#update="Update"
+					.id-display.width-100(style="text-align: center; margin-bottom: 2px;")
+						var#stuid="ID: 10000000"

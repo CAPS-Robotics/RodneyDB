@@ -1,0 +1,19 @@
+{
+  "name": "Rodney",
+  "version": "0.0.1",
+  "description": "Team management system for FRC 2410.",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp"
+  },
+  "author": "tma02",
+  "license": "GPLv2",
+  "dependencies": {
+    "express": "^4.12.3",
+    "jade": "^1.9.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-autoprefixer": "^2.1.0"
+  }
+}

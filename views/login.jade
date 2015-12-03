@@ -1,0 +1,20 @@
+extends ./layout.jade
+block includes
+	link(rel="stylesheet", href="/css/login.css")
+block js
+	script(type="text/javascript" src="js/login.js")
+block content
+	.workspace
+		.nav-frame-login
+		.window-frame#login-frame
+			div(style="margin-bottom: 15px; margin-top: 10px;").text-centered#heading
+				h1(style="font-size: 60px; margin-bottom: 5px;")="Rodney"
+				h6="FRC " + teamNum + " Team Resources"
+			.forms#login-form
+				label
+					input(type="email", name="email", placeholder="Email").width-100#email
+				label
+					input(type="password", name="password", placeholder="Password").width-100#password
+				div
+					button.btn.btn-outline.width-100#login-button="Log in"
+					button.btn.btn-outline.width-100#create-button="Create"

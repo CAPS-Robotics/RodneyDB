@@ -1,0 +1,54 @@
+.create-container(style="display: none;")
+	.page(style="height: 285px; margin-bottom: 15px; overflow: hidden;")
+		#0
+			.create-info
+				i(style="font-size: 105px;").fa.fa-user-plus
+				h3(style="margin-bottom: -5px;")="Welcome aboard to FRC team " + teamNum + "."
+				div(style="margin-bottom: 15px;")="What's your name?"
+			.panel
+				input(type="text", name="firstName", placeholder="First name").width-100.light
+				input(type="text", name="lastName", placeholder="Last name").width-100.light
+		#1(style="display: none;")
+			.create-info
+				i(style="font-size: 105px;").fa.fa-at
+				h3(style="margin-bottom: -5px;")="Awesome! Hi, "
+					span#name-text
+					="."
+				div(style="margin-bottom: 15px;")="What about your Email?"
+			.panel
+				input(type="email", name="email", placeholder="Email").width-100.light
+		#2(style="display: none;")
+			.create-info
+				i(style="font-size: 105px;").fa.fa-lock
+				h3(style="margin-bottom: -5px;")="Great!"
+				div(style="margin-bottom: 15px;")="Time for a password. Pick a good one!"
+			.panel
+				input(type="password", name="password", placeholder="Password").width-100.light
+				input(type="password", name="passwordAgain", placeholder="Password again").width-100.light
+		#3(style="display: none;")
+			.create-info
+				i(style="font-size: 105px;").fa.fa-barcode
+				h3(style="margin-bottom: -5px;")="Almost done!"
+				div(style="margin-bottom: 15px;")="What's your student ID?"
+			.panel
+				input(type="text", name="id", placeholder="ID").width-100.light
+		#4(style="display: none;")
+			.create-info
+				i(style="font-size: 105px;").fa.fa-mobile
+				h3(style="margin-bottom: -5px;")="Last step!"
+				div(style="margin-bottom: 15px;")="Just need your phone number..."
+			.panel
+				input(type="text", name="phone", placeholder="Phone").width-100.light
+	button.btn.btn-outline.width-25.pull-right(style="font-size: 16px; margin-left: 6px;")#next="Next"
+	button.btn.btn-outline.width-25.pull-right(style="font-size: 16px;")#back="Back"
+	script(type="text/javascript").
+		//hex(b64(string))
+		console.log('56325673593239745a534230627942306147556763484a765a334a6862573170626d6367644756686253343d');
+.create-done(style="display: none; text-align: center;")
+	.create-info
+		i(style="font-size: 210px; color: #1abc9c;").fa.fa-check-circle
+		h2(style="margin-bottom: -5px;")="Thanks, "
+			span#name-text
+			="!"
+		div(style="margin-bottom: 15px;")="You're finished! Go ahead and sign in to check out what Rodney can do."
+	button.btn.btn-outline.width-50#login-from-create="Log in"

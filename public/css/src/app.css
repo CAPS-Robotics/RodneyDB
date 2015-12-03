@@ -1,0 +1,128 @@
+body {
+	background: url("/img/landing.jpeg") no-repeat center center fixed;
+	background-size: cover;
+}
+
+.window-frame {
+	background-color: rgba(236, 240, 241, 0.85);
+	padding: 20px 35px 20px 35px;
+	border-radius: 2px;
+	box-shadow: 0px 0px 20px 10px rgba(0,0,0,0.15);
+}
+
+.content-frame {
+	background-color: rgba(236, 240, 241, 0.85);
+	position: absolute;
+	left: 200px;
+	top: 0;
+	height: 100%;
+	width: calc(100% - 200px);
+	border-radius: 0;
+	box-shadow: 0px 0px 20px 10px rgba(0,0,0,0.15);
+	overflow: hidden;
+}
+
+.h1 {
+	color: inherit;
+}
+
+.content-page {
+	min-height: 100%;
+	overflow: auto;
+	color: #111;
+}
+
+.nav-frame-login {
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 200px;
+	left: -200px;
+	min-height: 100%;
+}
+
+.nav-frame {
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 200px;
+	left: 0px;
+	min-height: 100%;
+	overflow: hidden;
+}
+
+.btn {
+	border-color: #7f8c8d;
+	color: #7f8c8d;
+	font-size: 22px;
+	font-weight: bold;
+	border-width: 3px;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+	transition: border 0.35s, color 0.40s;
+}
+
+.btn:hover,
+.btn.hover {
+	border-color: #000;
+	color: #000;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+	background-color: rgba(0, 0, 0, 0);
+  padding: 4px;
+  border: none;
+  border-bottom: solid 3px #7f8c8d;
+  transition: border 0.35s;
+}
+
+input[type="text"].input-error,
+input[type="password"].input-error,
+input[type="email"].input-error {
+  border-bottom: solid 3px #de2c3b;
+  box-shadow: 0 0 0 0 #000;
+}
+
+input[type="text"]:focus,
+input[type="text"].focus,
+input[type="password"]:focus,
+input[type="password"].focus,
+input[type="email"]:focus,
+input[type="email"].focus {
+  border-bottom: solid 3px #000;
+  box-shadow: 0 0 0 0 #000;
+}
+
+input[type="text"].light,
+input[type="password"].light,
+input[type="email"].light {
+  border-bottom: solid 3px #aaa;
+  color: #eee;
+  margin-bottom: 10px;
+}
+
+input[type="text"].light:focus,
+input[type="text"].light.focus,
+input[type="password"].light:focus,
+input[type="password"].light.focus,
+input[type="email"].light:focus,
+input[type="email"].light.focus {
+  border-bottom: solid 3px #eee;
+}
+
+.btn-underline {
+	display: inline-block;
+	color: #aaa;
+	padding: 5px 12px 3px 12px;
+  border-bottom: solid 3px #aaa;
+  text-align: center;
+  transition: border 0.35s, color 0.35s;
+  cursor: pointer;
+}
+
+.btn-underline:hover,
+.btn-underline.hover {
+  border-bottom: solid 3px #eee;
+  color: #eee;
+}

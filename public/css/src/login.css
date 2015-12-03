@@ -1,0 +1,148 @@
+@keyframes fill-screen {
+	from {
+		left: 50%;
+		top: 45%;
+		margin-left: -166px;
+		margin-top: -189px;
+	}
+	to {
+		left: 0;
+		top: 0;
+		margin-left: 0;
+		margin-top: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.fill-screen {
+	animation: fill-screen 0.35s 0s 1 normal forwards;
+}
+
+@keyframes content-slide-left {
+	from {
+		left: 0;
+		width: 100%;
+	}
+	to {
+		left: 200px;
+		width: calc(100% - 200px);
+	}
+}
+
+.content-slide-left {
+	animation: content-slide-left 0.35s 0s 1 normal forwards;
+	top: 0 !important;
+	margin-left: 0 !important;
+	margin-top: 0 !important;
+	width: 100% !important;
+	height: 100% !important;
+}
+
+@keyframes nav-slide-left {
+	from {
+		left: -200px;
+	}
+	to {
+		left: 0;
+	}
+}
+
+.nav-slide-left {
+	animation: nav-slide-left 0.35s 0s 1 normal forwards;
+}
+
+@keyframes login-to-create {
+	from {
+		width: 332px;
+		margin-left: -166px;
+	}
+	to {
+		width: 650px;
+		margin-left: -325px;
+	}
+}
+
+.login-to-create {
+	animation: login-to-create 0.35s 0s 1 normal forwards;
+}
+
+@keyframes login-fail {
+	0% {margin-left: -166px;}
+	20% {margin-left: -191px;}
+	40% {margin-left: -141px;}
+	60% {margin-left: -191px;}
+	80% {margin-left: -141px;}
+	100% {margin-left: -166;}
+}
+
+.login-fail {
+	animation: login-fail 0.5s 0s 1 normal forwards;
+}
+
+.create-info {
+	text-align: center;
+}
+
+.panel {
+	background-color: rgba(0, 0, 0, 0.5);
+	box-shadow: inset 0px 0px 10px 5px rgba(0, 0, 0, 0.25);
+	color: #fff;
+	padding: 15px 35px 15px 35px;
+	margin-bottom: 15px;
+	border-radius: 2px;
+}
+
+#login-frame {
+	position: absolute;
+	width: 332px;
+	height: 363px;
+	/*width: auto;
+	height: auto;*/
+	left: 50%;
+	margin-left: -166px;
+	margin-top: -189px;
+	top: 42%;
+}
+
+#login-form ::-webkit-input-placeholder {
+	color: #7f8c8d;
+}
+
+#login-form :-moz-placeholder {
+	color: #7f8c8d;
+}
+
+#login-form ::-moz-placeholder {
+	color: #7f8c8d;
+}
+
+#login-form :-ms-input-placeholder {  
+	color: #7f8c8d;
+}
+
+#heading h1,
+#heading h6 {
+	color: #7f8c8d;
+	transition: border 0.35s, color 0.40s;
+}
+
+#heading h6 {
+	font-size: 12.5px;
+}
+
+#heading h1:hover,
+#heading h1.hover,
+#heading h6:hover,
+#heading h6.hover,
+.btn:hover,
+.btn.hover {
+	border-color: #000;
+	color: #000;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+#create-button {
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
