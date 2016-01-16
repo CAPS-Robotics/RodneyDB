@@ -17,6 +17,8 @@ class Core {
 		$this->registerUserStmt = $this->db->prepare("INSERT INTO `" . DB_USER_TABLE . "`(`studentId`, `name`, `email`, `phone`, `password`, `text`) VALUES (:studentId,:name,:email,:phone,:password,:text)");
 		$this->fetchAllStmt = $this->db->prepare("SELECT * FROM `" . DB_USER_TABLE . "`");
 		$this->fetchAllNonMentorsStmt = $this->db->prepare("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `rank`<>8");
+		$this->fetchFRCStmt = $this->db->prepare("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `frc`<>1");
+        $this->fetchFTCStmt = $this->db->prepare("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `FTC`<>1");
 		$this->updatePasswordStmt = $this->db->prepare("UPDATE `" . DB_USER_TABLE . "` SET `password`=:newPass WHERE `id`=:id");
 		$this->updateContactStmt = $this->db->prepare("UPDATE `" . DB_USER_TABLE . "` SET `email`=:email, `phone`=:phone, `text`=:text, `studentId`=:studentId WHERE `id`=:id");
 	}
@@ -74,6 +76,18 @@ class Core {
 		$stmt->execute();
 		return $stmt->fetchAll();
 	}
+
+    public function fetchFRCUsers() {
+        $stmt = $this->fetchFRCStmt;
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    public function fetchFTCUser() {
+        $stmt = $this->fetchFTCStmt;
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
 
 	public function updatePassword($newPass, $id) {
 		$stmt = $this->updatePasswordStmt;
