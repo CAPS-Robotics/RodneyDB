@@ -46,7 +46,7 @@ class ParentDirectoryPage extends Page {
             $tableStr .= "<tr id=\"". $member['id'] ."\"><td><span class='editable'>". ($member['rank'] == 5 ? "<a href='?p=confirm&id=" . $member['id'] . "' title='Confirm user'>" : "") . $member['name'] . ($member['rank'] == 5 ? "</a>" : "") . "</td><td><span class='editable'>" . $member['parentName'] . "</td><td><span class='editable'>" . $member['parentEmail'] . "</td><td><span class='editable'>". $member['parentPhone'] ."</td></tr>";
         }
         return $tableStr;
-    }
+    }   
 
     public function writePage() {
         self::writePageStart();

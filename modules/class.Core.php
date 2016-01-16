@@ -19,6 +19,7 @@ class Core {
 		$this->fetchAllNonMentorsStmt = $this->db->prepare("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `rank`<>8");
 		$this->updatePasswordStmt = $this->db->prepare("UPDATE `" . DB_USER_TABLE . "` SET `password`=:newPass WHERE `id`=:id");
 		$this->updateContactStmt = $this->db->prepare("UPDATE `" . DB_USER_TABLE . "` SET `email`=:email, `phone`=:phone, `text`=:text, `studentId`=:studentId WHERE `id`=:id");
+		$this->updateParentContactStmt = $this->db->prepare("UPDATE `" . DB_USER_TABLE . "` SET `parentName`=:parentName, `parentPhone`=:parentPhone, `parentEmail`=:parentEmail WHERE `id`=:id");
 	}
 
 	public function login($email, $password) {
@@ -89,6 +90,15 @@ class Core {
 		$stmt->bindParam(":studentId", $studentId);
 		$stmt->bindParam(":id", $id);
 		$stmt->bindParam(":text", $text);
+                $stmt->execute();
+	}
+
+	public function updateParentContactDetails($parentName, $parentPhone, $parentEmail, $id) {
+		$stmt = $this->updateParentContactStmt;
+		$stmt->bindParam(":parentName", $parentName);
+		$stmt->bindParam(":parentPhone", $parentPhone);
+		$stmt->bindParam(":parentEmail", $parentEmail);
+		$stmt->bindParam(":id", $id);
                 $stmt->execute();
 	}
 

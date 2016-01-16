@@ -53,10 +53,19 @@ class UserPage extends Page {
 							Receive Texts
 							<input type="checkbox" name="texting"<?php echo ($core->getUser($_SESSION['email'])['text'] == 1 ? " checked" : ""); ?>>
 						</span>
-						<input class="form-control input-lg" type="text" name="phoneNum" placeholder="Phone number" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-top-right-radius: 0;" value="<?php echo Utils::formatPhoneNum($core->getUser($_SESSION['email'])['phone']); ?>">
+						<input class="form-control input-lg" type="text" name="phoneNum" placeholder="Phone Number" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-top-right-radius: 0;" value="<?php echo Utils::formatPhoneNum($core->getUser($_SESSION['email'])['phone']); ?>">
 					</div>
 					<input class="form-control input-lg" type="text" name="studentId" placeholder="Student ID" style="border-top-left-radius: 0; border-top-right-radius: 0;" value="<?php echo $core->getUser($_SESSION['email'])['studentId']; ?>">
-					<button type="submit" class="btn btn-primary btn-xs">Update details</button>
+					<button type="submit" class="btn btn-primary btn-xs">Update Details</button>
+				</form>
+			</div>
+			<div class="panel panel-primary">
+				<div class="panel-heading">Parent Contact Details</div>
+				<form method="POST" style="padding: 10px 10px 10px 10px;">
+					<input class="form-control input-lg" type="text" name="parentName" placeholder="Parent Name" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0;" value="<?php echo $core->getUser($_SESSION['email'])['parentName']; ?>">
+					<input class="form-control input-lg" type="text" name="parentPhoneNumber" placeholder="Parent Phone Number" style="border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-top-left-radius: 0; border-top-right-radius: 0;" value="<?php echo Utils::formatPhoneNum($core->getUser($_SESSION['email'])['parentPhone']); ?>">
+					<input class="form-control input-lg" type="text" name="parentEmail" placeholder="Parent Email" style="border-top-left-radius: 0; border-top-right-radius: 0;" value="<?php echo $core->getUser($_SESSION['email'])['parentEmail']; ?>">
+					<button type="submit" class="btn btn-primary btn-xs">Update Parent Details</button>
 				</form>
 			</div>
 <?php
@@ -74,6 +83,21 @@ class UserPage extends Page {
 					</li>
 					<li class="list-group-item">
 						<span class="badge"><?php echo $core->getUser($_SESSION['email'])['studentId']; ?></span> Student ID
+					</li>
+				</ul>
+			</div>
+
+			<div class="panel panel-primary">
+				<div class="panel-heading">Parent Contact Details</div>
+				<ul class="list-group" style="line-height: 1;">
+					<li class="list-group-item">
+						<span class="badge"><?php echo $core->getUser($_SESSION['email'])['parentName']; ?></span> Parent Name
+					</li>
+					<li class="list-group-item">
+						<span class="badge"><?php echo Utils::formatPhoneNum($core->getUser($_SESSION['email'])['parentPhone']); ?></span> Parent Phone number
+					</li>
+					<li class="list-group-item">
+						<span class="badge"><?php echo $core->getUser($_SESSION['email'])['parentEmail']; ?></span> Parent Email
 					</li>
 				</ul>
 			</div>
@@ -118,6 +142,17 @@ class UserPage extends Page {
 		return true;
 	}
 
+	public function updateParentContactDetails($parentName, $formattedParentPhone, $parentEmail) {
+		global $core;
+		$parentPhone = str_replace("-", "", $formattedParentPhone);
+		if (!is_numeric($parentPhone) || strlen($parentPhone) != 10) {
+			self::alert("danger", "Error!", "Phone number is invalid!");
+			return false;
+		}
+		$core->updateParentContactDetails($parentName, $parentPhone, $parentEmail, $core->getUser($_SESSION['email'])['id']);
+		return true;
+	}
+
 	public function updatePassword($oldPassword, $newPassword, $checkNewPassword) {
 		global $core;
 		if (hash(DB_USER_HASH_ALGO, $oldPassword) !== $core->getUser($_SESSION['email'])['password']) {
@@ -136,7 +171,12 @@ class UserPage extends Page {
 		self::writePageStart();
 		if (array_key_exists("email", $_POST) && array_key_exists("phoneNum", $_POST) && array_key_exists("studentId", $_POST)) {
 			if (self::updateContactDetails($_POST['email'],  $_POST['phoneNum'], $_POST['studentId'], $_POST['texting'])) {
-				self::alert("success", "Yay!", "Contanct details updated successfully.");
+				self::alert("success", "Yay!", "Contact details updated successfully.");
+			}
+		}
+		if (array_key_exists("parentName", $_POST) && array_key_exists("parentPhone", $_POST) && array_key_exists("parentEmail", $_POST)) {
+			if (self::updateParentContactDetails($_POST['parentName'], $_POST['parentPhone'], $_POST['parentEmail'])) {
+				self::alert("success", "Yay!", "Parent contact details updated successfully.");
 			}
 		}
 		if (array_key_exists("oldPassword", $_POST) && array_key_exists("newPassword", $_POST) && array_key_exists("checkNewPassword", $_POST)) {
