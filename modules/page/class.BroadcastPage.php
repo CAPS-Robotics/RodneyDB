@@ -30,6 +30,30 @@ $(function() {
 			alert(data);
 		});
 	});
+
+	$("#sendFRCButton").on('click', function (e) {
+        $.ajax({
+            url: "?p=broadcast",
+            type: "POST",
+            data: {
+                frcmessage: $("#messageHolder").val()
+            }
+        }).done(function (data) {
+            alert(data);
+        });
+    });
+
+    $("#sendFTCButton").on('click', function (e) {
+        $.ajax({
+            url: "?p=broadcast",
+            type: "POST",
+            data: {
+                ftcmessage: $("#messageHolder").val()
+            }
+        }).done(function (data) {
+            alert(data);
+        });
+    });
 });
 </script>
 
@@ -41,9 +65,13 @@ $(function() {
 		<span style="margin-top: -30px; z-index: 1; position: relative; float: left; opacity: 0.7;" id="charCount">
 			<span class="label label-success">160</span>
 		</span>
+        <div class="btn-group btn-group-justified">
+            <a href="#" id="sendFTCButton" class="btn btn-warning">Send to FTC</a>
+            <a href="#" id="sendFRCButton" class="btn btn-primary">Send to FRC</a>
+        </div>
 		<div class="btn-group btn-group-justified">
-			<a href="#" class="btn btn-lg btn-primary" onclick="document.forms['sendForm'].submit();">Send To All</a>
-			<a href="#" id="sendTestButton" class="btn btn-lg btn-default">Send Test to Self</a>
+			<a href="#" class="btn btn-success" onclick="document.forms['sendForm'].submit();">Send To All</a>
+			<a href="#" id="sendTestButton" class="btn btn-default">Send Test to Self</a>
 		</div>
 	</form>
 </div>
@@ -63,6 +91,26 @@ $(function() {
 			}
 			return;
 		}
+        if (array_key_exists("frcmessage", $_POST)) {
+            $url = 'http://api.tropo.com/1.0/sessions?action=create&token=' . TROPO_MESSAGE_TOKEN . '&numbers=' . urlencode($this->getFRCNumbers()) . '&msg=' . urlencode($_POST['frcmessage']);
+            $xml = simplexml_load_file($url);
+            if ((string)$xml->success === "true") {
+                echo "Success! Message sent to FRC members.";
+            } else {
+                echo "Error! There was a problem with Tropo.";
+            }
+            return;
+        }
+        if (array_key_exists("ftcmessage", $_POST)) {
+            $url = 'http://api.tropo.com/1.0/sessions?action=create&token=' . TROPO_MESSAGE_TOKEN . '&numbers=' . urlencode($this->getFTCNumbers()) . '&msg=' . urlencode($_POST['ftcmessage']);
+            $xml = simplexml_load_file($url);
+            if ((string)$xml->success === "true") {
+                echo "Success! Message sent to FTC members.";
+            } else {
+                echo "Error! There was a problem with Tropo.";
+            }
+            return;
+        }
 		self::writePageStart();
 		if (array_key_exists("message", $_POST)) {
 			$url = 'http://api.tropo.com/1.0/sessions?action=create&token=' . TROPO_MESSAGE_TOKEN . '&numbers=' . urlencode($this->getFormattedNumbers()) . '&msg=' . urlencode($_POST['message']);
@@ -91,5 +139,27 @@ $(function() {
 		$numbersStr = substr($numbersStr, 0, strlen($numbersStr) - 1);
 		return $numbersStr;
 	}
+
+    private function getFRCNumbers() {
+        global $core;
+        $numbersStr = "";
+        $teamArr = $core->fetchFRCUsers();
+        foreach ($teamArr as $member) {
+            $numbersStr .= ($member['text'] == 1 ? $member['phone'] . '|' : '');
+        }
+        $numbersStr = substr($numbersStr, 0, strlen($numbersStr) - 1);
+        return $numbersStr;
+    }
+
+    private function getFTCNumbers() {
+        global $core;
+        $numbersStr = "";
+        $teamArr = $core->fetchFTCUsers();
+        foreach ($teamArr as $member) {
+            $numbersStr .= ($member['text'] == 1 ? $member['phone'] . '|' : '');
+        }
+        $numbersStr = substr($numbersStr, 0, strlen($numbersStr) - 1);
+        return $numbersStr;
+    }
 }
 ?>
