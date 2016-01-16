@@ -13,7 +13,7 @@ class DeletePage extends Page {
 	<h1>Delete Account</h1>
 	Are you sure you want to delete <?php echo $core->getUserFromId($_GET['id'])['name']; ?>'s account? This can not be undone.
 	<div class="btn-group btn-group-justified">
-		<a class="btn btn-lg btn-success btn-block" href="?p=del&id=<?php $_GET['id']; ?>&conf">Yes</a>
+		<a class="btn btn-lg btn-success btn-block" href="?p=del&id="<?php echo $_GET['id']; ?>"&conf">Yes</a>
 		<a class="btn btn-lg btn-danger btn-block" href="?p=directory">No</a>
 	</div>
 </div>
