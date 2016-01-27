@@ -84,7 +84,7 @@ class Core {
         return $stmt->fetchAll();
     }
 
-    public function fetchFTCUser() {
+    public function fetchFTCUsers() {
         $stmt = $this->fetchFTCStmt;
         $stmt->execute();
         return $stmt->fetchAll();
