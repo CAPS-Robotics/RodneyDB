@@ -29,7 +29,7 @@ class LoginPage extends Page {
 		<div class="btn-group btn-group-justified" style="margin-top: 10px;">
 			<a href="#" type="submit" class="btn btn-lg btn-primary" onclick="document.forms['loginForm'].submit();" id="loginButton">Sign in</a>
 			<a href="#" type="button" class="btn btn-lg btn-primary" data-toggle="collapse" data-target="#registerForm" onclick="$('#loginButton').html('Create account'); $('#toggleRegister').hide();" id="toggleRegister">Create account</a>
-			<a href="?p=forgot" class="btn btn-lg btn-primary" data-toggle="collapse">Forgot password</a>
+			<a href="#" class="btn btn-lg btn-primary" onclick="window.location.href='?=forgot';" data-toggle="collapse">Forgot password</a>
 		</div>
 	</form>
 </div>
