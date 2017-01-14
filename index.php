@@ -90,7 +90,7 @@ switch ($_GET['p']) {
 		}
 		foreach ($core->fetchAllUsers() as $user) {
 			if ($user['lastHourLog'] != '0') {
-				file_get_contents($_SERVER['HTTP_HOST'] . "?p=json&r=checkin&d=" . $user['studentId']);
+				file_get_contents("http://rodney.mmr2410.com?p=json&r=checkin&d=" . $user['studentId']);
 			}
 		}
 	case "parentdir":
