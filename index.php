@@ -88,13 +88,7 @@ switch ($_GET['p']) {
 			$page->writePage();
 			break;
 		}
-		foreach ($core->fetchAllUsers() as $user) {
-			if ($user['lastHourLog'] != '0') {
-				echo $user['name'];
-				?><script>$.get("http://rodney.mmr2410.com?p=json&r=checkin&d=" + $user['studentId']", function() {});</script><?php
-			}
-		}
-		// header("Location: /");
+		header("Location: ?p=json&r=konami");
 	case "parentdir":
 		//Make sure user is signed in before showing directory
 		if (!$_SESSION['loggedIn'] || $core->getUser($_SESSION['email'])['rank'] < 8) {

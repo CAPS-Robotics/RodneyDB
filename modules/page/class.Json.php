@@ -43,6 +43,25 @@ class Json extends Page {
 					);
 				}
 				break;
+			case "konami":
+				if(array_key_exists("email", $_SESSION)){
+					$rank=$core->getUser($_SESSION['email'])['rank'];
+				}else{
+					$data = array(
+					    'code'=>'false'
+					);
+					$rank=0;
+					break;
+				}
+				if($rank>=9){
+					$data = self::checkOutAll();
+				}else{
+					$data = array(
+					    'code'=>'false'
+					);
+				}
+				header("Location: /");
+				break;
 			case "edit":
 				if(array_key_exists("email", $_SESSION)){
 					$rank=$core->getUser($_SESSION['email'])['rank'];
@@ -223,6 +242,18 @@ class Json extends Page {
 		else {
 			return true;
 		}
+	}
+
+	public function checkOutAll() {
+		global $core;
+		foreach ($core->fetchAllUsers() as $user) {
+			if ($user['lastHourLog'] != '0') {
+				self::doCheckin($user['studentId']);
+			}
+		}
+		return array(
+			'code' => 'success'
+		);
 	}
 
 	public function doCheckin($studentId) {
