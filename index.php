@@ -91,10 +91,10 @@ switch ($_GET['p']) {
 		foreach ($core->fetchAllUsers() as $user) {
 			if ($user['lastHourLog'] != '0') {
 				echo $user['name'];
-				file_get_contents("http://rodney.mmr2410.com?p=json&r=checkin&d=" . $user['studentId']);
+				?><script>$.get("http://rodney.mmr2410.com?p=json&r=checkin&d=" + $user['studentId']", function() {});</script><?php
 			}
 		}
-		header("Location: /");
+		// header("Location: /");
 	case "parentdir":
 		//Make sure user is signed in before showing directory
 		if (!$_SESSION['loggedIn'] || $core->getUser($_SESSION['email'])['rank'] < 8) {
