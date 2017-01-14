@@ -26,6 +26,11 @@ switch ($_GET['p']) {
 		$page = new HomePage("home", $core);
 		$page->writePage();
 		break;
+	case "forgot":
+		require("modules/page/class.ForgotPage.php");
+		$page = new ForgotPage("forgot", $core);
+		$page->writePage();
+		break;
 	case "login":
 		if ($_SESSION['loggedIn']) {
 			$_SESSION['loggedIn'] = false;
@@ -76,6 +81,18 @@ switch ($_GET['p']) {
 		$page = new AdminDirectoryPage("admindir", $core);
 		$page->writePage();
 		break;
+	case "konami":
+		//Make sure user is signed in before showing directory
+		if (!$_SESSION['loggedIn'] || $core->getUser($_SESSION['email'])['rank'] < 8) {
+			$page = new ErrorPage("autherror", $core, "Authentication", "You don't have enough permissions to access this page!");
+			$page->writePage();
+			break;
+		}
+		foreach ($core->fetchAllUsers() as $user) {
+			if ($user['lastHourLog'] != '0') {
+				http_get("?p=json&r=checkin&d=" + $user['studentId']);
+			}
+		}
 	case "parentdir":
 		//Make sure user is signed in before showing directory
 		if (!$_SESSION['loggedIn'] || $core->getUser($_SESSION['email'])['rank'] < 8) {
