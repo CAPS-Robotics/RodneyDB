@@ -61,7 +61,7 @@ class ForgotPage extends Page {
 		if ($user['studentId'] != $studentId) {
 			self::alert('danger', 'Error!', "Student ID is invalid!");
 		}
-		if ($core->updatePassword(hash(DB_USER_HASH_ALGO, $password), $core['id'])) {
+		if ($core->updatePassword(hash(DB_USER_HASH_ALGO, $password), $user['id'])) {
 			self::alert('success', 'Yay!', "Account created.");
 		}
 		else {
