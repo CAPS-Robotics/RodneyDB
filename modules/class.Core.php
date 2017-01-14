@@ -95,6 +95,7 @@ class Core {
 		$stmt->bindParam(":newPass", $newPass);
 		$stmt->bindParam(":id", $id);
 		$stmt->execute();
+		return true;
 	}
 
 	public function updateContactDetails($email, $phone, $text, $studentId, $id) {

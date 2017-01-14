@@ -62,7 +62,7 @@ class ForgotPage extends Page {
 			self::alert('danger', 'Error!', "Student ID is invalid!");
 		}
 		if ($core->updatePassword(hash(DB_USER_HASH_ALGO, $password), $user['id'])) {
-			self::alert('success', 'Yay!', "Account created.");
+			self::alert('success', 'Yay!', "Password updated.");
 		}
 		else {
 			self::alert('danger', 'Error!', "There was an internal error!");
