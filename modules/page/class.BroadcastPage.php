@@ -41,6 +41,16 @@ $(function() {
         }).done(function (data) {
             alert(data);
         });
+        $.ajax({
+            url: "http://api.groupme.com/v3/bots/post?token=XOVipvz6ix7wm0E99VC7ndQ3oHynOr23fJa2yh9i",
+            type: "POST",
+            data: {
+                bot_id: "ff52e6dcab3f4c66c11758dff3",
+                text: $("#messageHolder").val()
+            }
+        }).done(function (data) {
+            alert(data);
+        });
     });
 
     $("#sendFTCButton").on('click', function (e) {
@@ -49,6 +59,19 @@ $(function() {
             type: "POST",
             data: {
                 ftcmessage: $("#messageHolder").val()
+            }
+        }).done(function (data) {
+            alert(data);
+        });
+    });
+
+    $("#sendForm").on('submit', function() {
+        $.ajax({
+            url: "http://api.groupme.com/v3/bots/post?token=XOVipvz6ix7wm0E99VC7ndQ3oHynOr23fJa2yh9i",
+            type: "POST",
+            data: {
+                bot_id: "ff52e6dcab3f4c66c11758dff3",
+                text: $("#messageHolder").val()
             }
         }).done(function (data) {
             alert(data);
