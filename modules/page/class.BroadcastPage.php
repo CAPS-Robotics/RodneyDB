@@ -42,7 +42,7 @@ $(function() {
             alert(data);
         });
         $.ajax({
-            url: "http://api.groupme.com/v3/bots/post?token=XOVipvz6ix7wm0E99VC7ndQ3oHynOr23fJa2yh9i",
+            url: "http://api.groupme.com/v3/bots/post?token=" + <?php echo GROUPME_TOKEN; ?>,
             type: "POST",
             data: {
                 bot_id: "ff52e6dcab3f4c66c11758dff3",
@@ -67,7 +67,7 @@ $(function() {
 
     $("#sendForm").on('submit', function() {
         $.ajax({
-            url: "http://api.groupme.com/v3/bots/post?token=XOVipvz6ix7wm0E99VC7ndQ3oHynOr23fJa2yh9i",
+            url: "http://api.groupme.com/v3/bots/post?token=" + <?php echo GROUPME_TOKEN; ?>,
             type: "POST",
             data: {
                 bot_id: "ff52e6dcab3f4c66c11758dff3",
