@@ -34,6 +34,9 @@ class Utils {
 			case 10:
 				$rankStr = "Administrator";
 				break;
+			case 11:
+				$rankStr = "AlumniAdmin";
+				break;
 		}
 		return $rankStr;
 	}
