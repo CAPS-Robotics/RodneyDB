@@ -29,3 +29,33 @@ define("TROPO_MESSAGE_TOKEN", "");
 or https://gist.github.com/tuogex/7015907
 
 Just put that in a file called config.php in the same directory as index.php, put in the configuration you need and go!
+
+Database user table
+==
+
+```sql
+CREATE TABLE IF NOT EXISTS `new_users` (
+  `id` int(3) NOT NULL AUTO_INCREMENT,
+  `rank` int(2) NOT NULL DEFAULT '5',
+  `studentId` int(8) NOT NULL DEFAULT '1',
+  `name` varchar(255) COLLATE latin1_bin NOT NULL,
+  `email` varchar(255) COLLATE latin1_bin NOT NULL,
+  `hours` float NOT NULL DEFAULT '0',
+  `phone` bigint(10) NOT NULL DEFAULT '0',
+  `password` varchar(64) COLLATE latin1_bin NOT NULL DEFAULT '_',
+  `lastHourLog` int(12) NOT NULL,
+  `text` int(1) NOT NULL DEFAULT '0',
+  `parentPhones` varchar(32) COLLATE latin1_bin NOT NULL,
+  `parentName` varchar(255) COLLATE latin1_bin NOT NULL DEFAULT '_',
+  `parentEmail` varchar(255) COLLATE latin1_bin NOT NULL DEFAULT '_',
+  `parentPhone` bigint(10) NOT NULL DEFAULT '0',
+  `school` varchar(5) COLLATE latin1_bin NOT NULL DEFAULT '_',
+  `grade` int(3) NOT NULL DEFAULT '0',
+  `ethnicity` varchar(25) COLLATE latin1_bin NOT NULL DEFAULT '_',
+  `frc` int(1) NOT NULL DEFAULT '0',
+  `ftc` int(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+)
+```
+
+This is the schema for the users table. Create this table is a mysql database and there you go!
