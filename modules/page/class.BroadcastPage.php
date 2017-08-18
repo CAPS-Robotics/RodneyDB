@@ -45,7 +45,7 @@ $(function() {
             url: "http://api.groupme.com/v3/bots/post?token=" + <?php echo GROUPME_TOKEN; ?>,
             type: "POST",
             data: {
-                bot_id: "ff52e6dcab3f4c66c11758dff3",
+                bot_id: <?php echo GROUPME_BOT_ID; ?>,
                 text: $("#messageHolder").val()
             }
         }).done(function (data) {
@@ -67,10 +67,19 @@ $(function() {
 
     $("#sendForm").on('submit', function() {
         $.ajax({
+            url: "?p=broadcast",
+            type: "POST",
+            data: {
+                message: $("#messageHolder").val()
+            }
+        }).done(function (data) {
+            alert(data);
+        });
+        $.ajax({
             url: "http://api.groupme.com/v3/bots/post?token=" + <?php echo GROUPME_TOKEN; ?>,
             type: "POST",
             data: {
-                bot_id: "ff52e6dcab3f4c66c11758dff3",
+                bot_id: <?php echo GROUPME_BOT_ID; ?>,
                 text: $("#messageHolder").val()
             }
         }).done(function (data) {
