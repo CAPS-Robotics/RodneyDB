@@ -59,3 +59,8 @@ CREATE TABLE IF NOT EXISTS `new_users` (
 ```
 
 This is the schema for the users table. Create this table is a mysql database and there you go!
+
+Local instance setup
+==
+
+[Instructions to create a local instance of Rodney for development.](docs/LOCALDEV.md)
