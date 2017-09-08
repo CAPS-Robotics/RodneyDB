@@ -61,8 +61,8 @@ switch ($_GET['p']) {
 		break;
 	case "directory":
 		//Make sure user is signed in before showing directory
-		if (!$_SESSION['loggedIn']) {
-			$page = new ErrorPage("autherror", $core, "Authentication", "You need to be signed in to access this page!");
+		if (!$_SESSION['loggedIn'] || $core->getUser($_SESSION['email'])['rank'] < 8) {
+			$page = new ErrorPage("autherror", $core, "Authentication", "You don't have enough permissions to access this page!");
 			$page->writePage();
 			break;
 		}
