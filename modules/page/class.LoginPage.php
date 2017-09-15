@@ -89,10 +89,20 @@ class LoginPage extends Page {
 			self::alert('danger', 'Error!', "Student ID is already registered to another user!");
 			return;
 		}
+		if (!is_null($core->getDB()->getArray("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `phone`=" . $phoneNum)[0]['id']) && $core->getDB()->getArray("SELECT * FROM `" . DB_USER_TABLE . "` WHERE `phone`=" . $phoneNum)[0]['id'] !== $core->getUser($_SESSION['email'])['id']) {
+			self::alert('danger', 'Error!', "Phone number is already registered to another user!");
+			return false;
+		}
 		$phoneNum = str_replace('-', '', $phoneNum);
 		if (strlen($phoneNum) != 10 || !is_numeric($phoneNum)) {
 			self::alert('danger', 'Error!', "Phone number is invalid!");
 			return;
+		}
+		$url = 'http://api.tropo.com/1.0/sessions?action=create&token=' . TROPO_MESSAGE_TOKEN . '&numbers=' . $phoneNum . '&msg=Your%20Rodney%20phone%20number%20has%20been%20changed.';
+		$xml = simplexml_load_file($url);
+		if ((string)$xml->success != "true") {
+			return false;
+			self::alert('danger', 'Error!', "Phone number is invalid!");
 		}
 		if ($core->registerUser($email, hash(DB_USER_HASH_ALGO, $password), $name, $studentId, $texting, $phoneNum)) {
 			self::alert('success', 'Yay!', "Account created.");
