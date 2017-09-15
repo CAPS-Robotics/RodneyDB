@@ -142,6 +142,7 @@ class UserPage extends Page {
 			$xml = simplexml_load_file($url);
 			if ((string)$xml->success != "true") {
 				return false;
+				self::alert('danger', 'Error!', "Phone number is invalid!");
 			}
 		}
 		$core->updateContactDetails($email, $phoneNum, ($texting === "on" ? 1 : 0), $studentId, $core->getUser($_SESSION['email'])['id']);
