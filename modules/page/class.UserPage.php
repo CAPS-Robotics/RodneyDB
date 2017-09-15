@@ -137,6 +137,13 @@ class UserPage extends Page {
 			self::alert('danger', 'Error!', "Phone number is already registered to another user!");
 			return false;
 		}
+		if($core->getUser($_SESSION['email'])['phone'] != $phoneNum) {
+			$url = 'http://api.tropo.com/1.0/sessions?action=create&token=' . TROPO_MESSAGE_TOKEN . '&numbers=' . $phoneNum . '&msg=Your%20Rodney%20phone%20number%20has%20been%20changed.';
+			$xml = simplexml_load_file($url);
+			if ((string)$xml->success != "true") {
+				return false;
+			}
+		}
 		$core->updateContactDetails($email, $phoneNum, ($texting === "on" ? 1 : 0), $studentId, $core->getUser($_SESSION['email'])['id']);
 		$_SESSION['email'] = $email;
 		return true;
