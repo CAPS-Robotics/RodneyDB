@@ -115,44 +115,60 @@ $(function() {
 	public function writePage() {
 		if (array_key_exists("number", $_POST)) {
 			$url = 'http://api.tropo.com/1.0/sessions?action=create&token=' . TROPO_MESSAGE_TOKEN . '&numbers=' . $_POST['number'] . '&msg=' . urlencode($_POST['message']);
-			$xml = simplexml_load_file($url);
-			if ((string)$xml->success === "true") {
-				echo "Success! Test message sent to your number.";
-			} else {
-				echo "Error! There was a problem with Tropo.";
-			}
+			try {
+				$xml = simplexml_load_file($url);
+				if ((string)$xml->success === "true") {
+					echo "Success! Test message sent to your number.";
+				} else {
+					echo "Error! There was a problem with Tropo.";
+				}
+			} catch (Exception $e) {
+			    echo 'Tropo Error: ',  $e->getMessage(), "\n";
+		    }
 			return;
 		}
-        if (array_key_exists("frcmessage", $_POST)) {
-            $url = 'http://api.tropo.com/1.0/sessions?action=create&token=' . TROPO_MESSAGE_TOKEN . '&numbers=' . urlencode($this->getFRCNumbers()) . '&msg=' . urlencode($_POST['frcmessage']);
-            $xml = simplexml_load_file($url);
-            if ((string)$xml->success === "true") {
-                echo "Success! Message sent to FRC members.";
-            } else {
-                echo "Error! There was a problem with Tropo.";
-            }
-            return;
-        }
-        if (array_key_exists("ftcmessage", $_POST)) {
-            $url = 'http://api.tropo.com/1.0/sessions?action=create&token=' . TROPO_MESSAGE_TOKEN . '&numbers=' . urlencode($this->getFTCNumbers()) . '&msg=' . urlencode($_POST['ftcmessage']);
-            $xml = simplexml_load_file($url);
-            if ((string)$xml->success === "true") {
-                echo "Success! Message sent to FTC members.";
-            } else {
-                echo "Error! There was a problem with Tropo.";
-            }
-            return;
-        }
+		if (array_key_exists("frcmessage", $_POST)) {
+		    $url = 'http://api.tropo.com/1.0/sessions?action=create&token=' . TROPO_MESSAGE_TOKEN . '&numbers=' . urlencode($this->getFRCNumbers()) . '&msg=' . urlencode($_POST['frcmessage']);
+		    try {
+			    $xml = simplexml_load_file($url);
+			    if ((string)$xml->success === "true") {
+				    echo "Success! Message sent to FRC members.";
+			    } else {
+				    echo "Error! There was a problem with Tropo.";
+			    }
+		    } catch (Exception $e) {
+			    echo 'Tropo Error: ',  $e->getMessage(), "\n";
+		    }
+		    return;
+		}
+		if (array_key_exists("ftcmessage", $_POST)) {
+		    $url = 'http://api.tropo.com/1.0/sessions?action=create&token=' . TROPO_MESSAGE_TOKEN . '&numbers=' . urlencode($this->getFTCNumbers()) . '&msg=' . urlencode($_POST['ftcmessage']);
+			try {
+				$xml = simplexml_load_file($url);
+				if ((string)$xml->success === "true") {
+					echo "Success! Message sent to FTC members.";
+				} else {
+					echo "Error! There was a problem with Tropo.";
+				}
+			} catch (Exception $e) {
+			    echo 'Tropo Error: ',  $e->getMessage(), "\n";
+		    }
+		    return;
+		}
 		self::writePageStart();
 		if (array_key_exists("message", $_POST)) {
 			$url = 'http://api.tropo.com/1.0/sessions?action=create&token=' . TROPO_MESSAGE_TOKEN . '&numbers=' . urlencode($this->getFormattedNumbers()) . '&msg=' . urlencode($_POST['message']);
-  			$xml = simplexml_load_file($url) or $this->alert("danger", "Error!", "Tropo API not responding.");
-  			if ((string)$xml->success === "true") {
-  				$this->alert("success", "Yay!", "Message broadcasted to all members.");
-  			}
-  			else {
-  				$this->alert("danger", "Error!", "Tropo error.");
-  			}
+  			try {
+				$xml = simplexml_load_file($url) or $this->alert("danger", "Error!", "Tropo API not responding.");
+  				if ((string)$xml->success === "true") {
+  					$this->alert("success", "Yay!", "Message broadcasted to all members.");
+  				}
+  				else {
+  					$this->alert("danger", "Error!", "Tropo error.");
+  				}
+			} catch (Exception $e) {
+			    echo 'Tropo Error: ',  $e->getMessage(), "\n";
+		    }
 		}
 		self::writePageContent();
 		self::writePageEnd();
