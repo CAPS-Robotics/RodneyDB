@@ -98,7 +98,7 @@ class LoginPage extends Page {
 			self::alert('danger', 'Error!', "Phone number is invalid!");
 			return;
 		}
-		$url = 'http://api.tropo.com/1.0/sessions?action=create&token=' . TROPO_MESSAGE_TOKEN . '&numbers=' . $phoneNum . '&msg=Your%20Rodney%20account%20has%20been%20created.';
+		$url = 'https://api.tropo.com/1.0/sessions?action=create&token=' . TROPO_MESSAGE_TOKEN . '&numbers=' . $phoneNum . '&msg=Your%20Rodney%20account%20has%20been%20created.';
 		$xml = simplexml_load_file($url);
 		if ((string)$xml->success != "true") {
 			return false;
