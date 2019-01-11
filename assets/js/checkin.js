@@ -51,7 +51,7 @@ $(document).ready(function(){
             $("#checkin").click();
         }
     });
-    var timer = countdown(new Date(2019, 0, 5, 9, 0, 0, 0), function(ts) {
+    var timer = countdown(new Date(2019, 1, 19, 22, 59, 0, 0), function(ts) {
         document.getElementById('clock').innerHTML = ts.toString();
     }, countdown.DAYS | countdown.HOURS | countdown.MINUTES | countdown.SECONDS);
 });
