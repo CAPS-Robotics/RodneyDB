@@ -64,3 +64,4 @@ Local instance setup
 ==
 
 [Instructions to create a local instance of Rodney for development.](docs/LOCALDEV.md)
+Thanks for showing interest in my github profile.
